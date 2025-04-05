@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfgqlkrr7eks3"]
+
+[ext_resource type="Script" uid="uid://7jonov4nvurj" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
+
+[sub_resource type="Curve" id="Curve_cvnsp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
+
+[node name="Player" type="CharacterBody3D"]
+floor_constant_speed = true
+script = ExtResource("1_cvnsp")
+JumpCurve = SubResource("Curve_cvnsp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_vgqql")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+environment = ExtResource("2_6t5aa")
+fov = 100.0
