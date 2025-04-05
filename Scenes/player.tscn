@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfgqlkrr7eks3"]
+[gd_scene load_steps=8 format=3 uid="uid://cfgqlkrr7eks3"]
 
 [ext_resource type="Script" uid="uid://7jonov4nvurj" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://cmmmn0u5vgaag" path="res://Textures/icon.svg" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://d4ihnbi5i7cmj" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
 
 [sub_resource type="Curve" id="Curve_cvnsp"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -11,9 +12,6 @@ point_count = 2
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
 
 [sub_resource type="Environment" id="Environment_vgqql"]
-background_mode = 4
-ambient_light_source = 1
-reflected_light_source = 1
 
 [node name="Player" type="CharacterBody3D"]
 floor_constant_speed = true
@@ -59,9 +57,19 @@ cull_mask = 2
 environment = SubResource("Environment_vgqql")
 fov = 100.0
 
+[node name="AnimLineLeft" parent="Camera3D/SubViewportContainer/SubViewport/View" instance=ExtResource("3_vgqql")]
+transform = Transform3D(-0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, -1, 0, -1)
+
+[node name="AnimLineRight" parent="Camera3D/SubViewportContainer/SubViewport/View" instance=ExtResource("3_vgqql")]
+transform = Transform3D(0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, 1, 0, -1)
+
 [node name="Hands" type="Node3D" parent="Camera3D/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1)
 
 [node name="Sprite3D" type="Sprite3D" parent="Camera3D/SubViewportContainer/SubViewport/Hands"]
 layers = 2
 texture = ExtResource("3_6t5aa")
+
+[node name="BunnyHopTimer" type="Timer" parent="."]
+wait_time = 0.67
+one_shot = true

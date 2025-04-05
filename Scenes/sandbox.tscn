@@ -5,14 +5,34 @@
 [sub_resource type="BoxMesh" id="BoxMesh_2b6ht"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d7bho"]
-size = Vector3(32, 0.5, 32)
+size = Vector3(1024, 0.5, 1024)
 
 [sub_resource type="BoxMesh" id="BoxMesh_y0mvb"]
-size = Vector3(32, 1, 32)
+size = Vector3(1024, 1, 1024)
 
 [node name="Sandbox" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_2b6ht")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+mesh = SubResource("BoxMesh_2b6ht")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+mesh = SubResource("BoxMesh_2b6ht")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
+mesh = SubResource("BoxMesh_2b6ht")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 6)
+mesh = SubResource("BoxMesh_2b6ht")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 6)
 mesh = SubResource("BoxMesh_2b6ht")
 
 [node name="Player" parent="." instance=ExtResource("1_d7bho")]

@@ -1,0 +1,30 @@
+[gd_resource type="AnimatedTexture" load_steps=9 format=3 uid="uid://chduf85vf5ega"]
+
+[ext_resource type="Texture2D" uid="uid://cgl1txd68e50i" path="res://Textures/anim_line_0.png" id="1_p0xrq"]
+[ext_resource type="Texture2D" uid="uid://bob38v2ewi3qo" path="res://Textures/anim_line_1.png" id="2_6jnx3"]
+[ext_resource type="Texture2D" uid="uid://bdfentd31yngy" path="res://Textures/anim_line_2.png" id="3_xvhhf"]
+[ext_resource type="Texture2D" uid="uid://dptxqkcrfgfvv" path="res://Textures/anim_line_3.png" id="4_bpe3g"]
+[ext_resource type="Texture2D" uid="uid://x0tfl7y3dl4m" path="res://Textures/anim_line_4.png" id="5_ci5kf"]
+[ext_resource type="Texture2D" uid="uid://dm6depw4pv7w5" path="res://Textures/anim_line_5.png" id="6_ye0eh"]
+[ext_resource type="Texture2D" uid="uid://cm6rby21pnj5l" path="res://Textures/anim_line_6.png" id="7_ed1c2"]
+[ext_resource type="Texture2D" uid="uid://8ntqdlakjxjf" path="res://Textures/anim_line_7.png" id="8_vvact"]
+
+[resource]
+resource_local_to_scene = true
+frames = 8
+speed_scale = 60.0
+frame_0/texture = ExtResource("1_p0xrq")
+frame_1/texture = ExtResource("2_6jnx3")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_xvhhf")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_bpe3g")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_ci5kf")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_ye0eh")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("7_ed1c2")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("8_vvact")
+frame_7/duration = 1.0
