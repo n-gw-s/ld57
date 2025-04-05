@@ -1,13 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfgqlkrr7eks3"]
+[gd_scene load_steps=7 format=3 uid="uid://cfgqlkrr7eks3"]
 
 [ext_resource type="Script" uid="uid://7jonov4nvurj" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://cmmmn0u5vgaag" path="res://Textures/icon.svg" id="3_6t5aa"]
 
 [sub_resource type="Curve" id="Curve_cvnsp"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
+
+[sub_resource type="Environment" id="Environment_vgqql"]
+background_mode = 4
+ambient_light_source = 1
+reflected_light_source = 1
 
 [node name="Player" type="CharacterBody3D"]
 floor_constant_speed = true
@@ -19,5 +25,43 @@ shape = SubResource("CapsuleShape3D_vgqql")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+cull_mask = 1048573
 environment = ExtResource("2_6t5aa")
 fov = 100.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Camera3D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -135.0
+offset_right = 240.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Camera3D/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+anisotropic_filtering_level = 0
+audio_listener_enable_3d = true
+gui_disable_input = true
+size = Vector2i(480, 270)
+render_target_clear_mode = 1
+render_target_update_mode = 4
+
+[node name="View" type="Camera3D" parent="Camera3D/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+cull_mask = 2
+environment = SubResource("Environment_vgqql")
+fov = 100.0
+
+[node name="Hands" type="Node3D" parent="Camera3D/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1)
+
+[node name="Sprite3D" type="Sprite3D" parent="Camera3D/SubViewportContainer/SubViewport/Hands"]
+layers = 2
+texture = ExtResource("3_6t5aa")

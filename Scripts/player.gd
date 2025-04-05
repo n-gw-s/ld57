@@ -1,8 +1,12 @@
 extends CharacterBody3D
 
+@export_subgroup("Movement")
 @export var Speed: float = 4.0
 @export var JumpCurve: Curve
-@export var JumpVelocity: float = 10.5
+@export var JumpVelocity: float = 6.33
+@export_subgroup("Camera")
+@export var LeanAmountDegrees: float = 2.0
+@export var LeanSpeed: float = 16.0
 
 var input_move: Vector2
 
@@ -42,10 +46,11 @@ func begin_step(delta: float) -> void:
 	right.y = 0
 	right = right.normalized()
 
+	# Ground velocity calc
 	var v: Vector3 = vel_calc(input_move, fwd, right, Speed)
 	velocity.x = v.x
 	velocity.z = v.z
-
+	
 	if input_just_jump:
 		jump()
 	
@@ -55,11 +60,16 @@ func begin_step(delta: float) -> void:
 		velocity.y += yv
 	
 func end_step(delta: float) -> void:
+	# Cancel velocity and jump state when we hit the floor.
 	if is_on_floor():
 		jumping = false
 		velocity.y = 0
 	else:
 		velocity += get_gravity()
+	
+	# Cam lean
+	cam.rotation_degrees.z = move_toward(cam.rotation_degrees.z, -input_move.x * LeanAmountDegrees, delta * LeanSpeed)
+	
 
 func jump() -> void:
 	if jumping:
