@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d3qfag4amdc5c"]
+[gd_scene load_steps=35 format=3 uid="uid://d3qfag4amdc5c"]
 
 [ext_resource type="PackedScene" uid="uid://cfgqlkrr7eks3" path="res://Scenes/player.tscn" id="1_d7bho"]
 [ext_resource type="PackedScene" uid="uid://cxt0qoasui7vs" path="res://Meshes/house_blender.tscn" id="2_2b6ht"]
@@ -21,6 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://d3osdl7r5dqpp" path="res://Scenes/npc_samaguy.tscn" id="17_nx7jx"]
 [ext_resource type="PackedScene" uid="uid://cifb2o7v50dcu" path="res://Scenes/npc_bat.tscn" id="18_04cnh"]
 [ext_resource type="PackedScene" uid="uid://rhyfgt3kcbj" path="res://Scenes/npc_rat.tscn" id="19_046rc"]
+[ext_resource type="PackedScene" uid="uid://ci6ik0v26ggno" path="res://Scenes/npc_villager1.tscn" id="22_tdkbr"]
+[ext_resource type="PackedScene" uid="uid://beo8xcolo62x7" path="res://Scenes/npc_villager2.tscn" id="23_jrvap"]
+[ext_resource type="PackedScene" uid="uid://bpevkex78ome" path="res://Scenes/npc_villager3.tscn" id="24_8dwy6"]
+[ext_resource type="PackedScene" uid="uid://dumljatk7vtck" path="res://Scenes/npc_villager.tscn" id="25_5dk7s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s2tkr"]
 size = Vector3(64, 1, 64)
@@ -377,13 +381,13 @@ shape = SubResource("ConcavePolygonShape3D_7il83")
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 14, -2, 13)
 
 [node name="house_blender5" parent="NavigationRegion3D/newmap" instance=ExtResource("2_2b6ht")]
-transform = Transform3D(5.24536e-07, 0, -4, 0, 4, 0, 4, 0, 5.24536e-07, -15, 2, 15)
+transform = Transform3D(5.24536e-07, 0, -4, 0, 4, 0, 4, 0, 5.24536e-07, -15, 2, 14.6731)
 
 [node name="house_blender2" parent="NavigationRegion3D/newmap" instance=ExtResource("2_2b6ht")]
 transform = Transform3D(3.67176e-07, 0, -2.8, 0, 2.8, 0, 2.8, 0, 3.67176e-07, -15, 22, 0)
 
 [node name="house_blender9" parent="NavigationRegion3D/newmap" instance=ExtResource("2_2b6ht")]
-transform = Transform3D(3.67176e-07, 0, -2.8, 0, 2.8, 0, 2.8, 0, 3.67176e-07, 7.4, 27.6, 0.49723)
+transform = Transform3D(3.67176e-07, 0, -2.8, 0, 2.8, 0, 2.8, 0, 3.67176e-07, 5.3, 27.6, 0.49723)
 
 [node name="house_blender6" parent="NavigationRegion3D/newmap" instance=ExtResource("2_2b6ht")]
 transform = Transform3D(5.50764e-07, 0, -4.2, 0, 4.2, 0, 4.2, 0, 5.50764e-07, -26.2, 22, -25.2)
@@ -506,7 +510,7 @@ transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0.180099, 17.025, -0.197899)
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 18.1801, 17.025, 5.8021)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/newmap"]
-transform = Transform3D(4.6, 0, 0, 0, 1, 0, 0, 0, 4.6, 8.108, 27, 0.463)
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 5.808, 27, 0.463)
 material_override = ExtResource("3_koc8j")
 use_collision = true
 size = Vector3(2, 1, 2)
@@ -532,7 +536,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5925, 23.155, 24.6391)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5925, 23.155, 0.639086)
 
 [node name="NPC_SamaGuy7" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("17_nx7jx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.40748, 29.155, 0.639086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.15748, 29.155, 0.639086)
 
 [node name="NPC_SamaGuy8" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("17_nx7jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.40748, 33.155, -20.3609)
@@ -620,5 +624,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98434, -1.84442, 13.2263)
 
 [node name="NPC_Rat21" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98434, -1.84442, 4.22629)
+
+[node name="NPC_Villager" parent="NavigationRegion3D/newmap" instance=ExtResource("22_tdkbr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2434, 32.9146, 24.5902)
+
+[node name="NPC_Villager2" parent="NavigationRegion3D/newmap" instance=ExtResource("23_jrvap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0292, 14.9148, -2.70421)
+
+[node name="NPC_Villager3" parent="NavigationRegion3D/newmap" instance=ExtResource("24_8dwy6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5485, 15.6374, -11.6952)
+
+[node name="NPC_Villager4" parent="NavigationRegion3D/newmap" instance=ExtResource("25_5dk7s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.43016, 32.9146, -23.8228)
+
+[node name="NPC_Villager5" parent="NavigationRegion3D/newmap" instance=ExtResource("22_tdkbr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.0508, 22.915, -24.9048)
+
+[node name="NPC_Villager6" parent="NavigationRegion3D/newmap" instance=ExtResource("24_8dwy6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.45, 22.9199, -22.9647)
+
+[node name="NPC_Villager7" parent="NavigationRegion3D/newmap" instance=ExtResource("23_jrvap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2432, -1.085, 13.2579)
+
+[node name="NPC_Villager8" parent="NavigationRegion3D/newmap" instance=ExtResource("24_8dwy6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6915, -1.085, 1.31431)
+
+[node name="NPC_Villager9" parent="NavigationRegion3D/newmap" instance=ExtResource("25_5dk7s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.02915, -1.085, -6.27602)
+
+[node name="NPC_Villager10" parent="NavigationRegion3D/newmap" instance=ExtResource("22_tdkbr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33664, -1.085, -8.99692)
+
+[node name="NPC_Villager11" parent="NavigationRegion3D/newmap" instance=ExtResource("24_8dwy6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.12013, -1.085, -1.68732)
 
 [editable path="NavigationRegion3D/arena"]

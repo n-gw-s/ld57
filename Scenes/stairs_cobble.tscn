@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://dchwwv587g7vb" path="res://Shaders/standard.gdshader" id="2_gfdrc"]
 [ext_resource type="Texture2D" uid="uid://ccnnu8nxmjhng" path="res://Textures/cobble.png" id="3_en3ls"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u6te2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gfdrc"]
 render_priority = 0
 shader = ExtResource("2_gfdrc")
 shader_parameter/albedo_texture = ExtResource("3_en3ls")
@@ -15,7 +15,7 @@ shader_parameter/uv_scale = Vector2(4, 4)
 shader_parameter/backlight_color = Color(1, 1, 1, 1)
 shader_parameter/backlight_amount = 0.3
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lphmw"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_en3ls"]
 data = PackedVector3Array(-1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1)
 
 [node name="stairs" type="Node3D"]
@@ -24,12 +24,11 @@ data = PackedVector3Array(-1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, -1, 1, 1, 1, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="stair" parent="stair2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_u6te2")
+surface_material_override/0 = SubResource("ShaderMaterial_gfdrc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="stair2/stair" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stair2/stair/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_lphmw")
+shape = SubResource("ConcavePolygonShape3D_en3ls")
 
 [editable path="stair2"]

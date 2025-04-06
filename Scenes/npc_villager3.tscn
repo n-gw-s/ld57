@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dumljatk7vtck"]
+[gd_scene load_steps=7 format=3 uid="uid://bpevkex78ome"]
 
-[ext_resource type="Script" uid="uid://wupi60ffwe3n" path="res://Scripts/npc.gd" id="1_p2v6d"]
-[ext_resource type="Texture2D" uid="uid://baevypw4jkobc" path="res://Textures/villagers/jenny1.png" id="2_l2tj8"]
-[ext_resource type="Script" uid="uid://c2rxoxht70x34" path="res://Scripts/player_push_cast.gd" id="3_2nh1k"]
-[ext_resource type="PackedScene" uid="uid://c5g0anmmosets" path="res://Scenes/say.tscn" id="5_morsg"]
+[ext_resource type="Script" uid="uid://wupi60ffwe3n" path="res://Scripts/npc.gd" id="1_emy33"]
+[ext_resource type="Texture2D" uid="uid://cn45mwwdc552c" path="res://Textures/villagers/jenny4.png" id="2_emy33"]
+[ext_resource type="Script" uid="uid://c2rxoxht70x34" path="res://Scripts/player_push_cast.gd" id="3_niiih"]
+[ext_resource type="PackedScene" uid="uid://c5g0anmmosets" path="res://Scenes/say.tscn" id="4_x7kkf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fw6nw"]
 
@@ -11,7 +11,7 @@
 radius = 1.0
 
 [node name="NPC_Villager" type="CharacterBody3D"]
-script = ExtResource("1_p2v6d")
+script = ExtResource("1_emy33")
 Speed = 7.0
 Behavior = 3
 CombatRadius = 5.0
@@ -27,15 +27,15 @@ shape = SubResource("CapsuleShape3D_fw6nw")
 pixel_size = 0.03
 billboard = 2
 texture_filter = 0
-texture = ExtResource("2_l2tj8")
+texture = ExtResource("2_emy33")
 
 [node name="PushCast" type="ShapeCast3D" parent="."]
 shape = SubResource("SphereShape3D_okong")
 target_position = Vector3(0, 0, 0)
-script = ExtResource("3_2nh1k")
+script = ExtResource("3_niiih")
 Force = 0.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[node name="Say" parent="." instance=ExtResource("5_morsg")]
+[node name="Say" parent="." instance=ExtResource("4_x7kkf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
