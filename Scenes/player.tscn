@@ -4,7 +4,7 @@
 [ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
 [ext_resource type="Curve" uid="uid://c3rtpa3v0f3ob" path="res://Curves/jump_curve.tres" id="2_x3wgy"]
 [ext_resource type="Curve" uid="uid://ucbclgkrqlgu" path="res://Curves/wall_kick_curve.tres" id="3_3smsa"]
-[ext_resource type="PackedScene" uid="uid://d4ihnbi5i7cmj" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
+[ext_resource type="PackedScene" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
 [ext_resource type="SpriteFrames" uid="uid://cfluff6ajrbf" path="res://SpriteFrames/hand.tres" id="6_x3wgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
@@ -25,10 +25,11 @@ script = ExtResource("1_cvnsp")
 JumpCurve = ExtResource("2_x3wgy")
 JumpVelocity = 3.5
 BunnyHopMultiplier = 1.4
+BunnyHopMax = 3.0
 WallKickCurve = ExtResource("3_3smsa")
 WallKickWallBias = 0.1
 WallKickVerticalBias = 0.8
-WallKickVelocity = 3.0
+WallKickVelocity = 3.6
 WallKickDuration = 0.5
 ViewBobAmp = 0.033
 

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dax4dtnmvbcw5"]
+
+[ext_resource type="Material" uid="uid://blmk02i05m7a8" path="res://Mats/roof_tile.tres" id="1_qmhm8"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f8w0k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8gia4"]
+size = Vector3(2, 0.1, 2)
+
+[node name="Node3D" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Node3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0)
+mesh = SubResource("PlaneMesh_f8w0k")
+surface_material_override/0 = ExtResource("1_qmhm8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0)
+shape = SubResource("BoxShape3D_8gia4")

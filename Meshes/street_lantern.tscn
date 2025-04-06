@@ -42,7 +42,7 @@ shader_parameter/backlight_color = Color(1, 1, 1, 1)
 shader_parameter/backlight_amount = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3j86u"]
-size = Vector3(0.25, 1.2, 0.25)
+size = Vector3(0.5, 1.2, 0.5)
 
 [node name="Node3D" type="StaticBody3D"]
 
@@ -66,6 +66,8 @@ surface_material_override/0 = SubResource("ShaderMaterial_sw2rq")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00633, 0)
 light_color = Color(1, 0.764706, 0.533333, 1)
+light_energy = 5.0
+omni_range = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
