@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bivh8wa3r0gq0"]
+
+[ext_resource type="Script" uid="uid://wupi60ffwe3n" path="res://Scripts/npc.gd" id="1_l53lf"]
+[ext_resource type="Texture2D" uid="uid://dxdky3vikb4hh" path="res://Textures/villagers/jenny5.png" id="2_l53lf"]
+[ext_resource type="Script" uid="uid://c2rxoxht70x34" path="res://Scripts/player_push_cast.gd" id="3_1luju"]
+[ext_resource type="PackedScene" uid="uid://c5g0anmmosets" path="res://Scenes/say.tscn" id="4_w1hb5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fw6nw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_okong"]
+radius = 1.0
+
+[node name="NPC_Villager" type="CharacterBody3D"]
+script = ExtResource("1_l53lf")
+Speed = 7.0
+Behavior = 3
+CombatRadius = 5.0
+SightRadius = 6.0
+WeaponSpriteName = ""
+SeenSay = "I want my mother!"
+metadata/_custom_type_script = "uid://wupi60ffwe3n"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_fw6nw")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.03
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_l53lf")
+
+[node name="PushCast" type="ShapeCast3D" parent="."]
+shape = SubResource("SphereShape3D_okong")
+target_position = Vector3(0, 0, 0)
+script = ExtResource("3_1luju")
+Force = 0.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Say" parent="." instance=ExtResource("4_w1hb5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
