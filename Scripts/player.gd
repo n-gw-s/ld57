@@ -91,8 +91,8 @@ func begin_step(delta: float) -> void:
 			wall_kick()
 		else:
 			jump()
-	
-	# Wall kick proc
+		
+	# Jump / wall kick proc
 	if wall_kicking:
 		wall_kick_t = clamp(wall_kick_t + delta / WallKickDuration, 0, 1)
 		var wv: float = WallKickCurve.sample(wall_kick_t) * WallKickVelocity
@@ -102,15 +102,13 @@ func begin_step(delta: float) -> void:
 		velocity.x = wall_vel.x
 		velocity.y += wall_vel.y
 		velocity.z = wall_vel.z
-
-		if wall_kick_t >= 1.0:
-			wall_kicking = false
-	
-	# Jump proc
-	if jumping:
+	elif jumping:
 		jump_t = clamp(jump_t + delta / JumpDuration, 0, 1)
 		var yv: float = JumpCurve.sample(jump_t) * JumpVelocity
 		velocity += jump_dir * yv
+
+		if wall_kick_t >= 1.0:
+			wall_kicking = false
 	
 	# Air velocity multiplier (bhop)
 	if !is_on_floor() || current_air_friction > AirFriction:
