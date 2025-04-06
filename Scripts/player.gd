@@ -20,6 +20,8 @@ extends CharacterBody3D
 @export_subgroup("Camera")
 @export var LeanAmountDegrees: float = 2.0
 @export var LeanSpeed: float = 16.0
+@export var ViewBobFreq: float = 0.001
+@export var ViewBobAmp: float = 0.067
 
 var input_move: Vector2
 
@@ -177,8 +179,8 @@ func _process(delta: float) -> void:
 	hv.y = 0
 	view_bob_amount += hv.length()
 	view_bob_amount = move_toward(view_bob_amount, 0, delta)
-	left_hand_spr.position.y = sin(0.001 * view_bob_amount) * 0.067
-	right_hand_spr.position.y = sin(0.001 * view_bob_amount) * 0.067
+	left_hand_spr.position.y = sin(ViewBobFreq * view_bob_amount) * ViewBobAmp
+	right_hand_spr.position.y = sin(ViewBobFreq * view_bob_amount) * ViewBobAmp
 
 func _physics_process(delta: float) -> void:
 	take_input()
