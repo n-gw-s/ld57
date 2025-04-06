@@ -1,6 +1,8 @@
 class_name NPC
 extends CharacterBody3D
 
+const KB_LENGTH_MIN: float = 0.01
+
 @export_subgroup("Movement")
 @export var Speed: float = 1.0
 @export var KnockbackFrictionHorizontal: float = 4.0
@@ -38,3 +40,8 @@ func _physics_process(delta: float) -> void:
 	if flip_t >= 1.0:
 		sprite.flip_h = !sprite.flip_h
 		flip_t = 0.0
+
+	if knockback.length() > KB_LENGTH_MIN && Time.get_ticks_msec() % 4 == 0:
+		sprite.modulate = Color.RED
+	else:
+		sprite.modulate = Color.WHITE
