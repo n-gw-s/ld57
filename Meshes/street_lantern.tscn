@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgmc1qnjj2a6a"]
+[gd_scene load_steps=11 format=3 uid="uid://cgmc1qnjj2a6a"]
 
 [ext_resource type="Texture2D" uid="uid://b286kprjoswh8" path="res://Textures/paper_wall_divider.png" id="1_3j86u"]
 [ext_resource type="Texture2D" uid="uid://cmgv6lakycexn" path="res://Textures/paper_cube.png" id="2_sw2rq"]
@@ -33,7 +33,10 @@ backlight_enabled = true
 backlight = Color(0.716296, 0.716296, 0.716296, 1)
 texture_filter = 0
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3j86u"]
+size = Vector3(0.25, 1.2, 0.25)
+
+[node name="Node3D" type="StaticBody3D"]
 
 [node name="MeshInstance3D27" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.5, 0)
@@ -55,5 +58,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1f8et")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00633, 0)
 light_color = Color(1, 0.764706, 0.533333, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("BoxShape3D_3j86u")
 
 [editable path="roof_topper"]

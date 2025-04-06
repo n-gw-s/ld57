@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7jonov4nvurj" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
-[ext_resource type="PackedScene" uid="uid://d4ihnbi5i7cmj" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
+[ext_resource type="PackedScene" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
 [ext_resource type="Texture2D" uid="uid://v8a61ndth5lk" path="res://Textures/hand.png" id="4_vgqql"]
 
 [sub_resource type="Curve" id="Curve_cvnsp"]
@@ -22,6 +22,7 @@ floor_constant_speed = true
 floor_snap_length = 0.0
 script = ExtResource("1_cvnsp")
 JumpCurve = SubResource("Curve_cvnsp")
+JumpVelocity = 4.4
 WallKickCurve = SubResource("Curve_vgqql")
 WallKickWallBias = 0.5
 WallKickVerticalBias = 0.4
@@ -93,5 +94,5 @@ texture_filter = 0
 texture = ExtResource("4_vgqql")
 
 [node name="BunnyHopTimer" type="Timer" parent="."]
-wait_time = 0.67
+wait_time = 0.45
 one_shot = true

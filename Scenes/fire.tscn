@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://cuhgyaven3eii"]
+
+[ext_resource type="Texture2D" uid="uid://bbk1ejy5p6y75" path="res://Textures/fire/fire1.png" id="1_8uni6"]
+[ext_resource type="Texture2D" uid="uid://byqxpmgny2r2w" path="res://Textures/fire/fire2.png" id="2_hrujk"]
+[ext_resource type="Texture2D" uid="uid://b0s7yd7y0vfjh" path="res://Textures/fire/fire3.png" id="3_6dmct"]
+[ext_resource type="Texture2D" uid="uid://c32mcxffeqaeb" path="res://Textures/fire/fire4.png" id="4_w35r5"]
+[ext_resource type="Texture2D" uid="uid://cfwp4kwbwfbp5" path="res://Textures/fire/fire5.png" id="5_lcnk6"]
+[ext_resource type="Script" path="res://Scripts/play_on_ready.gd" id="6_hrujk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3h6i6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8uni6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hrujk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6dmct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w35r5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lcnk6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="fire" type="AnimatedSprite3D"]
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_3h6i6")
+frame_progress = 0.647028
+script = ExtResource("6_hrujk")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.66, 1, 0.988667, 1)
+light_energy = 3.0
+omni_range = 2.5
