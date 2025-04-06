@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b0s7yd7y0vfjh" path="res://Textures/fire/fire3.png" id="3_6dmct"]
 [ext_resource type="Texture2D" uid="uid://c32mcxffeqaeb" path="res://Textures/fire/fire4.png" id="4_w35r5"]
 [ext_resource type="Texture2D" uid="uid://cfwp4kwbwfbp5" path="res://Textures/fire/fire5.png" id="5_lcnk6"]
-[ext_resource type="Script" path="res://Scripts/play_on_ready.gd" id="6_hrujk"]
+[ext_resource type="Script" uid="uid://or12iaceb5eb" path="res://Scripts/play_on_ready.gd" id="6_hrujk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3h6i6"]
 animations = [{
@@ -31,7 +31,8 @@ animations = [{
 }]
 
 [node name="Fire" type="AnimatedSprite3D"]
-billboard = 2
+cast_shadow = 0
+billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_3h6i6")
 frame_progress = 0.647028
