@@ -12,7 +12,6 @@ size = Vector3(1.5, 1, 1.5)
 [node name="MeshInstance3D27" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_yvmo3")
-skeleton = NodePath("../house/Plane")
 surface_material_override/0 = ExtResource("1_lmv4e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
