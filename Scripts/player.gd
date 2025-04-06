@@ -24,7 +24,6 @@ extends CharacterBody3D
 @export_subgroup("Combat")
 @export var PushVelocity: float = 4.0
 @export var DunkVelocity: float = 6.0
-@export var DunkCameraSpeed: float = 4.0
 
 var input_move: Vector2
 
