@@ -14,7 +14,6 @@ extends CharacterBody3D
 @export var WallKickCurve: Curve
 @export var WallKickWallBias: float = 4.0
 @export var WallKickVerticalBias: float = 1.0
-@export var WallKickForwardBias: float = 1.0
 @export var WallKickVelocity: float = 4.0
 @export var WallKickDuration: float = 1.0
 @export_subgroup("Camera")
@@ -134,9 +133,7 @@ func process_jump_and_wall_kick(delta: float) -> void:
 	if wall_kicking:
 		wall_kick_t = clamp(wall_kick_t + delta / WallKickDuration, 0, 1)
 		var wv: float = WallKickCurve.sample(wall_kick_t) * WallKickVelocity
-		var f: Vector3 = -global_basis.z
-		f.y = 0
-		var wall_vel: Vector3 = (wall_kick_dir * WallKickWallBias + Vector3.UP * WallKickVerticalBias + f * WallKickForwardBias).normalized() * wv
+		var wall_vel: Vector3 = (wall_kick_dir * WallKickWallBias + Vector3.UP * WallKickVerticalBias).normalized() * wv
 		velocity.x = wall_vel.x
 		velocity.y += wall_vel.y
 		velocity.z = wall_vel.z
