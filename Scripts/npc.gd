@@ -1,7 +1,7 @@
 class_name NPC
 extends CharacterBody3D
 
-const KB_LENGTH_MIN: float = 0.1
+const KB_LENGTH_MIN: float = 1.0
 
 enum MoveBehavior {
 	STRAFE,

@@ -165,6 +165,7 @@ func determine_move_vel() -> void:
 
 	# Horizontal velocity calc
 	var v: Vector3 = vel_calc(input_move, fwd, right, Speed)
+
 	velocity.x = v.x
 	velocity.z = v.z
 
