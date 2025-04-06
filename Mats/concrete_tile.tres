@@ -1,7 +1,15 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d02wjos01yxfk"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d02wjos01yxfk"]
 
 [ext_resource type="Texture2D" uid="uid://cn2e0t20w2djb" path="res://Textures/concrete_tile.png" id="1_cs6s4"]
+[ext_resource type="Shader" uid="uid://dchwwv587g7vb" path="res://Shaders/standard.gdshader" id="1_re7un"]
 
 [resource]
-albedo_texture = ExtResource("1_cs6s4")
-texture_filter = 0
+render_priority = 0
+shader = ExtResource("1_re7un")
+shader_parameter/albedo_texture = ExtResource("1_cs6s4")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/jitter = 0.75
+shader_parameter/emission_amount = 0.0
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/backlight_color = Color(1, 1, 1, 1)
+shader_parameter/backlight_amount = 0.0

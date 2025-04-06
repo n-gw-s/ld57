@@ -1,13 +1,15 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cdhu64d08kf7k"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cdhu64d08kf7k"]
 
+[ext_resource type="Shader" uid="uid://dchwwv587g7vb" path="res://Shaders/standard.gdshader" id="1_3sxsa"]
 [ext_resource type="Texture2D" uid="uid://8hnunvtwxsp8" path="res://Textures/paper_wall_half.png" id="1_67pvo"]
 
 [resource]
-transparency = 1
-cull_mode = 2
-depth_draw_mode = 1
-albedo_texture = ExtResource("1_67pvo")
-backlight_enabled = true
-backlight = Color(0.716296, 0.716296, 0.716296, 1)
-uv1_scale = Vector3(2, 1, 1)
-texture_filter = 0
+render_priority = 0
+shader = ExtResource("1_3sxsa")
+shader_parameter/albedo_texture = ExtResource("1_67pvo")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/jitter = 0.8
+shader_parameter/emission_amount = 0.0
+shader_parameter/uv_scale = Vector2(2, 1)
+shader_parameter/backlight_color = Color(1, 1, 1, 1)
+shader_parameter/backlight_amount = 1.0

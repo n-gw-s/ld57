@@ -1,20 +1,24 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxt0qoasui7vs"]
+[gd_scene load_steps=14 format=3 uid="uid://cxt0qoasui7vs"]
 
 [ext_resource type="PackedScene" uid="uid://b1h42ul8x5glp" path="res://Meshes/house.glb" id="1_rwut4"]
 [ext_resource type="Material" uid="uid://d0f56xd4c2grd" path="res://Mats/paper_wall.tres" id="2_j8i4w"]
 [ext_resource type="Material" uid="uid://vrntl8lwac4v" path="res://Mats/tatami.tres" id="3_1tpgg"]
 [ext_resource type="Material" uid="uid://cdhu64d08kf7k" path="res://Mats/paper_wall_half.tres" id="4_gkgjt"]
+[ext_resource type="Shader" uid="uid://dchwwv587g7vb" path="res://Shaders/standard.gdshader" id="5_j8i4w"]
 [ext_resource type="Texture2D" uid="uid://drywfv0feor8" path="res://Textures/roof_tile.png" id="5_wlcik"]
 [ext_resource type="Texture2D" uid="uid://b286kprjoswh8" path="res://Textures/paper_wall_divider.png" id="6_ywcl2"]
 [ext_resource type="Texture2D" uid="uid://cwqvvpmkwljpx" path="res://Textures/paper_door.png" id="7_hetjb"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edf1c"]
-cull_mode = 2
-albedo_texture = ExtResource("5_wlcik")
-backlight_enabled = true
-backlight = Color(0.716296, 0.716296, 0.716296, 1)
-uv1_scale = Vector3(2, 2, 2)
-texture_filter = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1tpgg"]
+render_priority = 0
+shader = ExtResource("5_j8i4w")
+shader_parameter/albedo_texture = ExtResource("5_wlcik")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/jitter = 0.75
+shader_parameter/emission_amount = 0.0
+shader_parameter/uv_scale = Vector2(2, 2)
+shader_parameter/backlight_color = Color(1, 1, 1, 1)
+shader_parameter/backlight_amount = 1.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_768np"]
 
@@ -45,7 +49,7 @@ backface_collision = true
 surface_material_override/0 = ExtResource("2_j8i4w")
 surface_material_override/1 = ExtResource("3_1tpgg")
 surface_material_override/2 = ExtResource("4_gkgjt")
-surface_material_override/3 = SubResource("StandardMaterial3D_edf1c")
+surface_material_override/3 = SubResource("ShaderMaterial_1tpgg")
 
 [node name="MeshInstance3D25" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.5, 0, -8.74228e-08, 0, 1, 0, 4.37114e-08, 0, -1, 0.75, 0.5, -1)

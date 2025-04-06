@@ -1,9 +1,15 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://vrntl8lwac4v"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://vrntl8lwac4v"]
 
+[ext_resource type="Shader" uid="uid://dchwwv587g7vb" path="res://Shaders/standard.gdshader" id="1_c6xlf"]
 [ext_resource type="Texture2D" uid="uid://cklk0212fy4b8" path="res://Textures/tatami.png" id="1_kqt0v"]
 
 [resource]
-cull_mode = 2
-albedo_texture = ExtResource("1_kqt0v")
-uv1_scale = Vector3(3, 3, 3)
-texture_filter = 0
+render_priority = 0
+shader = ExtResource("1_c6xlf")
+shader_parameter/albedo_texture = ExtResource("1_kqt0v")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/jitter = 0.75
+shader_parameter/emission_amount = 0.0
+shader_parameter/uv_scale = Vector2(2, 2)
+shader_parameter/backlight_color = Color(1, 1, 1, 1)
+shader_parameter/backlight_amount = 0.0
