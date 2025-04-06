@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuqmup0m8mfg0"
-path="res://.godot/imported/samaguystick.png-00387ce39c526891a9f7d64d797f440e.ctex"
+uid="uid://d2q187v6j2m70"
+path="res://.godot/imported/bat.png-ccd29f8f08cb68039f6b8e0e850d87dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/samaguystick.png"
-dest_files=["res://.godot/imported/samaguystick.png-00387ce39c526891a9f7d64d797f440e.ctex"]
+source_file="res://Textures/bat.png"
+dest_files=["res://.godot/imported/bat.png-ccd29f8f08cb68039f6b8e0e850d87dd.ctex"]
 
 [params]
 

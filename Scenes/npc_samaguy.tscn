@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wupi60ffwe3n" path="res://Scripts/npc.gd" id="1_3ell4"]
 [ext_resource type="Texture2D" uid="uid://d4adl3gg2hsr" path="res://Textures/samaguy.png" id="2_3ell4"]
-[ext_resource type="Script" path="res://Scripts/player_push_cast.gd" id="3_lmb3v"]
+[ext_resource type="Script" uid="uid://c2rxoxht70x34" path="res://Scripts/player_push_cast.gd" id="3_lmb3v"]
 [ext_resource type="Texture2D" uid="uid://cuqmup0m8mfg0" path="res://Textures/samaguystick.png" id="4_okong"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fw6nw"]

@@ -161,6 +161,9 @@ func process_knockback(delta: float) -> void:
 	knockback.y = move_toward(knockback.y, 0.0, delta * KnockbackFriction)
 	knockback.z = move_toward(knockback.z, 0.0, delta * KnockbackFriction)
 
+	if is_on_wall():
+		knockback = Vector3.ZERO
+
 func process_jump_and_wall_kick(delta: float) -> void:
 	# Jump / wall kick proc
 	if wall_kicking:

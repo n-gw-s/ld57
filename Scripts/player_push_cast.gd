@@ -18,8 +18,6 @@ func _physics_process(_delta: float) -> void:
 			continue
 		
 		if obj is Player:
-			var xz_kb: Vector3 = obj.knockback
-			if xz_kb.length() <= KB_LENGTH_MIN:
-				var v: Vector3 = -get_collision_normal(i) * Force
-				obj.knockback.x += v.x
-				obj.knockback.z += v.z
+			var v: Vector3 = -get_collision_normal(i) * Force
+			obj.knockback.x += v.x
+			obj.knockback.z += v.z

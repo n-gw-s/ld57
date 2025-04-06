@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://rhyfgt3kcbj"]
+
+[ext_resource type="Script" uid="uid://wupi60ffwe3n" path="res://Scripts/npc.gd" id="1_8sfyt"]
+[ext_resource type="Texture2D" uid="uid://d2q187v6j2m70" path="res://Textures/bat.png" id="2_mvlnx"]
+[ext_resource type="Script" uid="uid://c2rxoxht70x34" path="res://Scripts/player_push_cast.gd" id="3_jm2cj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8sfyt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1xr8c"]
+radius = 1.0
+
+[node name="NPC_Rat" type="CharacterBody3D"]
+script = ExtResource("1_8sfyt")
+Speed = 4.0
+Behavior = 2
+WeaponSpriteName = ""
+metadata/_custom_type_script = "uid://wupi60ffwe3n"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8sfyt")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.03
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_mvlnx")
+
+[node name="PushCast" type="ShapeCast3D" parent="."]
+shape = SubResource("SphereShape3D_1xr8c")
+target_position = Vector3(0, 0, 0)
+script = ExtResource("3_jm2cj")
+Force = 16.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
