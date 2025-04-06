@@ -133,6 +133,9 @@ func end_step(delta: float) -> void:
 
 	was_on_floor = is_on_floor()
 
+func inc_air_friction() -> void:
+	current_air_friction = clamp(current_air_friction * BunnyHopMultiplier, AirFriction, BunnyHopMax)
+
 func jump() -> void:
 	if jumping:
 		return
@@ -141,7 +144,7 @@ func jump() -> void:
 	jump_t = 0.0
 
 	if !bhop_timer.is_stopped():
-		current_air_friction = clamp(current_air_friction * BunnyHopMultiplier, AirFriction, BunnyHopMax)
+		inc_air_friction()
 		lines_left.play()
 		lines_right.play()
 
@@ -153,6 +156,7 @@ func wall_kick() -> void:
 	wall_kick_t = 0.0
 	wall_kick_dir = get_wall_normal()
 	velocity.y = 0
+	inc_air_friction()
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
