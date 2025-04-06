@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bivh8wa3r0gq0"]
+[gd_scene load_steps=7 format=3 uid="uid://djej2h34gfth2"]
 
 [ext_resource type="Script" uid="uid://wupi60ffwe3n" path="res://Scripts/npc.gd" id="1_l53lf"]
 [ext_resource type="Texture2D" uid="uid://dxdky3vikb4hh" path="res://Textures/villagers/jenny5.png" id="2_l53lf"]
@@ -11,6 +11,7 @@
 radius = 1.0
 
 [node name="NPC_Villager" type="CharacterBody3D"]
+collision_layer = 0
 script = ExtResource("1_l53lf")
 Speed = 7.0
 Behavior = 3
