@@ -133,16 +133,14 @@ func process_jump_and_wall_kick(delta: float) -> void:
 		wall_kick_t = clamp(wall_kick_t + delta / WallKickDuration, 0, 1)
 		var wv: float = WallKickCurve.sample(wall_kick_t) * WallKickVelocity
 		var wall_vel: Vector3 = (wall_kick_dir * WallKickWallBias + Vector3.UP * WallKickVerticalBias).normalized() * wv
-		velocity.x = wall_vel.x
-		velocity.y += wall_vel.y
-		velocity.z = wall_vel.z
+		velocity += wall_vel
+
+		if wall_kick_t >= 1.0:
+			wall_kicking = false
 	elif jumping:
 		jump_t = clamp(jump_t + delta / JumpDuration, 0, 1)
 		var yv: float = JumpCurve.sample(jump_t) * JumpVelocity
 		velocity += jump_dir * yv
-
-		if wall_kick_t >= 1.0:
-			wall_kicking = false
 
 func process_attack() -> void:
 	if attacking && attack_timer.is_stopped():
@@ -205,6 +203,13 @@ func wall_kick() -> void:
 	wall_kick_dir = get_wall_normal()
 	velocity.y = 0
 	inc_air_friction()
+
+	var parts_scn: PackedScene = preload("res://Scenes/wall_kick_particles.tscn")
+	var p: GPUParticles3D = parts_scn.instantiate()
+	get_parent().add_child(p)
+	p.global_position = global_position
+	p.look_at(p.global_position + wall_kick_dir * 0.1)
+	p.restart()
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
