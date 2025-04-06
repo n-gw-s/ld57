@@ -488,224 +488,110 @@ size = Vector3(2, 1, 2)
 
 [node name="NPC_SamaGuy" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("17_nx7jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5925, 23.155, -23.3609)
-KnockbackFrictionHorizontal = null
-KnockbackFrictionVertical = null
-Behavior = null
-SightRadius = null
-StrafeFreq = null
-StrafeAmp = null
-WeaponSpriteName = null
-BounceRadius = null
-FlipSpeed = null
-FlipMode = null
 
 [node name="NPC_SamaGuy9" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("17_nx7jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5925, 23.155, -26.3609)
-KnockbackFrictionHorizontal = null
-KnockbackFrictionVertical = null
-Behavior = null
-SightRadius = null
-StrafeFreq = null
-StrafeAmp = null
-WeaponSpriteName = null
-BounceRadius = null
-FlipSpeed = null
-FlipMode = null
 
 [node name="NPC_SamaGuy2" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("17_nx7jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5925, 33.155, -0.360914)
-KnockbackFrictionHorizontal = null
-KnockbackFrictionVertical = null
-Behavior = null
-SightRadius = null
-StrafeFreq = null
-StrafeAmp = null
-WeaponSpriteName = null
-BounceRadius = null
-FlipSpeed = null
-FlipMode = null
 
 [node name="NPC_SamaGuy3" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("17_nx7jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5925, 23.155, 24.6391)
-KnockbackFrictionHorizontal = null
-KnockbackFrictionVertical = null
-Behavior = null
-SightRadius = null
-StrafeFreq = null
-StrafeAmp = null
-WeaponSpriteName = null
-BounceRadius = null
-FlipSpeed = null
-FlipMode = null
 
 [node name="NPC_SamaGuy4" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("17_nx7jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5925, 23.155, 24.6391)
-KnockbackFrictionHorizontal = null
-KnockbackFrictionVertical = null
-Behavior = null
-SightRadius = null
-StrafeFreq = null
-StrafeAmp = null
-WeaponSpriteName = null
-BounceRadius = null
-FlipSpeed = null
-FlipMode = null
 
 [node name="NPC_SamaGuy5" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("17_nx7jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5925, 23.155, 0.639086)
-KnockbackFrictionHorizontal = null
-KnockbackFrictionVertical = null
-Behavior = null
-SightRadius = null
-StrafeFreq = null
-StrafeAmp = null
-WeaponSpriteName = null
-BounceRadius = null
-FlipSpeed = null
-FlipMode = null
 
 [node name="NPC_SamaGuy7" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("17_nx7jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.40748, 29.155, 0.639086)
-KnockbackFrictionHorizontal = null
-KnockbackFrictionVertical = null
-Behavior = null
-SightRadius = null
-StrafeFreq = null
-StrafeAmp = null
-WeaponSpriteName = null
-BounceRadius = null
-FlipSpeed = null
-FlipMode = null
 
 [node name="NPC_SamaGuy8" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("17_nx7jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.40748, 33.155, -20.3609)
-KnockbackFrictionHorizontal = null
-KnockbackFrictionVertical = null
-Behavior = null
-SightRadius = null
-StrafeFreq = null
-StrafeAmp = null
-WeaponSpriteName = null
-BounceRadius = null
-FlipSpeed = null
-FlipMode = null
 
 [node name="NPC_SamaGuy6" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("17_nx7jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.40748, 33.155, -25.3609)
-KnockbackFrictionHorizontal = null
-KnockbackFrictionVertical = null
-Behavior = null
-SightRadius = null
-StrafeFreq = null
-StrafeAmp = null
-WeaponSpriteName = null
-BounceRadius = null
-FlipSpeed = null
-FlipMode = null
 
 [node name="NPC_Bat" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("18_04cnh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6152, 33.6416, 24)
-KnockbackFrictionHorizontal = null
-KnockbackFrictionVertical = null
-StrafeFreq = null
-StrafeAmp = null
 
 [node name="NPC_Bat2" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("18_04cnh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6152, 15.6416, 6)
-KnockbackFrictionHorizontal = null
-KnockbackFrictionVertical = null
-StrafeFreq = null
-StrafeAmp = null
 
 [node name="NPC_Bat3" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("18_04cnh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6152, 15.6416, -11)
-KnockbackFrictionHorizontal = null
-KnockbackFrictionVertical = null
-StrafeFreq = null
-StrafeAmp = null
 
 [node name="NPC_Bat4" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("18_04cnh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.38485, 23.6416, 1)
-KnockbackFrictionHorizontal = null
-KnockbackFrictionVertical = null
-StrafeFreq = null
-StrafeAmp = null
 
 [node name="NPC_Bat5" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("18_04cnh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3848, 33.6416, 8)
-KnockbackFrictionHorizontal = null
-KnockbackFrictionVertical = null
-StrafeFreq = null
-StrafeAmp = null
 
 [node name="NPC_Bat6" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("18_04cnh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3848, 33.6416, -7)
-KnockbackFrictionHorizontal = null
-KnockbackFrictionVertical = null
-StrafeFreq = null
-StrafeAmp = null
 
-[node name="NPC_Rat" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.121, 22.134, -15.8689)
 
-[node name="NPC_Rat2" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat2" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.121, 22.134, -24.8689)
 
-[node name="NPC_Rat3" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat3" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0157, 22.134, 17.2263)
 
-[node name="NPC_Rat4" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat4" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01566, 22.134, 25.2263)
 
-[node name="NPC_Rat5" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat5" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.98434, 22.134, 27.2263)
 
-[node name="NPC_Rat6" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat6" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.984337, 22.134, 22.2263)
 
-[node name="NPC_Rat7" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat7" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9843, 32.3532, 22.2263)
 
-[node name="NPC_Rat8" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat8" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9843, 32.3532, 27.2263)
 
-[node name="NPC_Rat9" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat9" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9843, 32.3532, 21.2263)
 
-[node name="NPC_Rat10" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat10" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9843, 32.3532, 26.2263)
 
-[node name="NPC_Rat11" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat11" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98434, -1.84442, -4.77371)
 
-[node name="NPC_Rat12" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat12" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01566, -1.84442, -12.7737)
 
-[node name="NPC_Rat13" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat13" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.01566, -1.84442, -6.77371)
 
-[node name="NPC_Rat14" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat14" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01566, -1.84442, -0.773706)
 
-[node name="NPC_Rat15" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat15" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.01566, -1.84442, -0.773706)
 
-[node name="NPC_Rat16" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat16" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.01566, -1.84442, 3.22629)
 
-[node name="NPC_Rat17" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat17" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0157, -1.84442, 5.22629)
 
-[node name="NPC_Rat18" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat18" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01566, -1.84442, 9.22629)
 
-[node name="NPC_Rat19" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat19" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01566, -1.84442, 10.2263)
 
-[node name="NPC_Rat20" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat20" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98434, -1.84442, 13.2263)
 
-[node name="NPC_Rat21" parent="." instance=ExtResource("19_046rc")]
+[node name="NPC_Rat21" parent="NavigationRegion3D/newmap/mobs" instance=ExtResource("19_046rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98434, -1.84442, 4.22629)
 
 [editable path="NavigationRegion3D/arena"]

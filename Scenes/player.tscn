@@ -4,13 +4,13 @@
 [ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
 [ext_resource type="Curve" uid="uid://c3rtpa3v0f3ob" path="res://Curves/jump_curve.tres" id="2_x3wgy"]
 [ext_resource type="Curve" uid="uid://ucbclgkrqlgu" path="res://Curves/wall_kick_curve.tres" id="3_3smsa"]
-[ext_resource type="PackedScene" uid="uid://d4ihnbi5i7cmj" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
+[ext_resource type="PackedScene" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
 [ext_resource type="SpriteFrames" uid="uid://cfluff6ajrbf" path="res://SpriteFrames/hand.tres" id="6_x3wgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_x3wgy"]
-radius = 0.67
+radius = 1.0
 
 [sub_resource type="Environment" id="Environment_vgqql"]
 
@@ -32,6 +32,8 @@ WallKickVerticalBias = 0.8
 WallKickVelocity = 3.6
 WallKickDuration = 0.5
 ViewBobAmp = 0.033
+PushVelocity = 8.0
+DunkVelocity = 12.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_vgqql")
@@ -43,6 +45,7 @@ environment = ExtResource("2_6t5aa")
 fov = 100.0
 
 [node name="Interact" type="ShapeCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.270114, 0)
 shape = SubResource("SphereShape3D_x3wgy")
 target_position = Vector3(0, 0, -1)
 
