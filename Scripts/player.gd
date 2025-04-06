@@ -55,7 +55,6 @@ var last_wall_kick_dir: Vector3 = Vector3.ZERO
 var current_air_friction: float
 
 var was_on_floor: bool
-var last_wall_normal: Vector3
 
 var view_bob_amount: float
 
@@ -101,26 +100,32 @@ func vel_calc(i: Vector2, fwd: Vector3, right: Vector3, s: float) -> Vector3:
 	var v: Vector3 = (f + r).normalized() * s
 	return v
 
-func can_wall_kick() -> bool:
+func can_wall_kick() -> Vector3:
 	if !is_on_floor():
 		wall_kick_cast.force_update_transform()
 		wall_kick_cast.force_shapecast_update()
 
 		for i in wall_kick_cast.get_collision_count():
+			if !is_instance_valid(wall_kick_cast.get_collider(i)):
+				continue
+			
 			var n: Vector3 = wall_kick_cast.get_collision_normal(i)
-			if acos(n.dot(Vector3.UP)) > deg_to_rad(45 + 0.01):
-				last_wall_normal = wall_kick_cast.get_collision_normal(i)
-				return true
+			if n.is_equal_approx(Vector3.ZERO):
+				continue
+			
+			if rad_to_deg(acos(n.dot(Vector3.UP))) > 45 + 0.01:
+				return n
 	
-	return false
+	return Vector3.ZERO
 
 func begin_step(delta: float) -> void:
 	determine_move_vel()
 	
 	# Jump / wall kick input
 	if input_just_jump:
-		if can_wall_kick():
-			wall_kick()
+		var wn: Vector3 = can_wall_kick()
+		if !wn.is_equal_approx(Vector3.ZERO):
+			wall_kick(wn)
 		else:
 			jump()
 
@@ -139,7 +144,6 @@ func end_step(delta: float) -> void:
 		jumping = false
 		wall_kicking = false
 		last_wall_kick_dir = Vector3.ZERO
-		last_wall_normal = Vector3.ZERO
 		velocity.y = 0
 		current_air_friction = move_toward(current_air_friction, AirFriction, delta * BunnyHopDeceleration)
 
@@ -293,14 +297,14 @@ func jump() -> void:
 
 	next_cam_fov = FovKick
 
-func wall_kick() -> void:
-	if !can_wall_kick() || wall_kick_dir.is_equal_approx(last_wall_normal):
+func wall_kick(wn: Vector3) -> void:
+	if last_wall_kick_dir.is_equal_approx(wn) || wn.is_equal_approx(Vector3.ZERO):
 		return
 	
 	wall_kicking = true
 	wall_kick_t = 0.0
 	last_wall_kick_dir = wall_kick_dir
-	wall_kick_dir = last_wall_normal
+	wall_kick_dir = wn
 	velocity.y = 0
 	inc_air_friction()
 
