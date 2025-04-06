@@ -4,7 +4,7 @@
 [ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
 [ext_resource type="Curve" uid="uid://c3rtpa3v0f3ob" path="res://Curves/jump_curve.tres" id="2_x3wgy"]
 [ext_resource type="Curve" uid="uid://ucbclgkrqlgu" path="res://Curves/wall_kick_curve.tres" id="3_3smsa"]
-[ext_resource type="PackedScene" uid="uid://d4ihnbi5i7cmj" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
+[ext_resource type="PackedScene" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
 [ext_resource type="SpriteFrames" uid="uid://cfluff6ajrbf" path="res://SpriteFrames/hand.tres" id="6_x3wgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
@@ -15,8 +15,8 @@ radius = 2.0
 [sub_resource type="Environment" id="Environment_vgqql"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x3wgy"]
-radius = 1.3
-height = 2.6
+radius = 1.5
+height = 3.0
 
 [node name="Player" type="CharacterBody3D"]
 floor_constant_speed = true
@@ -33,6 +33,8 @@ WallKickVelocity = 3.6
 WallKickDuration = 0.5
 ViewBobFreq = 0.5
 ViewBobAmp = 20.0
+PushVelocity = 12.0
+DunkVelocity = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_vgqql")

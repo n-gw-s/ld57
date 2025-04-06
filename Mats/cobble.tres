@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://hwa2m1e5etxm"]
+
+[ext_resource type="Shader" uid="uid://dchwwv587g7vb" path="res://Shaders/standard.gdshader" id="1_ar42c"]
+[ext_resource type="Texture2D" uid="uid://ccnnu8nxmjhng" path="res://Textures/cobble.png" id="2_6tiyq"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ar42c")
+shader_parameter/albedo_texture = ExtResource("2_6tiyq")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/jitter = 0.8
+shader_parameter/emission_amount = 0.0
+shader_parameter/uv_scale = Vector2(16, 16)
+shader_parameter/backlight_color = Color(1, 1, 1, 1)
+shader_parameter/backlight_amount = 0.3

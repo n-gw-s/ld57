@@ -14,6 +14,7 @@ radius = 1.0
 [node name="NPC_Bat" type="CharacterBody3D"]
 script = ExtResource("1_n337f")
 Speed = 6.0
+KnockbackFrictionHorizontal = 2.0
 Behavior = 1
 CombatRadius = 999.0
 SightRadius = 9999.0
