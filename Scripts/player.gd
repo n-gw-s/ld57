@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 @export_subgroup("Movement")
@@ -16,6 +17,7 @@ extends CharacterBody3D
 @export var WallKickVerticalBias: float = 1.0
 @export var WallKickVelocity: float = 5.5
 @export var WallKickDuration: float = 1.0
+@export var KnockbackFriction: float = 32.0
 @export_subgroup("Camera")
 @export var LeanAmountDegrees: float = 2.0
 @export var LeanSpeed: float = 16.0
@@ -57,6 +59,8 @@ var attacking: bool
 
 var o_cam_fov: float
 var next_cam_fov: float
+
+var knockback: Vector3
 
 @onready var cam: Camera3D = $Camera3D
 @onready var view_cam: Camera3D = $Camera3D/SubViewportContainer/SubViewport/View
@@ -111,6 +115,7 @@ func begin_step(delta: float) -> void:
 	process_jump_and_wall_kick(delta)
 	process_attack()
 	multiply_air_friction()
+	process_knockback(delta)
 
 func end_step(delta: float) -> void:
 	# Cancel velocity and jump state when we hit the floor.
@@ -145,6 +150,13 @@ func determine_move_vel() -> void:
 	var v: Vector3 = vel_calc(input_move, fwd, right, Speed)
 	velocity.x = v.x
 	velocity.z = v.z
+
+
+func process_knockback(delta: float) -> void:
+	velocity += knockback
+	knockback.x = move_toward(knockback.x, 0.0, delta * KnockbackFriction)
+	knockback.y = move_toward(knockback.y, 0.0, delta * KnockbackFriction)
+	knockback.z = move_toward(knockback.z, 0.0, delta * KnockbackFriction)
 
 func process_jump_and_wall_kick(delta: float) -> void:
 	# Jump / wall kick proc
@@ -278,7 +290,7 @@ func _process(delta: float) -> void:
 
 	# FOV Kick
 	cam.fov = move_toward(cam.fov, next_cam_fov, delta * FovSpeed)
-
+	
 	if !jumping:
 		next_cam_fov = o_cam_fov
 
