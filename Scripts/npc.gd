@@ -15,6 +15,7 @@ enum MoveBehavior {
 @export_subgroup("Behavior")
 @export var Behavior: MoveBehavior = MoveBehavior.STRAFE
 @export var CombatRadius: float = 3.0
+@export var SightRadius: float = 8.0
 @export var StrafeFreq: float = 0.01
 @export var StrafeAmp: float = 6.0
 @export var WeaponSpriteName: String = "Spear"
@@ -39,12 +40,14 @@ func _physics_process(delta: float) -> void:
 
 	move = Vector3.ZERO
 
-	if player.global_position.distance_to(global_position) > CombatRadius:
+	var dist_to_player: float = player.global_position.distance_to(global_position)
+
+	if dist_to_player > CombatRadius && dist_to_player < SightRadius:
 		nav.target_position = player.global_position
 		var next: Vector3 = nav.get_next_path_position()
 		print(next)
 		move = (next - global_position).normalized() * Speed
-	else:
+	elif dist_to_player < CombatRadius:
 		if Behavior == MoveBehavior.STRAFE:
 			var v: Vector3 = global_basis.x * sin(Time.get_ticks_msec() * StrafeFreq) * StrafeAmp
 			move.x = v.x
