@@ -95,3 +95,7 @@ texture = ExtResource("4_vgqql")
 [node name="BunnyHopTimer" type="Timer" parent="."]
 wait_time = 0.45
 one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
