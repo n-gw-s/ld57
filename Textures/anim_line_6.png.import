@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cm6rby21pnj5l"
-path.s3tc="res://.godot/imported/anim_line_6.png-9c04fd3964a28723c779ec991eaa3830.s3tc.ctex"
+path="res://.godot/imported/anim_line_6.png-9c04fd3964a28723c779ec991eaa3830.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Textures/anim_line_6.png"
-dest_files=["res://.godot/imported/anim_line_6.png-9c04fd3964a28723c779ec991eaa3830.s3tc.ctex"]
+dest_files=["res://.godot/imported/anim_line_6.png-9c04fd3964a28723c779ec991eaa3830.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -21,6 +21,8 @@ extends CharacterBody3D
 @export var LeanSpeed: float = 16.0
 @export var ViewBobFreq: float = 0.001
 @export var ViewBobAmp: float = 0.067
+@export var FovKick: float = 110.0
+@export var FovSpeed: float = 64.0
 @export_subgroup("Combat")
 @export var PushVelocity: float = 4.0
 @export var DunkVelocity: float = 6.0
@@ -41,7 +43,8 @@ var jump_dir: Vector3 = Vector3.UP
 
 var wall_kick_t: float
 var wall_kicking: bool
-var wall_kick_dir: = Vector3.UP
+var wall_kick_dir: Vector3 = Vector3.UP
+var last_wall_kick_dir: Vector3 = Vector3.ZERO
 
 var current_air_friction: float
 
@@ -51,14 +54,17 @@ var view_bob_amount: float
 
 var attacking: bool
 
+var o_cam_fov: float
+var next_cam_fov: float
+
 @onready var cam: Camera3D = $Camera3D
 @onready var view_cam: Camera3D = $Camera3D/SubViewportContainer/SubViewport/View
 @onready var bhop_timer: Timer = $BunnyHopTimer
 @onready var lines_left: GPUParticles3D = $Camera3D/SubViewportContainer/SubViewport/View/AnimLineLeft
 @onready var lines_right: GPUParticles3D = $Camera3D/SubViewportContainer/SubViewport/View/AnimLineRight
 @onready var hands: Node3D = $Camera3D/SubViewportContainer/SubViewport/Hands
-@onready var left_hand_spr: Sprite3D = $Camera3D/SubViewportContainer/SubViewport/Hands/Left
-@onready var right_hand_spr: Sprite3D = $Camera3D/SubViewportContainer/SubViewport/Hands/Right
+@onready var left_hand_spr: AnimatedSprite3D = $Camera3D/SubViewportContainer/SubViewport/Hands/Left
+@onready var right_hand_spr: AnimatedSprite3D = $Camera3D/SubViewportContainer/SubViewport/Hands/Right
 @onready var interact_cast: ShapeCast3D = $Camera3D/Interact
 @onready var attack_timer: Timer = $AttackTimer
 
@@ -99,6 +105,7 @@ func end_step(delta: float) -> void:
 	if is_on_floor():
 		jumping = false
 		wall_kicking = false
+		last_wall_kick_dir = Vector3.ZERO
 		velocity.y = 0
 		current_air_friction = move_toward(current_air_friction, AirFriction, delta * BunnyHopDeceleration)
 
@@ -161,6 +168,9 @@ func attack() -> void:
 
 	attacking = true
 	attack_timer.start()
+
+	left_hand_spr.play("push")
+	right_hand_spr.play("push")
 	
 	for i in interact_cast.get_collision_count():
 		var obj: Object = interact_cast.get_collider(i)
@@ -194,15 +204,21 @@ func jump() -> void:
 		lines_left.play()
 		lines_right.play()
 
+	next_cam_fov = FovKick
+
 func wall_kick() -> void:
-	if !is_on_wall_only():
+	if !is_on_wall_only() || wall_kick_dir.is_equal_approx(last_wall_kick_dir):
+		print("RET")
 		return
 	
 	wall_kicking = true
 	wall_kick_t = 0.0
+	last_wall_kick_dir = wall_kick_dir
 	wall_kick_dir = get_wall_normal()
 	velocity.y = 0
 	inc_air_friction()
+
+	next_cam_fov = FovKick
 
 	var parts_scn: PackedScene = preload("res://Scenes/wall_kick_particles.tscn")
 	var p: GPUParticles3D = parts_scn.instantiate()
@@ -215,11 +231,17 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	current_air_friction = AirFriction
+	o_cam_fov = cam.fov
 
 	attack_timer.connect("timeout", _on_attack_timeout)
 
+	left_hand_spr.play("default")
+	right_hand_spr.play("default")
+
 func _on_attack_timeout() -> void:
 	attacking = false
+	left_hand_spr.play("default")
+	right_hand_spr.play("default")
 
 func _input(event: InputEvent) -> void:
 	# Rotate camera on x, rotate root on y
@@ -244,6 +266,12 @@ func _process(delta: float) -> void:
 	view_bob_amount = move_toward(view_bob_amount, 0, delta)
 	left_hand_spr.position.y = sin(ViewBobFreq * view_bob_amount) * ViewBobAmp
 	right_hand_spr.position.y = sin(ViewBobFreq * view_bob_amount) * ViewBobAmp
+
+	# FOV Kick
+	cam.fov = move_toward(cam.fov, next_cam_fov, delta * FovSpeed)
+
+	if !jumping:
+		next_cam_fov = o_cam_fov
 
 func _physics_process(delta: float) -> void:
 	take_input()

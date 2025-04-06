@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ijeeyiy3tsfx"]
 
 [ext_resource type="Script" uid="uid://wupi60ffwe3n" path="res://Scripts/npc.gd" id="1_pxiqm"]
-[ext_resource type="Texture2D" uid="uid://cmmmn0u5vgaag" path="res://Textures/icon.svg" id="2_ibf7e"]
+[ext_resource type="Texture2D" uid="uid://v8a61ndth5lk" path="res://Textures/hand.png" id="2_pxiqm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fw6nw"]
 
@@ -15,4 +15,4 @@ shape = SubResource("CapsuleShape3D_fw6nw")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 billboard = 2
-texture = ExtResource("2_ibf7e")
+texture = ExtResource("2_pxiqm")

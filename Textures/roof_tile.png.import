@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://drywfv0feor8"
-path.s3tc="res://.godot/imported/roof_tile.png-99a9bd437309ef29ed0935204350802a.s3tc.ctex"
+path="res://.godot/imported/roof_tile.png-99a9bd437309ef29ed0935204350802a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Textures/roof_tile.png"
-dest_files=["res://.godot/imported/roof_tile.png-99a9bd437309ef29ed0935204350802a.s3tc.ctex"]
+dest_files=["res://.godot/imported/roof_tile.png-99a9bd437309ef29ed0935204350802a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

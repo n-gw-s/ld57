@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://df7hyool3g6f"
-path.s3tc="res://.godot/imported/roof_topper.png-66c73511f7417dd4a062e030088a9a3f.s3tc.ctex"
+path="res://.godot/imported/roof_topper.png-66c73511f7417dd4a062e030088a9a3f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Textures/roof_topper.png"
-dest_files=["res://.godot/imported/roof_topper.png-66c73511f7417dd4a062e030088a9a3f.s3tc.ctex"]
+dest_files=["res://.godot/imported/roof_topper.png-66c73511f7417dd4a062e030088a9a3f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
