@@ -2,16 +2,10 @@
 
 [ext_resource type="Script" uid="uid://7jonov4nvurj" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
+[ext_resource type="Curve" uid="uid://c3rtpa3v0f3ob" path="res://curves/jump_curve.tres" id="2_x3wgy"]
+[ext_resource type="Curve" uid="uid://ucbclgkrqlgu" path="res://curves/wall_kick_curve.tres" id="3_3smsa"]
 [ext_resource type="PackedScene" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
 [ext_resource type="Texture2D" uid="uid://v8a61ndth5lk" path="res://Textures/hand.png" id="4_vgqql"]
-
-[sub_resource type="Curve" id="Curve_cvnsp"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_vgqql"]
-_data = [Vector2(0.501259, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
 
@@ -21,14 +15,14 @@ point_count = 2
 floor_constant_speed = true
 floor_snap_length = 0.0
 script = ExtResource("1_cvnsp")
-JumpCurve = SubResource("Curve_cvnsp")
+JumpCurve = ExtResource("2_x3wgy")
 JumpVelocity = 4.4
-WallKickCurve = SubResource("Curve_vgqql")
-WallKickWallBias = 0.5
-WallKickVerticalBias = 0.4
+WallKickCurve = ExtResource("3_3smsa")
+WallKickWallBias = 0.35
+WallKickVerticalBias = 0.55
 WallKickForwardBias = 0.1
 WallKickVelocity = 4.67
-WallKickDuration = 2.0
+WallKickDuration = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_vgqql")
