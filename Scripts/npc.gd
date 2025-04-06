@@ -48,18 +48,8 @@ var seen_player: bool
 func randomize_dir() -> void:
 	rand_dir = Vector2(-randf() + randf(), -randf() + randf()).normalized()
 
-func _ready() -> void:
-	weapon_spr = get_node_or_null(WeaponSpriteName)
-
-	randomize_dir()
-
-func _physics_process(delta: float) -> void:
-	look_at(player.global_position)
-
-	move = Vector3.ZERO
-
+func process_behavior() -> void:
 	var dist_to_player: float = player.global_position.distance_to(global_position)
-
 	if dist_to_player > CombatRadius && dist_to_player < SightRadius:
 		nav.target_position = player.global_position
 		var next: Vector3 = nav.get_next_path_position()
@@ -68,7 +58,6 @@ func _physics_process(delta: float) -> void:
 			seen_player = true
 			typewriter.Say = SeenSay
 			typewriter.reset()
-			print("AAA")
 
 	elif dist_to_player < CombatRadius:
 		if Behavior == MoveBehavior.STRAFE:
@@ -87,8 +76,8 @@ func _physics_process(delta: float) -> void:
 			nav.target_position = player.global_position
 			var next: Vector3 = nav.get_next_path_position()
 			move = (next - global_position).normalized() * Speed
-
-
+	
+func process_knockback(delta: float) -> void:
 	knockback.x = move_toward(knockback.x, 0, delta * KnockbackFrictionHorizontal)
 	knockback.y = move_toward(knockback.y, 0, delta * KnockbackFrictionVertical)
 	knockback.z = move_toward(knockback.z, 0, delta * KnockbackFrictionHorizontal)
@@ -109,18 +98,7 @@ func _physics_process(delta: float) -> void:
 		sprite.modulate = Color.WHITE
 		kb_cast.enabled = true
 
-	velocity.x = move.x + knockback.x
-	velocity.y += knockback.y
-	velocity.z = move.z + knockback.z
-
-	if !is_on_floor():
-		velocity += get_gravity()
-
-	move_and_slide()
-
-	if is_on_floor():
-		velocity.y = 0
-
+func process_flip(delta: float) -> void:
 	var xz_vel: Vector3 = velocity
 	xz_vel.y = 0
 
@@ -136,3 +114,30 @@ func _physics_process(delta: float) -> void:
 
 		if weapon_spr != null:
 			weapon_spr.position.x = -weapon_spr.position.x
+
+func _ready() -> void:
+	weapon_spr = get_node_or_null(WeaponSpriteName)
+
+	randomize_dir()
+
+func _physics_process(delta: float) -> void:
+	look_at(player.global_position)
+
+	move = Vector3.ZERO
+
+	process_behavior()
+	process_knockback(delta)
+
+	velocity.x = move.x + knockback.x
+	velocity.y += knockback.y
+	velocity.z = move.z + knockback.z
+
+	if !is_on_floor():
+		velocity += get_gravity()
+
+	move_and_slide()
+
+	if is_on_floor():
+		velocity.y = 0
+
+	process_flip(delta)
