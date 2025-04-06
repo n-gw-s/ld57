@@ -38,6 +38,7 @@ texture = ExtResource("2_wple2")
 [node name="PushCast" type="ShapeCast3D" parent="."]
 shape = SubResource("SphereShape3D_1xr8c")
 target_position = Vector3(0, 0, 0)
+collision_mask = 4
 script = ExtResource("2_kfui6")
 Force = 16.0
 

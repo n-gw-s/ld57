@@ -4,7 +4,7 @@
 [ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
 [ext_resource type="Curve" uid="uid://c3rtpa3v0f3ob" path="res://Curves/jump_curve.tres" id="2_x3wgy"]
 [ext_resource type="Curve" uid="uid://ucbclgkrqlgu" path="res://Curves/wall_kick_curve.tres" id="3_3smsa"]
-[ext_resource type="PackedScene" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
+[ext_resource type="PackedScene" uid="uid://d4ihnbi5i7cmj" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
 [ext_resource type="SpriteFrames" uid="uid://cfluff6ajrbf" path="res://SpriteFrames/hand.tres" id="6_x3wgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
@@ -19,6 +19,7 @@ radius = 1.5
 height = 3.0
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 4
 floor_constant_speed = true
 floor_snap_length = 0.0
 script = ExtResource("1_cvnsp")
@@ -48,6 +49,7 @@ fov = 100.0
 [node name="Interact" type="ShapeCast3D" parent="Camera3D"]
 shape = SubResource("SphereShape3D_x3wgy")
 target_position = Vector3(0, 0, -1)
+collision_mask = 3
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Camera3D"]
 anchors_preset = 8

@@ -22,6 +22,10 @@ window/size/viewport_height=270
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 MoveForward={
@@ -59,6 +63,9 @@ Jump={
 
 3d_render/layer_1="Default"
 3d_render/layer_2="View"
+3d_physics/layer_1="Geometry"
+3d_physics/layer_2="NPCs"
+3d_physics/layer_3="Player"
 
 [physics]
 
