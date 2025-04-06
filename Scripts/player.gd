@@ -22,6 +22,10 @@ extends CharacterBody3D
 @export var LeanSpeed: float = 16.0
 @export var ViewBobFreq: float = 0.001
 @export var ViewBobAmp: float = 0.067
+@export_subgroup("Combat")
+@export var PushVelocity: float = 4.0
+@export var DunkVelocity: float = 6.0
+@export var DunkCameraSpeed: float = 4.0
 
 var input_move: Vector2
 
@@ -47,6 +51,8 @@ var was_on_floor: bool
 
 var view_bob_amount: float
 
+var attacking: bool
+
 @onready var cam: Camera3D = $Camera3D
 @onready var view_cam: Camera3D = $Camera3D/SubViewportContainer/SubViewport/View
 @onready var bhop_timer: Timer = $BunnyHopTimer
@@ -55,6 +61,8 @@ var view_bob_amount: float
 @onready var hands: Node3D = $Camera3D/SubViewportContainer/SubViewport/Hands
 @onready var left_hand_spr: Sprite3D = $Camera3D/SubViewportContainer/SubViewport/Hands/Left
 @onready var right_hand_spr: Sprite3D = $Camera3D/SubViewportContainer/SubViewport/Hands/Right
+@onready var interact_cast: ShapeCast3D = $Camera3D/Interact
+@onready var attack_timer: Timer = $AttackTimer
 
 func take_input() -> void:
 	input_move = Input.get_vector("MoveLeft", "MoveRight", "MoveBackward", "MoveForward")
@@ -71,19 +79,7 @@ func vel_calc(i: Vector2, fwd: Vector3, right: Vector3, s: float) -> Vector3:
 	return v
 
 func begin_step(delta: float) -> void:
-	# Grab directions...
-	var fwd: Vector3 = -global_basis.z
-	fwd.y = 0
-	fwd = fwd.normalized()
-
-	var right: Vector3 = global_basis.x
-	right.y = 0
-	right = right.normalized()
-
-	# Horizontal velocity calc
-	var v: Vector3 = vel_calc(input_move, fwd, right, Speed)
-	velocity.x = v.x
-	velocity.z = v.z
+	determine_move_vel()
 	
 	# Jump / wall kick input
 	if input_just_jump:
@@ -91,29 +87,14 @@ func begin_step(delta: float) -> void:
 			wall_kick()
 		else:
 			jump()
-		
-	# Jump / wall kick proc
-	if wall_kicking:
-		wall_kick_t = clamp(wall_kick_t + delta / WallKickDuration, 0, 1)
-		var wv: float = WallKickCurve.sample(wall_kick_t) * WallKickVelocity
-		var f: Vector3 = -global_basis.z
-		f.y = 0
-		var wall_vel: Vector3 = (wall_kick_dir * WallKickWallBias + Vector3.UP * WallKickVerticalBias + f * WallKickForwardBias).normalized() * wv
-		velocity.x = wall_vel.x
-		velocity.y += wall_vel.y
-		velocity.z = wall_vel.z
-	elif jumping:
-		jump_t = clamp(jump_t + delta / JumpDuration, 0, 1)
-		var yv: float = JumpCurve.sample(jump_t) * JumpVelocity
-		velocity += jump_dir * yv
 
-		if wall_kick_t >= 1.0:
-			wall_kicking = false
-	
-	# Air velocity multiplier (bhop)
-	if !is_on_floor() || current_air_friction > AirFriction:
-		velocity.x *= current_air_friction
-		velocity.z *= current_air_friction
+	# Attack input
+	if input_just_fire:
+		attack()
+		
+	process_jump_and_wall_kick(delta)
+	process_attack()
+	multiply_air_friction()
 
 func end_step(delta: float) -> void:
 	# Cancel velocity and jump state when we hit the floor.
@@ -133,8 +114,79 @@ func end_step(delta: float) -> void:
 
 	was_on_floor = is_on_floor()
 
+func determine_move_vel() -> void:
+	# Grab directions...
+	var fwd: Vector3 = -global_basis.z
+	fwd.y = 0
+	fwd = fwd.normalized()
+
+	var right: Vector3 = global_basis.x
+	right.y = 0
+	right = right.normalized()
+
+	# Horizontal velocity calc
+	var v: Vector3 = vel_calc(input_move, fwd, right, Speed)
+	velocity.x = v.x
+	velocity.z = v.z
+
+func process_jump_and_wall_kick(delta: float) -> void:
+	# Jump / wall kick proc
+	if wall_kicking:
+		wall_kick_t = clamp(wall_kick_t + delta / WallKickDuration, 0, 1)
+		var wv: float = WallKickCurve.sample(wall_kick_t) * WallKickVelocity
+		var f: Vector3 = -global_basis.z
+		f.y = 0
+		var wall_vel: Vector3 = (wall_kick_dir * WallKickWallBias + Vector3.UP * WallKickVerticalBias + f * WallKickForwardBias).normalized() * wv
+		velocity.x = wall_vel.x
+		velocity.y += wall_vel.y
+		velocity.z = wall_vel.z
+	elif jumping:
+		jump_t = clamp(jump_t + delta / JumpDuration, 0, 1)
+		var yv: float = JumpCurve.sample(jump_t) * JumpVelocity
+		velocity += jump_dir * yv
+
+		if wall_kick_t >= 1.0:
+			wall_kicking = false
+
+func process_attack() -> void:
+	if attacking && attack_timer.is_stopped():
+		attacking = false
+
+func multiply_air_friction() -> void:
+	# Air velocity multiplier (bhop)
+	if !is_on_floor() || current_air_friction > AirFriction:
+		velocity.x *= current_air_friction
+		velocity.z *= current_air_friction
+
 func inc_air_friction() -> void:
 	current_air_friction = clamp(current_air_friction * BunnyHopMultiplier, AirFriction, BunnyHopMax)
+
+func attack() -> void:
+	if attacking:
+		return
+
+	attacking = true
+	attack_timer.start()
+	
+	for i in interact_cast.get_collision_count():
+		var obj: Object = interact_cast.get_collider(i)
+
+		if !is_instance_valid(obj):
+			continue
+
+		if obj is NPC:
+			var xz_kb: Vector3 = obj.knockback
+			xz_kb.y = 0
+			var v: Vector3
+			if is_equal_approx(xz_kb.length(), 0):
+				v = -interact_cast.get_collision_normal(i) * PushVelocity
+			if !obj.is_on_floor():
+				v = Vector3.DOWN * DunkVelocity
+				cam.look_at(obj.global_position)
+				cam.rotation.z = 0
+				cam.scale = Vector3.ONE
+				print("dunk")
+			obj.knockback += v
 
 func jump() -> void:
 	if jumping:
@@ -162,6 +214,11 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	current_air_friction = AirFriction
+
+	attack_timer.connect("timeout", _on_attack_timeout)
+
+func _on_attack_timeout() -> void:
+	attacking = false
 
 func _input(event: InputEvent) -> void:
 	# Rotate camera on x, rotate root on y
