@@ -62,4 +62,4 @@ Jump={
 
 [physics]
 
-3d/default_gravity=4.0
+3d/default_gravity=3.0

@@ -12,4 +12,4 @@ shader_parameter/jitter = 0.75
 shader_parameter/emission_amount = 0.0
 shader_parameter/uv_scale = Vector2(2, 2)
 shader_parameter/backlight_color = Color(1, 1, 1, 1)
-shader_parameter/backlight_amount = 0.0
+shader_parameter/backlight_amount = 0.3

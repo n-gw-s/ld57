@@ -4,7 +4,7 @@
 [ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
 [ext_resource type="Curve" uid="uid://c3rtpa3v0f3ob" path="res://Curves/jump_curve.tres" id="2_x3wgy"]
 [ext_resource type="Curve" uid="uid://ucbclgkrqlgu" path="res://Curves/wall_kick_curve.tres" id="3_3smsa"]
-[ext_resource type="PackedScene" uid="uid://d4ihnbi5i7cmj" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
+[ext_resource type="PackedScene" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
 [ext_resource type="SpriteFrames" uid="uid://cfluff6ajrbf" path="res://SpriteFrames/hand.tres" id="6_x3wgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
@@ -15,19 +15,22 @@ radius = 0.67
 [sub_resource type="Environment" id="Environment_vgqql"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x3wgy"]
-radius = 0.85
+radius = 1.3
+height = 2.6
 
 [node name="Player" type="CharacterBody3D"]
 floor_constant_speed = true
 floor_snap_length = 0.0
 script = ExtResource("1_cvnsp")
 JumpCurve = ExtResource("2_x3wgy")
-JumpVelocity = 4.4
+JumpVelocity = 3.5
 BunnyHopMultiplier = 1.4
 WallKickCurve = ExtResource("3_3smsa")
-WallKickWallBias = 0.35
-WallKickVerticalBias = 0.55
+WallKickWallBias = 0.1
+WallKickVerticalBias = 0.8
+WallKickVelocity = 3.0
 WallKickDuration = 0.5
+ViewBobAmp = 0.033
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_vgqql")

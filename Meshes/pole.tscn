@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cycrkklebs3ui"]
+
+[ext_resource type="Material" uid="uid://bbw55fl7v7e5k" path="res://Mats/paper_wall_divider.tres" id="1_lmv4e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yvmo3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3j86u"]
+size = Vector3(1.5, 1, 1.5)
+
+[node name="Node3D" type="StaticBody3D"]
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_yvmo3")
+skeleton = NodePath("../house/Plane")
+surface_material_override/0 = ExtResource("1_lmv4e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_3j86u")

@@ -1,33 +1,25 @@
-[gd_scene load_steps=14 format=3 uid="uid://cxt0qoasui7vs"]
+[gd_scene load_steps=12 format=3 uid="uid://cxt0qoasui7vs"]
 
 [ext_resource type="PackedScene" uid="uid://b1h42ul8x5glp" path="res://Meshes/house.glb" id="1_rwut4"]
 [ext_resource type="Material" uid="uid://d0f56xd4c2grd" path="res://Mats/paper_wall.tres" id="2_j8i4w"]
-[ext_resource type="Material" uid="uid://vrntl8lwac4v" path="res://Mats/tatami.tres" id="3_1tpgg"]
 [ext_resource type="Material" uid="uid://cdhu64d08kf7k" path="res://Mats/paper_wall_half.tres" id="4_gkgjt"]
+[ext_resource type="Material" uid="uid://blmk02i05m7a8" path="res://Mats/roof_tile.tres" id="4_rwut4"]
 [ext_resource type="Shader" uid="uid://dchwwv587g7vb" path="res://Shaders/standard.gdshader" id="5_j8i4w"]
-[ext_resource type="Texture2D" uid="uid://drywfv0feor8" path="res://Textures/roof_tile.png" id="5_wlcik"]
-[ext_resource type="Texture2D" uid="uid://b286kprjoswh8" path="res://Textures/paper_wall_divider.png" id="6_ywcl2"]
 [ext_resource type="Texture2D" uid="uid://cwqvvpmkwljpx" path="res://Textures/paper_door.png" id="7_hetjb"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1tpgg"]
-render_priority = 0
-shader = ExtResource("5_j8i4w")
-shader_parameter/albedo_texture = ExtResource("5_wlcik")
-shader_parameter/modulate = Color(1, 1, 1, 1)
-shader_parameter/jitter = 0.75
-shader_parameter/emission_amount = 0.0
-shader_parameter/uv_scale = Vector2(2, 2)
-shader_parameter/backlight_color = Color(1, 1, 1, 1)
-shader_parameter/backlight_amount = 1.0
+[ext_resource type="Material" uid="uid://bbw55fl7v7e5k" path="res://Mats/paper_wall_divider.tres" id="7_j8i4w"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_768np"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dq1x6"]
-cull_mode = 2
-albedo_texture = ExtResource("6_ywcl2")
-backlight_enabled = true
-backlight = Color(0.716296, 0.716296, 0.716296, 1)
-texture_filter = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gkgjt"]
+render_priority = 0
+shader = ExtResource("5_j8i4w")
+shader_parameter/albedo_texture = ExtResource("7_hetjb")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/jitter = 0.75
+shader_parameter/emission_amount = 0.0
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/backlight_color = Color(1, 1, 1, 1)
+shader_parameter/backlight_amount = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jm0k3"]
 transparency = 1
@@ -47,33 +39,36 @@ backface_collision = true
 
 [node name="Plane" parent="house" index="0"]
 surface_material_override/0 = ExtResource("2_j8i4w")
-surface_material_override/1 = ExtResource("3_1tpgg")
-surface_material_override/2 = ExtResource("4_gkgjt")
-surface_material_override/3 = SubResource("ShaderMaterial_1tpgg")
+surface_material_override/1 = ExtResource("4_gkgjt")
+surface_material_override/2 = ExtResource("4_rwut4")
 
 [node name="MeshInstance3D25" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.5, 0, -8.74228e-08, 0, 1, 0, 4.37114e-08, 0, -1, 0.75, 0.5, -1)
 mesh = SubResource("QuadMesh_768np")
-surface_material_override/0 = SubResource("StandardMaterial3D_dq1x6")
+surface_material_override/0 = ExtResource("7_j8i4w")
 
 [node name="MeshInstance3D26" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 1.74846e-07, 0, 1, 0, -8.74228e-08, 0, 1, -0.75, 0.5, -1)
 mesh = SubResource("QuadMesh_768np")
-surface_material_override/0 = SubResource("StandardMaterial3D_dq1x6")
+surface_material_override/0 = ExtResource("7_j8i4w")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -1)
+visible = false
 mesh = SubResource("QuadMesh_768np")
-surface_material_override/0 = SubResource("StandardMaterial3D_jm0k3")
+surface_material_override/0 = SubResource("ShaderMaterial_gkgjt")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0.5, -1)
+visible = false
 mesh = SubResource("QuadMesh_768np")
 surface_material_override/0 = SubResource("StandardMaterial3D_jm0k3")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94115, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.756992, 0)
 light_color = Color(1, 0.764706, 0.533333, 1)
+light_energy = 5.0
+omni_range = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_rwut4")
