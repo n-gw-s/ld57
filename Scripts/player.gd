@@ -29,6 +29,7 @@ extends CharacterBody3D
 @export_subgroup("Combat")
 @export var PushVelocity: float = 4.0
 @export var DunkVelocity: float = 6.0
+@export var ProjectileFxSpeed: float = 4.0
 
 var input_move: Vector2
 
@@ -67,6 +68,9 @@ var cam_shaking: bool
 var shake_this_frame: bool
 var o_cam_position: Vector3
 var cam_shake_amount: float
+
+var push_spr: AnimatedSprite3D
+var init_push_spr_gp: Vector3
 
 @onready var cam: Camera3D = $Camera3D
 @onready var view_cam: Camera3D = $Camera3D/SubViewportContainer/SubViewport/View
@@ -189,6 +193,14 @@ func process_jump_and_wall_kick(delta: float) -> void:
 func process_attack() -> void:
 	if attacking && attack_timer.is_stopped():
 		attacking = false
+	
+	if push_spr != null:
+		var t: float = clamp(((attack_timer.wait_time - attack_timer.time_left) / attack_timer.wait_time) * ProjectileFxSpeed, 0.0, 1.0)
+		push_spr.global_position = lerp(init_push_spr_gp, init_push_spr_gp - global_basis.z * (interact_cast.shape as SphereShape3D).radius, t)
+		push_spr.modulate.r = -randf() + randf()
+		push_spr.modulate.g = -randf() + randf()
+		push_spr.modulate.b = -randf() + randf()
+
 
 func process_cam_shake(delta: float) -> void:
 	if !cam_shake_timer.is_stopped():
@@ -240,7 +252,13 @@ func attack() -> void:
 
 	left_hand_spr.play("push")
 	right_hand_spr.play("push")
-	
+	var spr: AnimatedSprite3D = preload("res://Scenes/push_fx.tscn").instantiate()
+	get_parent().add_child(spr)
+	push_spr = spr
+	push_spr.global_position = cam.global_position - global_basis.z
+	push_spr.global_rotation = cam.global_rotation
+	init_push_spr_gp = push_spr.global_position
+
 	for i in interact_cast.get_collision_count():
 		var obj: Object = interact_cast.get_collider(i)
 
@@ -248,8 +266,6 @@ func attack() -> void:
 			continue
 
 		if obj is NPC:
-			var xz_kb: Vector3 = obj.knockback
-			xz_kb.y = 0
 			var v: Vector3 = -interact_cast.get_collision_normal(i) * PushVelocity
 			if !obj.is_on_floor():
 				v = Vector3.DOWN * DunkVelocity

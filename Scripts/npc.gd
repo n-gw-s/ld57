@@ -39,6 +39,8 @@ var weapon_spr: Sprite3D
 var rand_dir: Vector2
 var seen_player: bool
 
+var dust_scn: PackedScene = preload("res://Scenes/wall_kick_particles.tscn")
+
 @onready var sprite: Sprite3D = $Sprite3D
 @onready var kb_cast: ShapeCast3D = $PushCast
 @onready var player: Player = %Player
@@ -90,6 +92,11 @@ func process_knockback(delta: float) -> void:
 		
 		kb_cast.enabled = false
 
+		if Time.get_ticks_msec() % 8 == 0:
+			var dust: GPUParticles3D = dust_scn.instantiate()
+			add_child(dust)
+			dust.restart()
+		
 		if Time.get_ticks_msec() % 4 == 0:
 			sprite.modulate = Color.RED
 		else:

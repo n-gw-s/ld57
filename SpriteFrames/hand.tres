@@ -16,13 +16,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_1ds3b")
+"texture": ExtResource("3_xi70s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xi70s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xi70s")
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_j20i4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_xi70s")
+"texture": ExtResource("1_1ds3b")
 }],
 "loop": false,
 "name": &"push",

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhflj32rwlcw4"]
+
+[ext_resource type="SpriteFrames" uid="uid://bygsx7fs1eiak" path="res://SpriteFrames/push.tres" id="1_004wc"]
+[ext_resource type="Script" uid="uid://or12iaceb5eb" path="res://Scripts/play_on_ready.gd" id="2_tiqwc"]
+
+[node name="PushFX" type="AnimatedSprite3D"]
+pixel_size = 0.05
+texture_filter = 0
+sprite_frames = ExtResource("1_004wc")
+frame = 5
+frame_progress = 1.0
+script = ExtResource("2_tiqwc")
+AndFree = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 0.5
+light_negative = true
+shadow_enabled = true
