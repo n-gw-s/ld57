@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://rhyfgt3kcbj"]
 
 [ext_resource type="Script" uid="uid://wupi60ffwe3n" path="res://Scripts/npc.gd" id="1_8sfyt"]
-[ext_resource type="Texture2D" uid="uid://d2q187v6j2m70" path="res://Textures/bat.png" id="2_mvlnx"]
+[ext_resource type="Texture2D" uid="uid://c01oj83l8xapw" path="res://Textures/rat.png" id="2_mvlnx"]
 [ext_resource type="Script" uid="uid://c2rxoxht70x34" path="res://Scripts/player_push_cast.gd" id="3_jm2cj"]
 [ext_resource type="PackedScene" uid="uid://c5g0anmmosets" path="res://Scenes/say.tscn" id="4_mvlnx"]
 
@@ -31,7 +31,7 @@ texture = ExtResource("2_mvlnx")
 shape = SubResource("SphereShape3D_1xr8c")
 target_position = Vector3(0, 0, 0)
 script = ExtResource("3_jm2cj")
-Force = 16.0
+Force = 4.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
