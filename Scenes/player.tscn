@@ -31,7 +31,8 @@ WallKickWallBias = 0.1
 WallKickVerticalBias = 0.8
 WallKickVelocity = 3.6
 WallKickDuration = 0.5
-ViewBobAmp = 0.033
+ViewBobFreq = 0.5
+ViewBobAmp = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_vgqql")

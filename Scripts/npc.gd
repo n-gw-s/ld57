@@ -7,6 +7,7 @@ enum MoveBehavior {
 	STRAFE,
 	BOUNCE,
 	CHASE,
+	FLEE,
 }
 
 enum FlipType {
@@ -50,16 +51,23 @@ var dust_scn: PackedScene = preload("res://Scenes/wall_kick_particles.tscn")
 func randomize_dir() -> void:
 	rand_dir = Vector2(-randf() + randf(), -randf() + randf()).normalized()
 
+func notice_player() -> void:
+	if !seen_player:
+		seen_player = true
+		typewriter.Say = SeenSay
+		typewriter.reset()
+
 func process_behavior() -> void:
 	var dist_to_player: float = player.global_position.distance_to(global_position)
 	if dist_to_player > CombatRadius && dist_to_player < SightRadius:
 		nav.target_position = player.global_position
 		var next: Vector3 = nav.get_next_path_position()
 		move = (next - global_position).normalized() * Speed
-		if !seen_player:
-			seen_player = true
-			typewriter.Say = SeenSay
-			typewriter.reset()
+		
+		if Behavior == MoveBehavior.FLEE:
+			move = Vector3.ZERO
+
+		notice_player()
 
 	elif dist_to_player < CombatRadius:
 		if Behavior == MoveBehavior.STRAFE:
@@ -78,6 +86,9 @@ func process_behavior() -> void:
 			nav.target_position = player.global_position
 			var next: Vector3 = nav.get_next_path_position()
 			move = (next - global_position).normalized() * Speed
+		elif Behavior == MoveBehavior.FLEE:
+			var v: Vector3 = (global_position - player.global_position).normalized() * Speed
+			move = v
 	
 func process_knockback(delta: float) -> void:
 	knockback.x = move_toward(knockback.x, 0, delta * KnockbackFrictionHorizontal)

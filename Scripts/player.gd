@@ -21,8 +21,8 @@ extends CharacterBody3D
 @export_subgroup("Camera")
 @export var LeanAmountDegrees: float = 2.0
 @export var LeanSpeed: float = 16.0
-@export var ViewBobFreq: float = 0.001
-@export var ViewBobAmp: float = 0.067
+@export var ViewBobFreq: float = 1.0
+@export var ViewBobAmp: float = 6.7
 @export var FovKick: float = 110.0
 @export var FovSpeed: float = 64.0
 @export var ShakeMultiplier: float = 2.0
@@ -30,6 +30,7 @@ extends CharacterBody3D
 @export var PushVelocity: float = 4.0
 @export var DunkVelocity: float = 6.0
 @export var ProjectileFxSpeed: float = 4.0
+@export var PushSelfVelocity: float = 4.0
 
 var input_move: Vector2
 
@@ -196,10 +197,10 @@ func process_attack() -> void:
 	
 	if push_spr != null:
 		var t: float = clamp(((attack_timer.wait_time - attack_timer.time_left) / attack_timer.wait_time) * ProjectileFxSpeed, 0.0, 1.0)
-		push_spr.global_position = lerp(init_push_spr_gp, init_push_spr_gp - global_basis.z * (interact_cast.shape as SphereShape3D).radius, t)
-		push_spr.modulate.r = -randf() + randf()
-		push_spr.modulate.g = -randf() + randf()
-		push_spr.modulate.b = -randf() + randf()
+		push_spr.global_position = lerp(init_push_spr_gp, init_push_spr_gp - cam.global_basis.z * (interact_cast.shape as SphereShape3D).radius, t)
+		var col: Color = Color(-randf() + randf(), -randf() + randf(), -randf() + randf(), 1.0)
+		push_spr.modulate = col
+		push_spr.get_node("OmniLight3D").light_color = col
 
 
 func process_cam_shake(delta: float) -> void:
@@ -224,8 +225,8 @@ func process_view_bob(delta: float) -> void:
 	hv.y = 0
 	view_bob_amount += hv.length()
 	view_bob_amount = move_toward(view_bob_amount, 0, delta)
-	left_hand_spr.position.y = sin(ViewBobFreq * view_bob_amount) * ViewBobAmp
-	right_hand_spr.position.y = sin(ViewBobFreq * view_bob_amount) * ViewBobAmp
+	left_hand_spr.position.y = sin((ViewBobFreq / 1000.0) * view_bob_amount) * ViewBobAmp / 1000.0
+	right_hand_spr.position.y = sin((ViewBobFreq / 1000.0) * view_bob_amount) * ViewBobAmp / 1000.0
 
 func process_fov_kick(delta: float) -> void:
 	# FOV Kick
@@ -255,9 +256,10 @@ func attack() -> void:
 	var spr: AnimatedSprite3D = preload("res://Scenes/push_fx.tscn").instantiate()
 	get_parent().add_child(spr)
 	push_spr = spr
-	push_spr.global_position = cam.global_position - global_basis.z
+	push_spr.global_position = cam.global_position - cam.global_basis.z
 	push_spr.global_rotation = cam.global_rotation
 	init_push_spr_gp = push_spr.global_position
+	knockback += global_basis.z * PushSelfVelocity
 
 	for i in interact_cast.get_collision_count():
 		var obj: Object = interact_cast.get_collider(i)
