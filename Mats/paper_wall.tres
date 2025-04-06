@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d0f56xd4c2grd"]
+
+[ext_resource type="Texture2D" uid="uid://dltserxusvesi" path="res://Textures/paper_wall.png" id="1_p7q6j"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_p7q6j")
+backlight_enabled = true
+backlight = Color(0.716296, 0.716296, 0.716296, 1)
+uv1_scale = Vector3(2, 1, 1)
+texture_filter = 0

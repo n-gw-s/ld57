@@ -1,14 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3qfag4amdc5c"]
+[gd_scene load_steps=8 format=3 uid="uid://d3qfag4amdc5c"]
 
 [ext_resource type="PackedScene" uid="uid://cfgqlkrr7eks3" path="res://Scenes/player.tscn" id="1_d7bho"]
+[ext_resource type="PackedScene" uid="uid://cxt0qoasui7vs" path="res://Meshes/house_blender.tscn" id="2_2b6ht"]
+[ext_resource type="Texture2D" uid="uid://cn2e0t20w2djb" path="res://Textures/concrete_tile.png" id="2_y0mvb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2b6ht"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_d7bho"]
-size = Vector3(1024, 0.5, 1024)
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0mvb"]
+size = Vector3(32, 0.5, 32)
 
-[sub_resource type="BoxMesh" id="BoxMesh_y0mvb"]
-size = Vector3(1024, 1, 1024)
+[sub_resource type="BoxMesh" id="BoxMesh_s2tkr"]
+size = Vector3(32, 1, 32)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1cu7a"]
+albedo_texture = ExtResource("2_y0mvb")
+uv1_scale = Vector3(32, 32, 1)
+texture_filter = 0
 
 [node name="Sandbox" type="Node3D"]
 
@@ -38,15 +45,24 @@ mesh = SubResource("BoxMesh_2b6ht")
 [node name="Player" parent="." instance=ExtResource("1_d7bho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.19645)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-shape = SubResource("BoxShape3D_d7bho")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-mesh = SubResource("BoxMesh_y0mvb")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, -0.353553, -0.612372, 0, 0.866025, -0.5, 0.707107, 0.353553, 0.612372, 0, 0, 0)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_y0mvb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("BoxMesh_s2tkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1cu7a")
+
+[node name="house_blender" parent="." instance=ExtResource("2_2b6ht")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 9, 0, 0)
+
+[node name="house_blender2" parent="." instance=ExtResource("2_2b6ht")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 9, 0, -8)
+
+[node name="house_blender3" parent="." instance=ExtResource("2_2b6ht")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 9, 0, 8)

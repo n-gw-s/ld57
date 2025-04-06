@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://cxt0qoasui7vs"]
+
+[ext_resource type="PackedScene" uid="uid://b1h42ul8x5glp" path="res://Meshes/house.glb" id="1_rwut4"]
+[ext_resource type="Material" uid="uid://d0f56xd4c2grd" path="res://Mats/paper_wall.tres" id="2_j8i4w"]
+[ext_resource type="Material" uid="uid://vrntl8lwac4v" path="res://Mats/tatami.tres" id="3_1tpgg"]
+[ext_resource type="Material" uid="uid://cdhu64d08kf7k" path="res://Mats/paper_wall_half.tres" id="4_gkgjt"]
+[ext_resource type="Texture2D" uid="uid://drywfv0feor8" path="res://Textures/roof_tile.png" id="5_wlcik"]
+[ext_resource type="Texture2D" uid="uid://b286kprjoswh8" path="res://Textures/paper_wall_divider.png" id="6_ywcl2"]
+[ext_resource type="Texture2D" uid="uid://cwqvvpmkwljpx" path="res://Textures/paper_door.png" id="7_hetjb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edf1c"]
+cull_mode = 2
+albedo_texture = ExtResource("5_wlcik")
+backlight_enabled = true
+backlight = Color(0.716296, 0.716296, 0.716296, 1)
+uv1_scale = Vector3(2, 2, 2)
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_768np"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dq1x6"]
+cull_mode = 2
+albedo_texture = ExtResource("6_ywcl2")
+backlight_enabled = true
+backlight = Color(0.716296, 0.716296, 0.716296, 1)
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jm0k3"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("7_hetjb")
+backlight_enabled = true
+backlight = Color(0.717647, 0.717647, 0.717647, 1)
+texture_filter = 0
+
+[node name="house_blender" type="Node3D"]
+
+[node name="house" parent="." instance=ExtResource("1_rwut4")]
+
+[node name="Plane" parent="house" index="0"]
+surface_material_override/0 = ExtResource("2_j8i4w")
+surface_material_override/1 = ExtResource("3_1tpgg")
+surface_material_override/2 = ExtResource("4_gkgjt")
+surface_material_override/3 = SubResource("StandardMaterial3D_edf1c")
+
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.5, 0, -8.74228e-08, 0, 1, 0, 4.37114e-08, 0, -1, 0.75, 0.5, -1)
+mesh = SubResource("QuadMesh_768np")
+skeleton = NodePath("../house/Plane")
+surface_material_override/0 = SubResource("StandardMaterial3D_dq1x6")
+
+[node name="MeshInstance3D26" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 1.74846e-07, 0, 1, 0, -8.74228e-08, 0, 1, -0.75, 0.5, -1)
+mesh = SubResource("QuadMesh_768np")
+skeleton = NodePath("../house/Plane")
+surface_material_override/0 = SubResource("StandardMaterial3D_dq1x6")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -1)
+mesh = SubResource("QuadMesh_768np")
+skeleton = NodePath("../house/Plane")
+surface_material_override/0 = SubResource("StandardMaterial3D_jm0k3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0.5, -1)
+mesh = SubResource("QuadMesh_768np")
+skeleton = NodePath("../house/Plane")
+surface_material_override/0 = SubResource("StandardMaterial3D_jm0k3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94115, 0)
+light_color = Color(1, 0.764706, 0.533333, 1)
+
+[editable path="house"]
