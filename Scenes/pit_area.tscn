@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://od2rqddkh83m"]
+
+[ext_resource type="Script" uid="uid://cwvfs57mfrdvl" path="res://Scripts/pit_area.gd" id="1_cd6km"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_as8yf"]
+
+[node name="PitArea" type="Area3D"]
+collision_layer = 0
+script = ExtResource("1_cd6km")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_as8yf")
