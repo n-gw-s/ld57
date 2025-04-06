@@ -108,6 +108,10 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="CameraShakeTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
 [node name="WallKick" type="ShapeCast3D" parent="."]
 shape = SubResource("CapsuleShape3D_x3wgy")
 target_position = Vector3(0, 0, 0)

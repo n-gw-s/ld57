@@ -15,6 +15,7 @@ script = ExtResource("1_8sfyt")
 Speed = 4.0
 Behavior = 2
 WeaponSpriteName = ""
+SeenSay = "*skrrt skrrt*"
 metadata/_custom_type_script = "uid://wupi60ffwe3n"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -35,3 +36,4 @@ Force = 16.0
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="Say" parent="." instance=ExtResource("4_mvlnx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

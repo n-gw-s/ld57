@@ -25,6 +25,7 @@ extends CharacterBody3D
 @export var ViewBobAmp: float = 0.067
 @export var FovKick: float = 110.0
 @export var FovSpeed: float = 64.0
+@export var ShakeMultiplier: float = 2.0
 @export_subgroup("Combat")
 @export var PushVelocity: float = 4.0
 @export var DunkVelocity: float = 6.0
@@ -62,6 +63,11 @@ var next_cam_fov: float
 
 var knockback: Vector3
 
+var cam_shaking: bool
+var shake_this_frame: bool
+var o_cam_position: Vector3
+var cam_shake_amount: float
+
 @onready var cam: Camera3D = $Camera3D
 @onready var view_cam: Camera3D = $Camera3D/SubViewportContainer/SubViewport/View
 @onready var bhop_timer: Timer = $BunnyHopTimer
@@ -73,6 +79,7 @@ var knockback: Vector3
 @onready var interact_cast: ShapeCast3D = $Camera3D/Interact
 @onready var attack_timer: Timer = $AttackTimer
 @onready var wall_kick_cast: ShapeCast3D = $WallKick
+@onready var cam_shake_timer: Timer = $CameraShakeTimer
 
 func take_input() -> void:
 	input_move = Input.get_vector("MoveLeft", "MoveRight", "MoveBackward", "MoveForward")
@@ -183,6 +190,38 @@ func process_attack() -> void:
 	if attacking && attack_timer.is_stopped():
 		attacking = false
 
+func process_cam_shake(delta: float) -> void:
+	if !cam_shake_timer.is_stopped():
+		if shake_this_frame:
+			cam.position += Vector3(-randf() + randf(), -randf() + randf(), -randf() + randf()).normalized() * cam_shake_amount * delta * ShakeMultiplier
+		else:
+			cam.position = o_cam_position
+		
+		shake_this_frame = !shake_this_frame
+	else:
+		cam.position = o_cam_position
+
+
+func process_cam_lean(delta: float) -> void:
+	# Cam lean
+	cam.rotation_degrees.z = move_toward(cam.rotation_degrees.z, -input_move.x * LeanAmountDegrees, delta * LeanSpeed)
+
+func process_view_bob(delta: float) -> void:
+	# View bob
+	var hv: Vector3 = velocity
+	hv.y = 0
+	view_bob_amount += hv.length()
+	view_bob_amount = move_toward(view_bob_amount, 0, delta)
+	left_hand_spr.position.y = sin(ViewBobFreq * view_bob_amount) * ViewBobAmp
+	right_hand_spr.position.y = sin(ViewBobFreq * view_bob_amount) * ViewBobAmp
+
+func process_fov_kick(delta: float) -> void:
+	# FOV Kick
+	cam.fov = move_toward(cam.fov, next_cam_fov, delta * FovSpeed)
+
+	if !jumping:
+		next_cam_fov = o_cam_fov
+
 func multiply_air_friction() -> void:
 	# Air velocity multiplier (bhop)
 	if !is_on_floor() || current_air_friction > AirFriction:
@@ -254,11 +293,19 @@ func wall_kick() -> void:
 	p.look_at(p.global_position + wall_kick_dir * 0.1)
 	p.restart()
 
+func shake_cam(amount: float) -> void:
+	cam.position = o_cam_position
+	shake_this_frame = false
+	cam_shake_timer.start()
+	cam_shake_amount = amount
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	current_air_friction = AirFriction
+
 	o_cam_fov = cam.fov
+	o_cam_position = cam.position
 
 	attack_timer.connect("timeout", _on_attack_timeout)
 
@@ -283,25 +330,14 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Fire"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-	# Cam lean
-	cam.rotation_degrees.z = move_toward(cam.rotation_degrees.z, -input_move.x * LeanAmountDegrees, delta * LeanSpeed)
-
-	# View bob
-	var hv: Vector3 = velocity
-	hv.y = 0
-	view_bob_amount += hv.length()
-	view_bob_amount = move_toward(view_bob_amount, 0, delta)
-	left_hand_spr.position.y = sin(ViewBobFreq * view_bob_amount) * ViewBobAmp
-	right_hand_spr.position.y = sin(ViewBobFreq * view_bob_amount) * ViewBobAmp
-
-	# FOV Kick
-	cam.fov = move_toward(cam.fov, next_cam_fov, delta * FovSpeed)
-
-	if !jumping:
-		next_cam_fov = o_cam_fov
+	process_cam_lean(delta)
+	process_view_bob(delta)
+	process_fov_kick(delta)
 
 func _physics_process(delta: float) -> void:
 	take_input()
 	begin_step(delta)
 	move_and_slide()
 	end_step(delta)
+
+	process_cam_shake(delta)
