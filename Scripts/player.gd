@@ -85,6 +85,7 @@ func begin_step(delta: float) -> void:
 	velocity.x = v.x
 	velocity.z = v.z
 	
+	# Jump / wall kick input
 	if input_just_jump:
 		if is_on_wall_only():
 			wall_kick()
@@ -161,11 +162,13 @@ func _ready() -> void:
 	current_air_friction = AirFriction
 
 func _input(event: InputEvent) -> void:
+	# Rotate camera on x, rotate root on y
 	if event is InputEventMouseMotion && Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		cam.global_rotation_degrees.x = clamp(cam.global_rotation_degrees.x - event.relative.y * look_speed, -x_look_clamp_degrees, x_look_clamp_degrees)
 		global_rotation_degrees.y = global_rotation_degrees.y - event.relative.x * look_speed
 
 func _process(delta: float) -> void:
+	# Mouse handling
 	if Input.is_key_pressed(KEY_ESCAPE):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if Input.is_action_just_pressed("Fire"):
@@ -187,4 +190,3 @@ func _physics_process(delta: float) -> void:
 	begin_step(delta)
 	move_and_slide()
 	end_step(delta)
-	print(get_real_velocity())

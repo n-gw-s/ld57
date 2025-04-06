@@ -10,11 +10,11 @@ vec4 snap(vec4 v) {
 	vec4 s = v;
 	s.xyz = v.xyz / v.w;
 	vec2 r = vec2(480, 270);
-	
+
 	vec2 f = floor(r * (1.0 - jitter));
 	s.x = floor(f.x * s.x) / f.x;
 	s.y = floor(f.y * s.y) / f.y;
-	
+
 	s.xyz *= v.w;
 	return s;
 }
