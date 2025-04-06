@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export_subgroup("Movement")
-@export var Speed: float = 4.0
+@export var Speed: float = 8.0
 @export var JumpCurve: Curve
 @export var JumpVelocity: float = 6.33
 @export var JumpDuration: float = 1.0
@@ -14,7 +14,7 @@ extends CharacterBody3D
 @export var WallKickCurve: Curve
 @export var WallKickWallBias: float = 4.0
 @export var WallKickVerticalBias: float = 1.0
-@export var WallKickVelocity: float = 4.0
+@export var WallKickVelocity: float = 5.5
 @export var WallKickDuration: float = 1.0
 @export_subgroup("Camera")
 @export var LeanAmountDegrees: float = 2.0
