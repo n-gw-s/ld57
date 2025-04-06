@@ -208,7 +208,6 @@ func jump() -> void:
 
 func wall_kick() -> void:
 	if !is_on_wall_only() || wall_kick_dir.is_equal_approx(last_wall_kick_dir):
-		print("RET")
 		return
 	
 	wall_kicking = true
