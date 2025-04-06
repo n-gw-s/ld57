@@ -17,7 +17,8 @@ extends CharacterBody3D
 @export var WallKickVerticalBias: float = 1.0
 @export var WallKickVelocity: float = 5.5
 @export var WallKickDuration: float = 1.0
-@export var KnockbackFriction: float = 32.0
+@export var KnockbackFrictionHorizontal: float = 32.0
+@export var KnockbackFrictionVertical: float = 64.0
 @export_subgroup("Camera")
 @export var LeanAmountDegrees: float = 2.0
 @export var LeanSpeed: float = 16.0
@@ -169,9 +170,9 @@ func determine_move_vel() -> void:
 
 func process_knockback(delta: float) -> void:
 	velocity += knockback
-	knockback.x = move_toward(knockback.x, 0.0, delta * KnockbackFriction)
-	knockback.y = move_toward(knockback.y, 0.0, delta * KnockbackFriction)
-	knockback.z = move_toward(knockback.z, 0.0, delta * KnockbackFriction)
+	knockback.x = move_toward(knockback.x, 0.0, delta * KnockbackFrictionHorizontal)
+	knockback.y = move_toward(knockback.y, 0.0, delta * KnockbackFrictionVertical)
+	knockback.z = move_toward(knockback.z, 0.0, delta * KnockbackFrictionHorizontal)
 
 	if is_on_wall():
 		knockback = Vector3.ZERO
@@ -259,7 +260,7 @@ func attack() -> void:
 	push_spr.global_position = cam.global_position - cam.global_basis.z
 	push_spr.global_rotation = cam.global_rotation
 	init_push_spr_gp = push_spr.global_position
-	knockback += global_basis.z * PushSelfVelocity
+	knockback += cam.global_basis.z * PushSelfVelocity
 
 	for i in interact_cast.get_collision_count():
 		var obj: Object = interact_cast.get_collider(i)
