@@ -26,6 +26,7 @@ enum FlipType {
 @export var StrafeAmp: float = 6.0
 @export var WeaponSpriteName: String = "Spear"
 @export var BounceRadius: float = 8.0
+@export var SeenSay: String = ""
 @export_subgroup("FX")
 @export var FlipSpeed: float = 1.0
 @export var FlipMode: FlipType = FlipType.HORIZONTAL
@@ -36,11 +37,13 @@ var flip_t: float
 var weapon_spr: Sprite3D
 
 var rand_dir: Vector2
+var seen_player: bool
 
 @onready var sprite: Sprite3D = $Sprite3D
 @onready var kb_cast: ShapeCast3D = $PushCast
 @onready var player: Player = %Player
 @onready var nav: NavigationAgent3D = $NavigationAgent3D
+@onready var typewriter: Typewriter = $Say
 
 func randomize_dir() -> void:
 	rand_dir = Vector2(-randf() + randf(), -randf() + randf()).normalized()
@@ -61,6 +64,12 @@ func _physics_process(delta: float) -> void:
 		nav.target_position = player.global_position
 		var next: Vector3 = nav.get_next_path_position()
 		move = (next - global_position).normalized() * Speed
+		if !seen_player:
+			seen_player = true
+			typewriter.Say = SeenSay
+			typewriter.reset()
+			print("AAA")
+
 	elif dist_to_player < CombatRadius:
 		if Behavior == MoveBehavior.STRAFE:
 			var v: Vector3 = global_basis.x * sin(Time.get_ticks_msec() * StrafeFreq) * StrafeAmp

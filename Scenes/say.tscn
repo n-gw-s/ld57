@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5g0anmmosets"]
+
+[ext_resource type="FontFile" uid="uid://8u4wm6p055no" path="res://Fonts/alagard.ttf" id="1_us2td"]
+[ext_resource type="Script" uid="uid://cgtya30mi8f1s" path="res://Scripts/typewriter.gd" id="2_b24g2"]
+
+[node name="Say" type="Label3D"]
+billboard = 2
+font = ExtResource("1_us2td")
+font_size = 64
+script = ExtResource("2_b24g2")

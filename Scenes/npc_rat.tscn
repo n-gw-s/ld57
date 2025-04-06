@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://rhyfgt3kcbj"]
+[gd_scene load_steps=7 format=3 uid="uid://rhyfgt3kcbj"]
 
 [ext_resource type="Script" uid="uid://wupi60ffwe3n" path="res://Scripts/npc.gd" id="1_8sfyt"]
 [ext_resource type="Texture2D" uid="uid://d2q187v6j2m70" path="res://Textures/bat.png" id="2_mvlnx"]
 [ext_resource type="Script" uid="uid://c2rxoxht70x34" path="res://Scripts/player_push_cast.gd" id="3_jm2cj"]
+[ext_resource type="PackedScene" uid="uid://c5g0anmmosets" path="res://Scenes/say.tscn" id="4_mvlnx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8sfyt"]
 
@@ -32,3 +33,5 @@ script = ExtResource("3_jm2cj")
 Force = 16.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Say" parent="." instance=ExtResource("4_mvlnx")]
