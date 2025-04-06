@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b286kprjoswh8" path="res://Textures/paper_wall_divider.png" id="15_g4psy"]
 [ext_resource type="PackedScene" uid="uid://d3osdl7r5dqpp" path="res://Scenes/npc_samaguy.tscn" id="17_nx7jx"]
 [ext_resource type="PackedScene" uid="uid://cifb2o7v50dcu" path="res://Scenes/npc_bat.tscn" id="18_04cnh"]
-[ext_resource type="PackedScene" uid="uid://f072maowd274" path="res://Scenes/npc_rat.tscn" id="19_046rc"]
+[ext_resource type="PackedScene" uid="uid://rhyfgt3kcbj" path="res://Scenes/npc_rat.tscn" id="19_046rc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s2tkr"]
 size = Vector3(64, 1, 64)
@@ -349,6 +349,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.19645)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, -0.353553, -0.612372, 0, 0.866025, -0.5, 0.707107, 0.353553, 0.612372, 0, 0, 0)
+visible = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = ExtResource("10_f6xln")
