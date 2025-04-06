@@ -49,6 +49,7 @@ var last_wall_kick_dir: Vector3 = Vector3.ZERO
 var current_air_friction: float
 
 var was_on_floor: bool
+var last_wall_normal: Vector3
 
 var view_bob_amount: float
 
@@ -67,6 +68,7 @@ var next_cam_fov: float
 @onready var right_hand_spr: AnimatedSprite3D = $Camera3D/SubViewportContainer/SubViewport/Hands/Right
 @onready var interact_cast: ShapeCast3D = $Camera3D/Interact
 @onready var attack_timer: Timer = $AttackTimer
+@onready var wall_kick_cast: ShapeCast3D = $WallKick
 
 func take_input() -> void:
 	input_move = Input.get_vector("MoveLeft", "MoveRight", "MoveBackward", "MoveForward")
@@ -82,12 +84,22 @@ func vel_calc(i: Vector2, fwd: Vector3, right: Vector3, s: float) -> Vector3:
 	var v: Vector3 = (f + r).normalized() * s
 	return v
 
+func can_wall_kick() -> bool:
+	if !is_on_floor():
+		for i in wall_kick_cast.get_collision_count():
+			var n: Vector3 = wall_kick_cast.get_collision_normal(i)
+			if acos(n.dot(Vector3.UP)) > deg_to_rad(45 + 0.01):
+				last_wall_normal = wall_kick_cast.get_collision_normal(i)
+				return true
+	
+	return false
+
 func begin_step(delta: float) -> void:
 	determine_move_vel()
 	
 	# Jump / wall kick input
 	if input_just_jump:
-		if is_on_wall_only():
+		if can_wall_kick():
 			wall_kick()
 		else:
 			jump()
@@ -207,13 +219,13 @@ func jump() -> void:
 	next_cam_fov = FovKick
 
 func wall_kick() -> void:
-	if !is_on_wall_only() || wall_kick_dir.is_equal_approx(last_wall_kick_dir):
+	if !can_wall_kick() || wall_kick_dir.is_equal_approx(last_wall_kick_dir):
 		return
 	
 	wall_kicking = true
 	wall_kick_t = 0.0
 	last_wall_kick_dir = wall_kick_dir
-	wall_kick_dir = get_wall_normal()
+	wall_kick_dir = last_wall_normal
 	velocity.y = 0
 	inc_air_friction()
 
