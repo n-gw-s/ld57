@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wupi60ffwe3n" path="res://Scripts/npc.gd" id="1_3ell4"]
 [ext_resource type="Texture2D" uid="uid://d4adl3gg2hsr" path="res://Textures/samaguy.png" id="2_3ell4"]
-[ext_resource type="Script" uid="uid://c2rxoxht70x34" path="res://Scripts/player_push_cast.gd" id="3_lmb3v"]
+[ext_resource type="Script" path="res://Scripts/player_push_cast.gd" id="3_lmb3v"]
 [ext_resource type="Texture2D" uid="uid://cuqmup0m8mfg0" path="res://Textures/samaguystick.png" id="4_okong"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fw6nw"]
@@ -12,6 +12,8 @@ radius = 1.0
 
 [node name="NPC_SamaGuy" type="CharacterBody3D"]
 script = ExtResource("1_3ell4")
+Speed = 5.0
+CombatRadius = 1.5
 metadata/_custom_type_script = "uid://wupi60ffwe3n"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -27,7 +29,7 @@ texture = ExtResource("2_3ell4")
 shape = SubResource("SphereShape3D_okong")
 target_position = Vector3(0, 0, 0)
 script = ExtResource("3_lmb3v")
-Force = 16.0
+Force = 32.0
 
 [node name="Spear" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.25, 0.1, -0.55)

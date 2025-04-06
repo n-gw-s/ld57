@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://csc16pxob7g7s"]
 
-[ext_resource type="Texture2D" uid="uid://cmmmn0u5vgaag" path="res://Textures/icon.svg" id="1_5kfc2"]
+[ext_resource type="Texture2D" uid="uid://codxwplvi433" path="res://Textures/cloud.png" id="1_5kfc2"]
 
 [sub_resource type="Curve" id="Curve_7bxxo"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -15,14 +15,21 @@ spread = 90.0
 initial_velocity_min = 4.0
 initial_velocity_max = 4.0
 gravity = Vector3(0, 0, 0)
+scale_max = 3.0
 alpha_curve = SubResource("CurveTexture_0x465")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dh1ff"]
 transparency = 1
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_5kfc2")
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
 texture_filter = 0
-billboard_mode = 2
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_hcsyp"]
 material = SubResource("StandardMaterial3D_dh1ff")
@@ -30,7 +37,8 @@ size = Vector2(0.25, 0.25)
 
 [node name="WallKickParticles" type="GPUParticles3D"]
 emitting = false
-lifetime = 0.33
+amount = 24
+lifetime = 0.5
 one_shot = true
 explosiveness = 0.85
 process_material = SubResource("ParticleProcessMaterial_k627a")

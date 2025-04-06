@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d3qfag4amdc5c"]
+[gd_scene load_steps=27 format=3 uid="uid://d3qfag4amdc5c"]
 
 [ext_resource type="PackedScene" uid="uid://cfgqlkrr7eks3" path="res://Scenes/player.tscn" id="1_d7bho"]
 [ext_resource type="PackedScene" uid="uid://cxt0qoasui7vs" path="res://Meshes/house_blender.tscn" id="2_2b6ht"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cklk0212fy4b8" path="res://Textures/tatami.png" id="11_a51xs"]
 [ext_resource type="Material" uid="uid://blmk02i05m7a8" path="res://Mats/roof_tile.tres" id="12_xdw8u"]
 [ext_resource type="Texture2D" uid="uid://b286kprjoswh8" path="res://Textures/paper_wall_divider.png" id="15_g4psy"]
+[ext_resource type="PackedScene" uid="uid://d3osdl7r5dqpp" path="res://Scenes/npc_samaguy.tscn" id="17_nx7jx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s2tkr"]
 size = Vector3(64, 1, 64)
@@ -466,5 +467,23 @@ surface_material_override/3 = SubResource("ShaderMaterial_f6xln")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/arena/Cube/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_g4psy")
+
+[node name="NPC_SamaGuy" parent="." instance=ExtResource("17_nx7jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5925, 23.155, -25.3609)
+
+[node name="NPC_SamaGuy2" parent="." instance=ExtResource("17_nx7jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5925, 33.155, -0.360914)
+
+[node name="NPC_SamaGuy3" parent="." instance=ExtResource("17_nx7jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5925, 23.155, 24.6391)
+
+[node name="NPC_SamaGuy4" parent="." instance=ExtResource("17_nx7jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5925, 23.155, 24.6391)
+
+[node name="NPC_SamaGuy5" parent="." instance=ExtResource("17_nx7jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5925, 23.155, 0.639086)
+
+[node name="NPC_SamaGuy6" parent="." instance=ExtResource("17_nx7jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.40748, 33.155, -25.3609)
 
 [editable path="NavigationRegion3D/arena"]
