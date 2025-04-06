@@ -193,9 +193,7 @@ func attack() -> void:
 		if obj is NPC:
 			var xz_kb: Vector3 = obj.knockback
 			xz_kb.y = 0
-			var v: Vector3
-			if is_equal_approx(xz_kb.length(), 0):
-				v = -interact_cast.get_collision_normal(i) * PushVelocity
+			var v: Vector3 = -interact_cast.get_collision_normal(i) * PushVelocity
 			if !obj.is_on_floor():
 				v = Vector3.DOWN * DunkVelocity
 				cam.look_at(obj.global_position)
