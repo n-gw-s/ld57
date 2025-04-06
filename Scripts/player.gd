@@ -126,6 +126,7 @@ func end_step(delta: float) -> void:
 		jumping = false
 		wall_kicking = false
 		last_wall_kick_dir = Vector3.ZERO
+		last_wall_normal = Vector3.ZERO
 		velocity.y = 0
 		current_air_friction = move_toward(current_air_friction, AirFriction, delta * BunnyHopDeceleration)
 
