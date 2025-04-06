@@ -1,7 +1,7 @@
 class_name NPC
 extends CharacterBody3D
 
-const KB_LENGTH_MIN: float = 1.0
+const VEL_LENGTH_MIN: float = 1.0
 
 enum MoveBehavior {
 	STRAFE,
@@ -29,16 +29,21 @@ enum FlipType {
 @export var BounceRadius: float = 8.0
 @export var SeenSay: String = ""
 @export_subgroup("FX")
+@export var IdleTexture: Texture
 @export var FlipSpeed: float = 1.0
 @export var FlipMode: FlipType = FlipType.HORIZONTAL
 
 var move: Vector3
 var knockback: Vector3
+
 var flip_t: float
+
 var weapon_spr: Sprite3D
 
 var rand_dir: Vector2
 var seen_player: bool
+
+var o_texture: Texture
 
 var dust_scn: PackedScene = preload("res://Scenes/wall_kick_particles.tscn")
 
@@ -98,7 +103,7 @@ func process_knockback(delta: float) -> void:
 	var xz_kb: Vector3 = knockback
 	xz_kb.y = 0
 
-	if xz_kb.length() > KB_LENGTH_MIN:
+	if xz_kb.length() > VEL_LENGTH_MIN:
 		move = Vector3.ZERO
 		
 		kb_cast.enabled = false
@@ -133,8 +138,20 @@ func process_flip(delta: float) -> void:
 		if weapon_spr != null:
 			weapon_spr.position.x = -weapon_spr.position.x
 
+func process_textures() -> void:
+	var xz_vel: Vector3 = velocity
+	xz_vel.y = 0
+
+	if xz_vel.length() < VEL_LENGTH_MIN:
+		if IdleTexture != null:
+			sprite.texture = IdleTexture
+	else:
+		sprite.texture = o_texture
+
+
 func _ready() -> void:
 	weapon_spr = get_node_or_null(WeaponSpriteName)
+	o_texture = sprite.texture
 
 	randomize_dir()
 
@@ -159,3 +176,4 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0
 
 	process_flip(delta)
+	process_textures()
