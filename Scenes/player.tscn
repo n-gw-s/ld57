@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://7jonov4nvurj" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
-[ext_resource type="Texture2D" uid="uid://cmmmn0u5vgaag" path="res://Textures/icon.svg" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://d4ihnbi5i7cmj" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
+[ext_resource type="Texture2D" uid="uid://v8a61ndth5lk" path="res://Textures/hand.png" id="4_vgqql"]
 
 [sub_resource type="Curve" id="Curve_cvnsp"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -77,9 +77,20 @@ transform = Transform3D(0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, 
 [node name="Hands" type="Node3D" parent="Camera3D/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1)
 
-[node name="Sprite3D" type="Sprite3D" parent="Camera3D/SubViewportContainer/SubViewport/Hands"]
+[node name="Left" type="Sprite3D" parent="Camera3D/SubViewportContainer/SubViewport/Hands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33, 0, -0.15)
 layers = 2
-texture = ExtResource("3_6t5aa")
+pixel_size = 0.015
+texture_filter = 0
+texture = ExtResource("4_vgqql")
+
+[node name="Right" type="Sprite3D" parent="Camera3D/SubViewportContainer/SubViewport/Hands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33, 0, -0.15)
+layers = 2
+flip_h = true
+pixel_size = 0.015
+texture_filter = 0
+texture = ExtResource("4_vgqql")
 
 [node name="BunnyHopTimer" type="Timer" parent="."]
 wait_time = 0.67

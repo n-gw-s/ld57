@@ -43,11 +43,16 @@ var current_air_friction: float
 
 var was_on_floor: bool
 
+var view_bob_amount: float
+
 @onready var cam: Camera3D = $Camera3D
 @onready var view_cam: Camera3D = $Camera3D/SubViewportContainer/SubViewport/View
 @onready var bhop_timer: Timer = $BunnyHopTimer
 @onready var lines_left: GPUParticles3D = $Camera3D/SubViewportContainer/SubViewport/View/AnimLineLeft
 @onready var lines_right: GPUParticles3D = $Camera3D/SubViewportContainer/SubViewport/View/AnimLineRight
+@onready var hands: Node3D = $Camera3D/SubViewportContainer/SubViewport/Hands
+@onready var left_hand_spr: Sprite3D = $Camera3D/SubViewportContainer/SubViewport/Hands/Left
+@onready var right_hand_spr: Sprite3D = $Camera3D/SubViewportContainer/SubViewport/Hands/Right
 
 func take_input() -> void:
 	input_move = Input.get_vector("MoveLeft", "MoveRight", "MoveBackward", "MoveForward")
@@ -64,6 +69,7 @@ func vel_calc(i: Vector2, fwd: Vector3, right: Vector3, s: float) -> Vector3:
 	return v
 
 func begin_step(delta: float) -> void:
+	# Grab directions...
 	var fwd: Vector3 = -global_basis.z
 	fwd.y = 0
 	fwd = fwd.normalized()
@@ -83,6 +89,7 @@ func begin_step(delta: float) -> void:
 		else:
 			jump()
 	
+	# Wall kick proc
 	if wall_kicking:
 		wall_kick_t = clamp(wall_kick_t + delta / WallKickDuration, 0, 1)
 		var wv: float = WallKickCurve.sample(wall_kick_t) * WallKickVelocity
@@ -95,12 +102,14 @@ func begin_step(delta: float) -> void:
 
 		if wall_kick_t >= 1.0:
 			wall_kicking = false
-		
+	
+	# Jump proc
 	if jumping:
 		jump_t = clamp(jump_t + delta / JumpDuration, 0, 1)
 		var yv: float = JumpCurve.sample(jump_t) * JumpVelocity
 		velocity += jump_dir * yv
 	
+	# Air velocity multiplier (bhop)
 	if !is_on_floor() || current_air_friction > AirFriction:
 		velocity.x *= current_air_friction
 		velocity.z *= current_air_friction
@@ -162,6 +171,14 @@ func _process(delta: float) -> void:
 
 	# Cam lean
 	cam.rotation_degrees.z = move_toward(cam.rotation_degrees.z, -input_move.x * LeanAmountDegrees, delta * LeanSpeed)
+
+	# View bob
+	var hv: Vector3 = velocity
+	hv.y = 0
+	view_bob_amount += hv.length()
+	view_bob_amount = move_toward(view_bob_amount, 0, delta)
+	left_hand_spr.position.y = sin(0.001 * view_bob_amount) * 0.067
+	right_hand_spr.position.y = sin(0.001 * view_bob_amount) * 0.067
 
 func _physics_process(delta: float) -> void:
 	take_input()
