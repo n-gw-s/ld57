@@ -2,7 +2,7 @@ class_name Typewriter
 extends Label3D
 
 @export var Say: String = ""
-@export var LetterSpeed: float = 0.33
+@export var LetterSpeed: float = 0.05
 @export var FadeSpeed: float = 1.0
 
 var current: int = -1
