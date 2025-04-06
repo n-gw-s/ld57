@@ -12,7 +12,7 @@ radius = 1.0
 
 [node name="NPC_SamaGuy" type="CharacterBody3D"]
 script = ExtResource("1_3ell4")
-Speed = 5.0
+Speed = 7.0
 CombatRadius = 1.5
 metadata/_custom_type_script = "uid://wupi60ffwe3n"
 

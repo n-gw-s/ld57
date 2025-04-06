@@ -347,110 +347,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.19645)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, -0.353553, -0.612372, 0, 0.866025, -0.5, 0.707107, 0.353553, 0.612372, 0, 0, 0)
 
-[node name="newmap" type="Node3D" parent="."]
-
-[node name="house_blender" parent="newmap" instance=ExtResource("2_2b6ht")]
-transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 14, -2, 13)
-
-[node name="house_blender5" parent="newmap" instance=ExtResource("2_2b6ht")]
-transform = Transform3D(5.24536e-07, 0, -4, 0, 4, 0, 4, 0, 5.24536e-07, -15, 2, 15)
-
-[node name="house_blender2" parent="newmap" instance=ExtResource("2_2b6ht")]
-transform = Transform3D(3.67176e-07, 0, -2.8, 0, 2.8, 0, 2.8, 0, 3.67176e-07, -15, 22, 0)
-
-[node name="house_blender6" parent="newmap" instance=ExtResource("2_2b6ht")]
-transform = Transform3D(5.50764e-07, 0, -4.2, 0, 4.2, 0, 4.2, 0, 5.50764e-07, -26.2, 22, -25.2)
-
-[node name="house_blender8" parent="newmap" instance=ExtResource("2_2b6ht")]
-transform = Transform3D(-3.36, 0, -2.93741e-07, 0, 3.36, 0, 2.93741e-07, 0, -3.36, 5, 31.9671, -25.5871)
-
-[node name="house_blender7" parent="newmap" instance=ExtResource("2_2b6ht")]
-transform = Transform3D(5.50764e-07, 0, -4.2, 0, 4.2, 0, 4.2, 0, 5.50764e-07, -26.2, 31.986, -1.90735e-06)
-
-[node name="house_blender3" parent="newmap" instance=ExtResource("2_2b6ht")]
-transform = Transform3D(2.8, 0, 4.89568e-07, 0, 2.8, 0, -4.89568e-07, 0, 2.8, -25, 22, 25)
-
-[node name="house_blender4" parent="newmap" instance=ExtResource("2_2b6ht")]
-transform = Transform3D(2.8, 0, 4.89568e-07, 0, 2.8, 0, -4.89568e-07, 0, 2.8, -15, 22, 25)
-
-[node name="Node3D16" parent="newmap" instance=ExtResource("3_s2tkr")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 15, 5.999, 2)
-
-[node name="Node3D29" parent="newmap" instance=ExtResource("3_s2tkr")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 15, 5.999, -15)
-
-[node name="Node3D27" parent="newmap" instance=ExtResource("3_s2tkr")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 21, 13.999, 2)
-
-[node name="Node3D35" parent="newmap" instance=ExtResource("3_s2tkr")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 25, 32, 22)
-
-[node name="Node3D36" parent="newmap" instance=ExtResource("3_s2tkr")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 15, 32, 22)
-
-[node name="Node3D28" parent="newmap" instance=ExtResource("3_s2tkr")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 21, 13.999, -15)
-
-[node name="Node3D17" parent="newmap" instance=ExtResource("7_a51xs")]
-transform = Transform3D(1, 0, 0, 0, 14.49, 0, 0, 0, 1, 1, -2, 16)
-
-[node name="Node3D23" parent="newmap" instance=ExtResource("7_a51xs")]
-transform = Transform3D(1, 0, 0, 0, 11.592, 0, 0, 0, 1, 21, 14, 16)
-
-[node name="Node3D32" parent="newmap" instance=ExtResource("7_a51xs")]
-transform = Transform3D(1, 0, 0, 0, 11.592, 0, 0, 0, 1, 26, 14, -6)
-
-[node name="Node3D33" parent="newmap" instance=ExtResource("7_a51xs")]
-transform = Transform3D(1, 0, 0, 0, 11.592, 0, 0, 0, 1, 26, 14, -19)
-
-[node name="Node3D18" parent="newmap" instance=ExtResource("7_a51xs")]
-transform = Transform3D(1, 0, 0, 0, 17.388, 0, 0, 0, 1, -11, -2, 4)
-
-[node name="Node3D34" parent="newmap" instance=ExtResource("7_a51xs")]
-transform = Transform3D(1, 0, 0, 0, 10.4328, 0, 0, 0, 1, -25, 22, 14)
-
-[node name="Node3D19" parent="newmap" instance=ExtResource("7_a51xs")]
-transform = Transform3D(1, 0, 0, 0, 17.388, 0, 0, 0, 1, -11, -2, -4)
-
-[node name="Node3D20" parent="newmap" instance=ExtResource("7_a51xs")]
-transform = Transform3D(1, 0, 0, 0, 17.388, 0, 0, 0, 1, -11, 2, -11)
-
-[node name="Node3D21" parent="newmap" instance=ExtResource("7_a51xs")]
-transform = Transform3D(1, 0, 0, 0, 24.3432, 0, 0, 0, 1, 1, -2, -15)
-
-[node name="Node3D22" parent="newmap" instance=ExtResource("7_a51xs")]
-transform = Transform3D(1, 0, 0, 0, 24.3432, 0, 0, 0, 1, 9, -2, -15)
-
-[node name="Node3D24" parent="newmap" instance=ExtResource("7_a51xs")]
-transform = Transform3D(-4.37114e-08, -9.73728, 0, 1, -4.2563e-07, 0, 0, 0, 1, 10, 12, -15)
-
-[node name="Node3D30" parent="newmap" instance=ExtResource("7_a51xs")]
-transform = Transform3D(1.91069e-15, 4.2563e-07, 1, 1, -4.2563e-07, 0, 4.37114e-08, 9.73728, -4.37114e-08, 14, 22, -20)
-
-[node name="Node3D31" parent="newmap" instance=ExtResource("7_a51xs")]
-transform = Transform3D(1.91069e-15, 4.2563e-07, 1, 1, -4.2563e-07, 0, 4.37114e-08, 9.73728, -4.37114e-08, 20, 22, -20)
-
-[node name="Node3D25" parent="newmap" instance=ExtResource("7_a51xs")]
-transform = Transform3D(-4.37114e-08, -9.73728, 0, 1, -4.2563e-07, 0, 0, 0, 1, -11, 11, -11)
-
-[node name="Node3D26" parent="newmap" instance=ExtResource("7_a51xs")]
-transform = Transform3D(1.91069e-15, 4.2563e-07, -1, 1, -4.2563e-07, 0, -4.37114e-08, -9.73728, -4.37114e-08, -11, 16, -11)
-
-[node name="Fire" parent="newmap" instance=ExtResource("8_wilsy")]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0.180099, 23.025, 5.8021)
-
-[node name="Fire2" parent="newmap" instance=ExtResource("8_wilsy")]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 12.1801, 23.025, -6.1979)
-
-[node name="Fire5" parent="newmap" instance=ExtResource("8_wilsy")]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -11.8199, 29.025, -12.1979)
-
-[node name="Fire4" parent="newmap" instance=ExtResource("8_wilsy")]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0.180099, 17.025, -0.197899)
-
-[node name="Fire3" parent="newmap" instance=ExtResource("8_wilsy")]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 18.1801, 17.025, 5.8021)
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = ExtResource("10_f6xln")
 
@@ -467,6 +363,119 @@ surface_material_override/3 = SubResource("ShaderMaterial_f6xln")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/arena/Cube/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_g4psy")
+
+[node name="newmap" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="house_blender" parent="NavigationRegion3D/newmap" instance=ExtResource("2_2b6ht")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 14, -2, 13)
+
+[node name="house_blender5" parent="NavigationRegion3D/newmap" instance=ExtResource("2_2b6ht")]
+transform = Transform3D(5.24536e-07, 0, -4, 0, 4, 0, 4, 0, 5.24536e-07, -15, 2, 15)
+
+[node name="house_blender2" parent="NavigationRegion3D/newmap" instance=ExtResource("2_2b6ht")]
+transform = Transform3D(3.67176e-07, 0, -2.8, 0, 2.8, 0, 2.8, 0, 3.67176e-07, -15, 22, 0)
+
+[node name="house_blender9" parent="NavigationRegion3D/newmap" instance=ExtResource("2_2b6ht")]
+transform = Transform3D(3.67176e-07, 0, -2.8, 0, 2.8, 0, 2.8, 0, 3.67176e-07, 7.4, 27.6, 0.49723)
+
+[node name="house_blender6" parent="NavigationRegion3D/newmap" instance=ExtResource("2_2b6ht")]
+transform = Transform3D(5.50764e-07, 0, -4.2, 0, 4.2, 0, 4.2, 0, 5.50764e-07, -26.2, 22, -25.2)
+
+[node name="house_blender8" parent="NavigationRegion3D/newmap" instance=ExtResource("2_2b6ht")]
+transform = Transform3D(-3.36, 0, -2.93741e-07, 0, 3.36, 0, 2.93741e-07, 0, -3.36, 5, 31.9671, -25.5871)
+
+[node name="house_blender7" parent="NavigationRegion3D/newmap" instance=ExtResource("2_2b6ht")]
+transform = Transform3D(5.50764e-07, 0, -4.2, 0, 4.2, 0, 4.2, 0, 5.50764e-07, -26.2, 31.986, -1.90735e-06)
+
+[node name="house_blender3" parent="NavigationRegion3D/newmap" instance=ExtResource("2_2b6ht")]
+transform = Transform3D(2.8, 0, 4.89568e-07, 0, 2.8, 0, -4.89568e-07, 0, 2.8, -25, 22, 25)
+
+[node name="house_blender4" parent="NavigationRegion3D/newmap" instance=ExtResource("2_2b6ht")]
+transform = Transform3D(2.8, 0, 4.89568e-07, 0, 2.8, 0, -4.89568e-07, 0, 2.8, -15, 22, 25)
+
+[node name="Node3D16" parent="NavigationRegion3D/newmap" instance=ExtResource("3_s2tkr")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 15, 5.999, 2)
+
+[node name="Node3D29" parent="NavigationRegion3D/newmap" instance=ExtResource("3_s2tkr")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 15, 5.999, -15)
+
+[node name="Node3D27" parent="NavigationRegion3D/newmap" instance=ExtResource("3_s2tkr")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 21, 13.999, 2)
+
+[node name="Node3D35" parent="NavigationRegion3D/newmap" instance=ExtResource("3_s2tkr")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 25, 32, 22)
+
+[node name="Node3D36" parent="NavigationRegion3D/newmap" instance=ExtResource("3_s2tkr")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 15, 32, 22)
+
+[node name="Node3D28" parent="NavigationRegion3D/newmap" instance=ExtResource("3_s2tkr")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 21, 13.999, -15)
+
+[node name="Node3D17" parent="NavigationRegion3D/newmap" instance=ExtResource("7_a51xs")]
+transform = Transform3D(1, 0, 0, 0, 14.49, 0, 0, 0, 1, 1, -2, 16)
+
+[node name="Node3D23" parent="NavigationRegion3D/newmap" instance=ExtResource("7_a51xs")]
+transform = Transform3D(1, 0, 0, 0, 11.592, 0, 0, 0, 1, 21, 14, 16)
+
+[node name="Node3D32" parent="NavigationRegion3D/newmap" instance=ExtResource("7_a51xs")]
+transform = Transform3D(1, 0, 0, 0, 11.592, 0, 0, 0, 1, 26, 14, -6)
+
+[node name="Node3D33" parent="NavigationRegion3D/newmap" instance=ExtResource("7_a51xs")]
+transform = Transform3D(1, 0, 0, 0, 11.592, 0, 0, 0, 1, 26, 14, -19)
+
+[node name="Node3D18" parent="NavigationRegion3D/newmap" instance=ExtResource("7_a51xs")]
+transform = Transform3D(1, 0, 0, 0, 17.388, 0, 0, 0, 1, -11, -2, 4)
+
+[node name="Node3D34" parent="NavigationRegion3D/newmap" instance=ExtResource("7_a51xs")]
+transform = Transform3D(1, 0, 0, 0, 10.4328, 0, 0, 0, 1, -25, 22, 14)
+
+[node name="Node3D19" parent="NavigationRegion3D/newmap" instance=ExtResource("7_a51xs")]
+transform = Transform3D(1, 0, 0, 0, 17.388, 0, 0, 0, 1, -11, -2, -4)
+
+[node name="Node3D20" parent="NavigationRegion3D/newmap" instance=ExtResource("7_a51xs")]
+transform = Transform3D(1, 0, 0, 0, 17.388, 0, 0, 0, 1, -11, 2, -11)
+
+[node name="Node3D21" parent="NavigationRegion3D/newmap" instance=ExtResource("7_a51xs")]
+transform = Transform3D(1, 0, 0, 0, 24.3432, 0, 0, 0, 1, 1, -2, -15)
+
+[node name="Node3D22" parent="NavigationRegion3D/newmap" instance=ExtResource("7_a51xs")]
+transform = Transform3D(1, 0, 0, 0, 24.3432, 0, 0, 0, 1, 9, -2, -15)
+
+[node name="Node3D24" parent="NavigationRegion3D/newmap" instance=ExtResource("7_a51xs")]
+transform = Transform3D(-4.37114e-08, -9.73728, 0, 1, -4.2563e-07, 0, 0, 0, 1, 10, 12, -15)
+
+[node name="Node3D30" parent="NavigationRegion3D/newmap" instance=ExtResource("7_a51xs")]
+transform = Transform3D(1.91069e-15, 4.2563e-07, 1, 1, -4.2563e-07, 0, 4.37114e-08, 9.73728, -4.37114e-08, 14, 22, -20)
+
+[node name="Node3D31" parent="NavigationRegion3D/newmap" instance=ExtResource("7_a51xs")]
+transform = Transform3D(1.91069e-15, 4.2563e-07, 1, 1, -4.2563e-07, 0, 4.37114e-08, 9.73728, -4.37114e-08, 20, 22, -20)
+
+[node name="Node3D25" parent="NavigationRegion3D/newmap" instance=ExtResource("7_a51xs")]
+transform = Transform3D(-4.37114e-08, -9.73728, 0, 1, -4.2563e-07, 0, 0, 0, 1, -11, 11, -11)
+
+[node name="Node3D26" parent="NavigationRegion3D/newmap" instance=ExtResource("7_a51xs")]
+transform = Transform3D(1.91069e-15, 4.2563e-07, -1, 1, -4.2563e-07, 0, -4.37114e-08, -9.73728, -4.37114e-08, -11, 16, -11)
+
+[node name="Fire" parent="NavigationRegion3D/newmap" instance=ExtResource("8_wilsy")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0.180099, 23.025, 5.8021)
+
+[node name="Fire2" parent="NavigationRegion3D/newmap" instance=ExtResource("8_wilsy")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 12.1801, 23.025, -6.1979)
+
+[node name="Fire5" parent="NavigationRegion3D/newmap" instance=ExtResource("8_wilsy")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -11.8199, 29.025, -12.1979)
+
+[node name="Fire4" parent="NavigationRegion3D/newmap" instance=ExtResource("8_wilsy")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0.180099, 17.025, -0.197899)
+
+[node name="Fire3" parent="NavigationRegion3D/newmap" instance=ExtResource("8_wilsy")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 18.1801, 17.025, 5.8021)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/newmap"]
+transform = Transform3D(4.6, 0, 0, 0, 1, 0, 0, 0, 4.6, 8.108, 27, 0.463)
+material_override = ExtResource("3_koc8j")
+use_collision = true
+size = Vector3(2, 1, 2)
 
 [node name="NPC_SamaGuy" parent="." instance=ExtResource("17_nx7jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5925, 23.155, -25.3609)
