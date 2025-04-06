@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfgqlkrr7eks3"]
+[gd_scene load_steps=9 format=3 uid="uid://cfgqlkrr7eks3"]
 
 [ext_resource type="Script" uid="uid://7jonov4nvurj" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
@@ -9,14 +9,25 @@
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Curve" id="Curve_vgqql"]
+_data = [Vector2(0.501259, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
 
 [sub_resource type="Environment" id="Environment_vgqql"]
 
 [node name="Player" type="CharacterBody3D"]
 floor_constant_speed = true
+floor_snap_length = 0.0
 script = ExtResource("1_cvnsp")
 JumpCurve = SubResource("Curve_cvnsp")
+WallKickCurve = SubResource("Curve_vgqql")
+WallKickWallBias = 0.5
+WallKickVerticalBias = 0.4
+WallKickForwardBias = 0.1
+WallKickVelocity = 4.67
+WallKickDuration = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_vgqql")

@@ -4,12 +4,19 @@ extends CharacterBody3D
 @export var Speed: float = 4.0
 @export var JumpCurve: Curve
 @export var JumpVelocity: float = 6.33
+@export var JumpDuration: float = 1.0
 @export var AirFriction: float = 0.85
 @export var BunnyHopMultiplier: float = 2.0
 @export var BunnyHopMax: float = 4.0
 @export var BunnyHopDeceleration: float = 4.0
 @export var BunnyHopGravityMultiplierMin: float = 0.95
 @export var BunnyHopAirFrictionToGravityMultiplier: float = 0.33
+@export var WallKickCurve: Curve
+@export var WallKickWallBias: float = 4.0
+@export var WallKickVerticalBias: float = 1.0
+@export var WallKickForwardBias: float = 1.0
+@export var WallKickVelocity: float = 4.0
+@export var WallKickDuration: float = 1.0
 @export_subgroup("Camera")
 @export var LeanAmountDegrees: float = 2.0
 @export var LeanSpeed: float = 16.0
@@ -26,6 +33,11 @@ var x_look_clamp_degrees: float = 90.0
 
 var jump_t: float
 var jumping: bool
+var jump_dir: Vector3 = Vector3.UP
+
+var wall_kick_t: float
+var wall_kicking: bool
+var wall_kick_dir: = Vector3.UP
 
 var current_air_friction: float
 
@@ -64,23 +76,40 @@ func begin_step(delta: float) -> void:
 	var v: Vector3 = vel_calc(input_move, fwd, right, Speed)
 	velocity.x = v.x
 	velocity.z = v.z
+	
+	if input_just_jump:
+		if is_on_wall_only():
+			wall_kick()
+		else:
+			jump()
+	
+	if wall_kicking:
+		wall_kick_t = clamp(wall_kick_t + delta / WallKickDuration, 0, 1)
+		var wv: float = WallKickCurve.sample(wall_kick_t) * WallKickVelocity
+		var f: Vector3 = -global_basis.z
+		f.y = 0
+		var wall_vel: Vector3 = (wall_kick_dir * WallKickWallBias + Vector3.UP * WallKickVerticalBias + f * WallKickForwardBias).normalized() * wv
+		velocity.x = wall_vel.x
+		velocity.y += wall_vel.y
+		velocity.z = wall_vel.z
 
+		if wall_kick_t >= 1.0:
+			wall_kicking = false
+		
+	if jumping:
+		jump_t = clamp(jump_t + delta / JumpDuration, 0, 1)
+		var yv: float = JumpCurve.sample(jump_t) * JumpVelocity
+		velocity += jump_dir * yv
+	
 	if !is_on_floor() || current_air_friction > AirFriction:
 		velocity.x *= current_air_friction
 		velocity.z *= current_air_friction
-	
-	if input_just_jump:
-		jump()
-	
-	if jumping:
-		jump_t = clamp(jump_t + delta, 0, 1)
-		var yv: float = JumpCurve.sample(jump_t) * JumpVelocity
-		velocity.y += yv
-	
+
 func end_step(delta: float) -> void:
 	# Cancel velocity and jump state when we hit the floor.
 	if is_on_floor():
 		jumping = false
+		wall_kicking = false
 		velocity.y = 0
 		current_air_friction = move_toward(current_air_friction, AirFriction, delta * BunnyHopDeceleration)
 
@@ -106,6 +135,15 @@ func jump() -> void:
 		lines_left.play()
 		lines_right.play()
 
+func wall_kick() -> void:
+	if !is_on_wall_only():
+		return
+	
+	wall_kicking = true
+	wall_kick_t = 0.0
+	wall_kick_dir = get_wall_normal()
+	velocity.y = 0
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -130,3 +168,4 @@ func _physics_process(delta: float) -> void:
 	begin_step(delta)
 	move_and_slide()
 	end_step(delta)
+	print(get_real_velocity())
