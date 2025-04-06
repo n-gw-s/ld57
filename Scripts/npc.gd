@@ -100,6 +100,9 @@ func process_knockback(delta: float) -> void:
 	knockback.y = move_toward(knockback.y, 0, delta * KnockbackFrictionVertical)
 	knockback.z = move_toward(knockback.z, 0, delta * KnockbackFrictionHorizontal)
 
+	if is_on_wall():
+		knockback = Vector3.ZERO
+
 	var xz_kb: Vector3 = knockback
 	xz_kb.y = 0
 
