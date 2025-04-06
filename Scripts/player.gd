@@ -90,6 +90,9 @@ func vel_calc(i: Vector2, fwd: Vector3, right: Vector3, s: float) -> Vector3:
 
 func can_wall_kick() -> bool:
 	if !is_on_floor():
+		wall_kick_cast.force_update_transform()
+		wall_kick_cast.force_shapecast_update()
+
 		for i in wall_kick_cast.get_collision_count():
 			var n: Vector3 = wall_kick_cast.get_collision_normal(i)
 			if acos(n.dot(Vector3.UP)) > deg_to_rad(45 + 0.01):
@@ -150,7 +153,6 @@ func determine_move_vel() -> void:
 	var v: Vector3 = vel_calc(input_move, fwd, right, Speed)
 	velocity.x = v.x
 	velocity.z = v.z
-
 
 func process_knockback(delta: float) -> void:
 	velocity += knockback
@@ -229,7 +231,7 @@ func jump() -> void:
 	next_cam_fov = FovKick
 
 func wall_kick() -> void:
-	if !can_wall_kick() || wall_kick_dir.is_equal_approx(last_wall_kick_dir):
+	if !can_wall_kick() || wall_kick_dir.is_equal_approx(last_wall_normal):
 		return
 	
 	wall_kicking = true
@@ -290,7 +292,7 @@ func _process(delta: float) -> void:
 
 	# FOV Kick
 	cam.fov = move_toward(cam.fov, next_cam_fov, delta * FovSpeed)
-	
+
 	if !jumping:
 		next_cam_fov = o_cam_fov
 
