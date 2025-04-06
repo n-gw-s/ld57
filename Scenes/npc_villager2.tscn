@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://beo8xcolo62x7"]
+[gd_scene load_steps=8 format=3 uid="uid://beo8xcolo62x7"]
 
 [ext_resource type="Script" uid="uid://wupi60ffwe3n" path="res://Scripts/npc.gd" id="1_sc24i"]
+[ext_resource type="Texture2D" uid="uid://d3kll3wcttj5h" path="res://Textures/villagers/jenny3_standing.png" id="2_k01l1"]
 [ext_resource type="Texture2D" uid="uid://ceet40dj3h54d" path="res://Textures/villagers/jenny3.png" id="2_sc24i"]
 [ext_resource type="Script" uid="uid://c2rxoxht70x34" path="res://Scripts/player_push_cast.gd" id="3_534eg"]
 [ext_resource type="PackedScene" uid="uid://c5g0anmmosets" path="res://Scenes/say.tscn" id="4_xp8ce"]
@@ -19,6 +20,7 @@ CombatRadius = 5.0
 SightRadius = 6.0
 WeaponSpriteName = ""
 SeenSay = "I want my mother!"
+IdleTexture = ExtResource("2_k01l1")
 metadata/_custom_type_script = "uid://wupi60ffwe3n"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
