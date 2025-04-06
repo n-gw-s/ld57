@@ -11,4 +11,5 @@ func gen() -> void:
     create_trimesh_collision()
 
     for i in get_children():
-        i.owner = get_tree().edited_scene_root
+        if i is StaticBody3D:
+            i.reparent(get_parent())
