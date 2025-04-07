@@ -327,6 +327,10 @@ func shake_cam(amount: float) -> void:
 
 func inc_coins() -> void:
 	coins = clamp(coins + 1, 0, INF)
+	var counter_scn: PackedScene = preload("res://Scenes/coin_counter.tscn")
+	var counter: Control = counter_scn.instantiate()
+	get_parent().add_child(counter)
+	counter.label.text = str(coins)
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
