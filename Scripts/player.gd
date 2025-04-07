@@ -73,6 +73,8 @@ var cam_shake_amount: float
 var push_spr: AnimatedSprite3D
 var init_push_spr_gp: Vector3
 
+var coins: int
+
 @onready var cam: Camera3D = $Camera3D
 @onready var view_cam: Camera3D = $Camera3D/SubViewportContainer/SubViewport/View
 @onready var bhop_timer: Timer = $BunnyHopTimer
@@ -322,6 +324,9 @@ func shake_cam(amount: float) -> void:
 	shake_this_frame = false
 	cam_shake_timer.start()
 	cam_shake_amount = amount
+
+func inc_coins() -> void:
+	coins = clamp(coins + 1, 0, INF)
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
