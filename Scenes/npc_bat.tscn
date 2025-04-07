@@ -21,6 +21,7 @@ CombatRadius = 999.0
 SightRadius = 9999.0
 WeaponSpriteName = ""
 BounceRadius = 4.0
+SeenSay = Array[String](["*EEE*"])
 FlipSpeed = 2.0
 FlipMode = 1
 metadata/_custom_type_script = "uid://wupi60ffwe3n"

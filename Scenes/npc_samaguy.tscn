@@ -17,7 +17,7 @@ script = ExtResource("1_3ell4")
 Speed = 7.0
 KnockbackFrictionHorizontal = 2.0
 CombatRadius = 1.5
-SeenSay = "Filthy creature!"
+SeenSay = Array[String](["Filthy creature!"])
 metadata/_custom_type_script = "uid://wupi60ffwe3n"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

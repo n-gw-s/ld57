@@ -27,7 +27,8 @@ enum FlipType {
 @export var StrafeAmp: float = 6.0
 @export var WeaponSpriteName: String = "Spear"
 @export var BounceRadius: float = 8.0
-@export var SeenSay: String = ""
+@export var SeenSay: Array[String] = []
+@export var RepeatSeenSay: bool = false
 @export_subgroup("FX")
 @export var IdleTexture: Texture
 @export var FlipSpeed: float = 1.0
@@ -57,9 +58,9 @@ func randomize_dir() -> void:
 	rand_dir = Vector2(-randf() + randf(), -randf() + randf()).normalized()
 
 func notice_player() -> void:
-	if !seen_player:
+	if !seen_player && SeenSay.size() > 0:
 		seen_player = true
-		typewriter.Say = SeenSay
+		typewriter.Say = SeenSay.pick_random()
 		typewriter.reset()
 
 func process_behavior() -> void:
@@ -94,6 +95,9 @@ func process_behavior() -> void:
 		elif Behavior == MoveBehavior.FLEE:
 			var v: Vector3 = (global_position - player.global_position).normalized() * Speed
 			move = v
+	elif dist_to_player > SightRadius:
+		if RepeatSeenSay:
+			seen_player = false
 	
 func process_knockback(delta: float) -> void:
 	knockback.x = move_toward(knockback.x, 0, delta * KnockbackFrictionHorizontal)

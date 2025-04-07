@@ -19,7 +19,8 @@ Behavior = 3
 CombatRadius = 5.0
 SightRadius = 6.0
 WeaponSpriteName = ""
-SeenSay = "I want my mother!"
+SeenSay = Array[String](["I want my mother!", "OH GOD NO!", "Oh no... it's real!"])
+RepeatSeenSay = true
 IdleTexture = ExtResource("2_k01l1")
 metadata/_custom_type_script = "uid://wupi60ffwe3n"
 

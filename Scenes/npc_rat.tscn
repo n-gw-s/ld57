@@ -17,7 +17,7 @@ Speed = 4.0
 KnockbackFrictionHorizontal = 2.0
 Behavior = 2
 WeaponSpriteName = ""
-SeenSay = "*skrrt skrrt*"
+SeenSay = Array[String](["*skrrt skrrt*"])
 metadata/_custom_type_script = "uid://wupi60ffwe3n"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
