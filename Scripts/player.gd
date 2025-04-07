@@ -280,6 +280,9 @@ func process_fog() -> void:
 	var next_fog: float = clamp(diff * 0.01, 0.0, 0.1)
 	if next_fog < 0.01:
 		next_fog = 0.0
+		env.fog_enabled = false
+	else:
+		env.fog_enabled = true
 	env.fog_density = next_fog
 
 func multiply_air_friction() -> void:
