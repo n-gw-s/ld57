@@ -7,6 +7,8 @@ extends Control
 var t: float
 
 func _ready() -> void:
+	get_node("/root/Main/Title").free()
+	
 	label.self_modulate.a = 0
 	coins_label.self_modulate.a = 0
 	npcs_label.self_modulate.a = 0
