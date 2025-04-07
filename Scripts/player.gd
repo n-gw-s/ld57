@@ -277,7 +277,10 @@ func process_audio(delta: float) -> void:
 func process_fog() -> void:
 	var env: Environment = get_viewport().get_camera_3d().environment
 	var diff: float = FogHeight - global_position.y
-	env.fog_density = clamp(diff * 0.01, 0.0, 0.1)
+	var next_fog: float = clamp(diff * 0.01, 0.0, 0.1)
+	if next_fog < 0.01:
+		next_fog = 0.0
+	env.fog_density = next_fog
 
 func multiply_air_friction() -> void:
 	# Air velocity multiplier (bhop)
@@ -382,8 +385,6 @@ func inc_coins() -> void:
 	Utils.gen_sound(CoinSound, self, Vector2(0.8, 1.2))
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
 	current_air_friction = AirFriction
 
 	o_cam_fov = cam.fov

@@ -19,6 +19,7 @@ func start() -> void:
 	get_node("/root/Main/Sandbox/Player").viewport_container.visible = true
 	get_node("/root/Main/Sandbox/Player").cam.make_current()
 	queue_free()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _ready() -> void:
 	get_tree().paused = true
