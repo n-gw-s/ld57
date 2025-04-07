@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://dt7qmogn15efc"]
+
+[ext_resource type="Script" uid="uid://dvggunneri5jj" path="res://Scripts/win_screen.gd" id="1_awi1s"]
+[ext_resource type="Texture2D" uid="uid://blca5ad56iepj" path="res://Textures/white.png" id="1_l5sol"]
+[ext_resource type="FontFile" uid="uid://8u4wm6p055no" path="res://Fonts/alagard.ttf" id="2_a00f1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_awi1s"]
+font = ExtResource("2_a00f1")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_bwc64"]
+font = ExtResource("2_a00f1")
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_85imr"]
+font = ExtResource("2_a00f1")
+font_color = Color(1, 0, 0, 1)
+
+[node name="WinScreen" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_awi1s")
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("1_l5sol")
+
+[node name="Label" type="Label" parent="Background"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.5
+offset_top = 24.0
+offset_right = 132.5
+offset_bottom = 111.0
+grow_horizontal = 2
+text = "You made it.
+
+But,
+
+Why did you come up here,
+anyway?"
+label_settings = SubResource("LabelSettings_awi1s")
+horizontal_alignment = 1
+
+[node name="LabelCoins" type="Label" parent="Background"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 216.0
+grow_vertical = 0
+text = "Coins Collected: x%"
+label_settings = SubResource("LabelSettings_bwc64")
+horizontal_alignment = 1
+
+[node name="LabelNPCs" type="Label" parent="Background"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -216.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "NPCs Damned: x%"
+label_settings = SubResource("LabelSettings_85imr")
+horizontal_alignment = 1

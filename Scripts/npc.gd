@@ -170,6 +170,8 @@ func process_textures() -> void:
 
 
 func _ready() -> void:
+	add_to_group("NPC")
+	
 	weapon_spr = get_node_or_null(WeaponSpriteName)
 	o_texture = sprite.texture
 

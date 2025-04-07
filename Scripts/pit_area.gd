@@ -6,3 +6,4 @@ func _ready() -> void:
 func _on_body_entered(body: Node) -> void:
 	if body is NPC:
 		body.queue_free()
+		Utils.npcs_damned = clamp(Utils.npcs_damned + 1, 0, INF)
