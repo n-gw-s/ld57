@@ -6,7 +6,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_gqlru"]
 font = ExtResource("1_jg7dh")
 font_size = 64
-font_color = Color(1, 1, 0, 1)
+font_color = Color(1, 0.7, 0, 1)
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 

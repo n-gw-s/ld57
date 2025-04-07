@@ -10,6 +10,6 @@ shader_parameter/albedo_texture = ExtResource("2_6tiyq")
 shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/jitter = 0.8
 shader_parameter/emission_amount = 0.0
-shader_parameter/uv_scale = Vector2(16, 16)
+shader_parameter/uv_scale = Vector2(64, 64)
 shader_parameter/backlight_color = Color(1, 1, 1, 1)
 shader_parameter/backlight_amount = 0.3
