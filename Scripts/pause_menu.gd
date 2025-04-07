@@ -1,6 +1,7 @@
 extends Control
 
 @onready var look: Slider = $Background/Look/Slider
+@onready var volume: Slider = $Background/Volume/Slider
 
 func _ready() -> void:
 	visible = false

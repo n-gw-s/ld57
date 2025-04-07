@@ -20,4 +20,4 @@ func _physics_process(_delta: float) -> void:
 			obj.knockback.x += v.x
 			obj.knockback.z += v.z
 			Utils.gen_sound(obj.SelfPushSound, obj, Vector2(0.8, 1.2))
-			#obj.shake_cam(v.length())
+			obj.shake_cam(v.length())

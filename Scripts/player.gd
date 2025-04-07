@@ -253,7 +253,7 @@ func process_fov_kick(delta: float) -> void:
 	if !jumping:
 		next_cam_fov = o_cam_fov
 
-func process_music() -> void:
+func process_audio() -> void:
 	var npcs: Array = get_tree().get_nodes_in_group("NPC")
 	var closest_dist: float = INF
 	for n in npcs:
@@ -262,6 +262,9 @@ func process_music() -> void:
 			closest_dist = dist
 	var music: AudioStreamPlayer = get_node("Music")
 	music.volume_db = MaxMusicDb * (1.0 / clamp(closest_dist, 1.0, INF))
+
+
+	AudioServer.set_bus_volume_db(0, get_node("/root/Main/PauseMenu").volume.value)
 
 func multiply_air_friction() -> void:
 	# Air velocity multiplier (bhop)
@@ -392,7 +395,7 @@ func _process(delta: float) -> void:
 	process_cam_lean(delta)
 	process_view_bob(delta)
 	process_fov_kick(delta)
-	process_music()
+	process_audio()
 
 func _physics_process(delta: float) -> void:
 	take_input()
@@ -400,4 +403,4 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	end_step(delta)
 
-	#process_cam_shake(delta)
+	process_cam_shake(delta)
