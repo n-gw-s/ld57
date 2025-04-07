@@ -72,7 +72,7 @@ func notice_player() -> void:
 		seen_player = true
 		typewriter.Say = SeenSay.pick_random()
 		typewriter.reset()
-		Utils.gen_sound(NoticeAudio, Vector3.ZERO, self)
+		Utils.gen_sound(NoticeAudio, self)
 
 func process_behavior() -> void:
 	var dist_to_player: float = player.global_position.distance_to(global_position)
