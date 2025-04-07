@@ -19,4 +19,4 @@ func _physics_process(_delta: float) -> void:
 			var v: Vector3 = -get_collision_normal(i) * Force
 			obj.knockback.x += v.x
 			obj.knockback.z += v.z
-			obj.shake_cam(v.length())
+			#obj.shake_cam(v.length())

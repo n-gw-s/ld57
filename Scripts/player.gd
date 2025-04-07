@@ -387,4 +387,4 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	end_step(delta)
 
-	process_cam_shake(delta)
+	#process_cam_shake(delta)
