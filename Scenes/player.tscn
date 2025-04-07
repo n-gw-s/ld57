@@ -133,3 +133,6 @@ light_color = Color(1, 0.74902, 0, 1)
 
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
 current = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+autoplay = true

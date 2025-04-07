@@ -38,6 +38,7 @@ extends CharacterBody3D
 @export var PushSound: AudioStream
 @export var CoinSound: AudioStream
 @export var SelfPushSound: AudioStream
+@export var MaxMusicDb: float = 3.0
 
 var input_move: Vector2
 
@@ -252,6 +253,16 @@ func process_fov_kick(delta: float) -> void:
 	if !jumping:
 		next_cam_fov = o_cam_fov
 
+func process_music() -> void:
+	var npcs: Array = get_tree().get_nodes_in_group("NPC")
+	var closest_dist: float = INF
+	for n in npcs:
+		var dist: float = global_position.distance_to(n.global_position)
+		if dist < closest_dist:
+			closest_dist = dist
+	var music: AudioStreamPlayer = get_node("Music")
+	music.volume_db = MaxMusicDb * (1.0 / clamp(closest_dist, 1.0, INF))
+
 func multiply_air_friction() -> void:
 	# Air velocity multiplier (bhop)
 	if !is_on_floor() || current_air_friction > AirFriction:
@@ -381,6 +392,7 @@ func _process(delta: float) -> void:
 	process_cam_lean(delta)
 	process_view_bob(delta)
 	process_fov_kick(delta)
+	process_music()
 
 func _physics_process(delta: float) -> void:
 	take_input()
