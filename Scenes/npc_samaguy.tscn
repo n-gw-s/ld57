@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3osdl7r5dqpp"]
+[gd_scene load_steps=9 format=3 uid="uid://d3osdl7r5dqpp"]
 
 [ext_resource type="Script" uid="uid://wupi60ffwe3n" path="res://Scripts/npc.gd" id="1_3ell4"]
 [ext_resource type="Texture2D" uid="uid://d4adl3gg2hsr" path="res://Textures/samaguy.png" id="2_3ell4"]
+[ext_resource type="AudioStream" uid="uid://5lq4oxnx0h0y" path="res://Audio/samaguy.wav" id="2_tpxgf"]
 [ext_resource type="Script" uid="uid://c2rxoxht70x34" path="res://Scripts/player_push_cast.gd" id="3_lmb3v"]
 [ext_resource type="Texture2D" uid="uid://cuqmup0m8mfg0" path="res://Textures/samaguystick.png" id="4_okong"]
 [ext_resource type="PackedScene" uid="uid://c5g0anmmosets" path="res://Scenes/say.tscn" id="5_q2fg0"]
@@ -19,6 +20,7 @@ Speed = 7.0
 KnockbackFrictionHorizontal = 2.0
 CombatRadius = 1.5
 SeenSay = Array[String](["Filthy creature!", "Get back in your hole!"])
+NoticeAudio = ExtResource("2_tpxgf")
 metadata/_custom_type_script = "uid://wupi60ffwe3n"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

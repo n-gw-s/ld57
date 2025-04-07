@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cifb2o7v50dcu"]
+[gd_scene load_steps=8 format=3 uid="uid://cifb2o7v50dcu"]
 
 [ext_resource type="Script" uid="uid://wupi60ffwe3n" path="res://Scripts/npc.gd" id="1_n337f"]
+[ext_resource type="AudioStream" uid="uid://cgoo6wth1obu5" path="res://Audio/bat.wav" id="2_1xr8c"]
 [ext_resource type="Script" uid="uid://c2rxoxht70x34" path="res://Scripts/player_push_cast.gd" id="2_kfui6"]
 [ext_resource type="Texture2D" uid="uid://d2q187v6j2m70" path="res://Textures/bat.png" id="2_wple2"]
 [ext_resource type="PackedScene" uid="uid://c5g0anmmosets" path="res://Scenes/say.tscn" id="4_wple2"]
@@ -25,6 +26,7 @@ BounceRadius = 4.0
 SeenSay = Array[String](["*EEE*"])
 FlipSpeed = 2.0
 FlipMode = 1
+NoticeAudio = ExtResource("2_1xr8c")
 metadata/_custom_type_script = "uid://wupi60ffwe3n"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

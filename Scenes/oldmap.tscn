@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://bms6tek4qvv14"]
 
 [ext_resource type="Texture2D" uid="uid://cn2e0t20w2djb" path="res://Textures/concrete_tile.png" id="1_0t8ox"]
-[ext_resource type="PackedScene" uid="uid://cxt0qoasui7vs" path="res://Meshes/house_blender.tscn" id="2_aofup"]
-[ext_resource type="PackedScene" uid="uid://cgmc1qnjj2a6a" path="res://Meshes/street_lantern.tscn" id="3_v8myp"]
+[ext_resource type="PackedScene" uid="uid://cxt0qoasui7vs" path="res://Scenes/house_blender.tscn" id="2_aofup"]
+[ext_resource type="PackedScene" uid="uid://cgmc1qnjj2a6a" path="res://Scenes/street_lantern.tscn" id="3_v8myp"]
 [ext_resource type="Material" uid="uid://d02wjos01yxfk" path="res://Mats/concrete_tile.tres" id="4_35bn4"]
 [ext_resource type="Material" uid="uid://d0f56xd4c2grd" path="res://Mats/paper_wall.tres" id="5_ly1uu"]
 [ext_resource type="Material" uid="uid://vrntl8lwac4v" path="res://Mats/tatami.tres" id="6_kp1em"]

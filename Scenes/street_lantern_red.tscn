@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://d4npd5vrh7p2y"]
+
+[ext_resource type="Material" uid="uid://dbj0khsy64x7m" path="res://Mats/paper_wall_divider_red.tres" id="1_rfvmu"]
+[ext_resource type="Shader" uid="uid://dchwwv587g7vb" path="res://Shaders/standard.gdshader" id="2_bxoxy"]
+[ext_resource type="Texture2D" uid="uid://cpmovnhrj6ao1" path="res://Textures/paper_cube_red.png" id="3_rfvmu"]
+[ext_resource type="PackedScene" uid="uid://v05ss1heidur" path="res://Meshes/roof_topper.glb" id="4_0otnt"]
+[ext_resource type="Texture2D" uid="uid://df7hyool3g6f" path="res://Textures/roof_topper.png" id="5_hnp4w"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yvmo3"]
+size = Vector3(0.1, 1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q430m"]
+size = Vector3(0.25, 0.333, 0.25)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2oq48"]
+render_priority = 0
+shader = ExtResource("2_bxoxy")
+shader_parameter/albedo_texture = ExtResource("3_rfvmu")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/jitter = 0.75
+shader_parameter/emission_amount = 0.0
+shader_parameter/uv_scale = Vector2(3, 2)
+shader_parameter/backlight_color = Color(1, 1, 1, 1)
+shader_parameter/backlight_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sw2rq"]
+render_priority = 0
+shader = ExtResource("2_bxoxy")
+shader_parameter/albedo_texture = ExtResource("5_hnp4w")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/jitter = 0.75
+shader_parameter/emission_amount = 0.0
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/backlight_color = Color(1, 1, 1, 1)
+shader_parameter/backlight_amount = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3j86u"]
+size = Vector3(0.5, 1.2, 0.5)
+
+[node name="Node3D" type="StaticBody3D"]
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_yvmo3")
+surface_material_override/0 = ExtResource("1_rfvmu")
+
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_q430m")
+surface_material_override/0 = SubResource("ShaderMaterial_2oq48")
+
+[node name="roof_topper" parent="." instance=ExtResource("4_0otnt")]
+
+[node name="topper" parent="roof_topper" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.06149, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_sw2rq")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00633, 0)
+light_color = Color(1, 0.764706, 0.533333, 1)
+light_energy = 5.0
+omni_range = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("BoxShape3D_3j86u")
+
+[editable path="roof_topper"]

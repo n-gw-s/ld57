@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfgqlkrr7eks3"]
+[gd_scene load_steps=14 format=3 uid="uid://cfgqlkrr7eks3"]
 
 [ext_resource type="Script" uid="uid://7jonov4nvurj" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
 [ext_resource type="Curve" uid="uid://c3rtpa3v0f3ob" path="res://Curves/jump_curve.tres" id="2_x3wgy"]
 [ext_resource type="Curve" uid="uid://ucbclgkrqlgu" path="res://Curves/wall_kick_curve.tres" id="3_3smsa"]
 [ext_resource type="PackedScene" uid="uid://d4ihnbi5i7cmj" path="res://Scenes/anim_line.tscn" id="3_vgqql"]
+[ext_resource type="AudioStream" uid="uid://ot8kyroxg3kl" path="res://Audio/push.wav" id="4_3smsa"]
+[ext_resource type="AudioStream" uid="uid://dmmkdx6cpc4j" path="res://Audio/wallkick.wav" id="4_8erm5"]
+[ext_resource type="AudioStream" uid="uid://stwcbwvk21xe" path="res://Audio/jump.wav" id="4_f1ek2"]
 [ext_resource type="SpriteFrames" uid="uid://cfluff6ajrbf" path="res://SpriteFrames/hand.tres" id="6_x3wgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
@@ -36,6 +39,9 @@ ViewBobFreq = 0.5
 ViewBobAmp = 20.0
 PushVelocity = 12.0
 DunkVelocity = 20.0
+JumpSound = ExtResource("4_f1ek2")
+WallKickSound = ExtResource("4_8erm5")
+PushSound = ExtResource("4_3smsa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_vgqql")
@@ -124,3 +130,6 @@ one_shot = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(1, 0.74902, 0, 1)
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+current = true
