@@ -42,6 +42,7 @@ extends CharacterBody3D
 @export var MaxMusicDistance: float = 5.0
 @export var MaxMusicDistanceSpeed: float = 16.0
 @export var FogHeight: float = 75.0
+@export var PushFailSound: AudioStream
 
 var input_move: Vector2
 
@@ -311,6 +312,8 @@ func attack() -> void:
 	init_push_spr_gp = push_spr.global_position
 	knockback += cam.global_basis.z * PushSelfVelocity
 
+	var objs_pushed: int = 0
+
 	for i in interact_cast.get_collision_count():
 		var obj: Object = interact_cast.get_collider(i)
 
@@ -325,7 +328,11 @@ func attack() -> void:
 				cam.rotation.z = 0
 				cam.scale = Vector3.ONE
 			obj.knockback += v
+			objs_pushed += 1
 			Utils.gen_sound(PushSound, obj, Vector2(0.8, 1.2))
+	
+	if objs_pushed <= 0:
+		Utils.gen_sound(PushFailSound, self, Vector2(0.8, 1.2))
 
 func jump() -> void:
 	if jumping:
