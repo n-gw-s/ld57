@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfgqlkrr7eks3"]
+[gd_scene load_steps=15 format=3 uid="uid://dmbe0rm85nmwj"]
 
 [ext_resource type="Script" uid="uid://7jonov4nvurj" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
@@ -18,9 +18,8 @@ radius = 2.0
 
 [sub_resource type="Environment" id="Environment_vgqql"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x3wgy"]
-radius = 1.5
-height = 3.0
+[sub_resource type="SphereShape3D" id="SphereShape3D_tx1dd"]
+radius = 1.8
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 4
@@ -114,7 +113,7 @@ texture_filter = 0
 sprite_frames = ExtResource("6_x3wgy")
 
 [node name="WallKick" type="ShapeCast3D" parent="."]
-shape = SubResource("CapsuleShape3D_x3wgy")
+shape = SubResource("SphereShape3D_tx1dd")
 target_position = Vector3(0, 0, 0)
 
 [node name="BunnyHopTimer" type="Timer" parent="."]
