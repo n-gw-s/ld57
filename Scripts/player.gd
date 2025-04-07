@@ -74,6 +74,7 @@ var push_spr: AnimatedSprite3D
 var init_push_spr_gp: Vector3
 
 var coins: int
+var last_counter: Control
 
 @onready var cam: Camera3D = $Camera3D
 @onready var view_cam: Camera3D = $Camera3D/SubViewportContainer/SubViewport/View
@@ -326,11 +327,16 @@ func shake_cam(amount: float) -> void:
 	cam_shake_amount = amount
 
 func inc_coins() -> void:
+	if is_instance_valid(last_counter):
+		last_counter.queue_free()
+		last_counter = null
+	
 	coins = clamp(coins + 1, 0, INF)
 	var counter_scn: PackedScene = preload("res://Scenes/coin_counter.tscn")
 	var counter: Control = counter_scn.instantiate()
 	get_parent().add_child(counter)
 	counter.label.text = str(coins)
+	last_counter = counter
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
