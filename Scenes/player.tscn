@@ -42,6 +42,7 @@ DunkVelocity = 20.0
 JumpSound = ExtResource("4_f1ek2")
 WallKickSound = ExtResource("4_8erm5")
 PushSound = ExtResource("4_3smsa")
+FogHeight = 120.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_vgqql")
@@ -129,7 +130,7 @@ wait_time = 0.25
 one_shot = true
 
 [node name="WallKickResetTimer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.75
 one_shot = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
