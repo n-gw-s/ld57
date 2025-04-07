@@ -49,3 +49,4 @@ Force = 8.0
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="Say" parent="." instance=ExtResource("4_wple2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

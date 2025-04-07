@@ -41,6 +41,7 @@ extends CharacterBody3D
 @export var MaxMusicDb: float = 8.0
 @export var MaxMusicDistance: float = 5.0
 @export var MaxMusicDistanceSpeed: float = 16.0
+@export var FogHeight: float = 75.0
 
 var input_move: Vector2
 
@@ -272,6 +273,11 @@ func process_audio(delta: float) -> void:
 
 	AudioServer.set_bus_volume_db(0, get_node("/root/Main/PauseMenu").volume.value)
 
+func process_fog() -> void:
+	var env: Environment = get_viewport().get_camera_3d().environment
+	var diff: float = FogHeight - global_position.y
+	env.fog_density = clamp(diff * 0.01, 0.0, 0.1)
+
 func multiply_air_friction() -> void:
 	# Air velocity multiplier (bhop)
 	if !is_on_floor() || current_air_friction > AirFriction:
@@ -411,3 +417,4 @@ func _physics_process(delta: float) -> void:
 	end_step(delta)
 
 	process_cam_shake(delta)
+	process_fog()
