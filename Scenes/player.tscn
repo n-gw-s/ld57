@@ -129,6 +129,10 @@ one_shot = true
 wait_time = 0.25
 one_shot = true
 
+[node name="WallKickResetTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(1, 0.74902, 0, 1)
 

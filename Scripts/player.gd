@@ -97,6 +97,7 @@ var last_counter: Control
 @onready var attack_timer: Timer = $AttackTimer
 @onready var wall_kick_cast: ShapeCast3D = $WallKick
 @onready var cam_shake_timer: Timer = $CameraShakeTimer
+@onready var wall_kick_reset_timer: Timer = $WallKickResetTimer
 
 func take_input() -> void:
 	look_speed = get_node("/root/Main/PauseMenu").look.value
@@ -330,7 +331,7 @@ func jump() -> void:
 	Utils.gen_sound(JumpSound, self, Vector2(0.8, 1.2))
 
 func wall_kick(wn: Vector3) -> void:
-	if last_wall_kick_dir.is_equal_approx(wn) || wn.is_equal_approx(Vector3.ZERO):
+	if (last_wall_kick_dir.is_equal_approx(wn) && !wall_kick_reset_timer.is_stopped()) || wn.is_equal_approx(Vector3.ZERO):
 		return
 	
 	wall_kicking = true
@@ -339,6 +340,8 @@ func wall_kick(wn: Vector3) -> void:
 	wall_kick_dir = wn
 	velocity.y = 0
 	inc_air_friction()
+
+	wall_kick_reset_timer.start()
 
 	next_cam_fov = FovKick
 
