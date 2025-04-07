@@ -47,7 +47,7 @@ var input_fire: bool
 var input_just_fire: bool
 
 var look_speed: float = 1.0
-var x_look_clamp_degrees: float = 90.0
+var x_look_clamp_degrees: float = 85.0
 
 var jump_t: float
 var jumping: bool
@@ -170,11 +170,11 @@ func end_step(delta: float) -> void:
 
 func determine_move_vel() -> void:
 	# Grab directions...
-	var fwd: Vector3 = -global_basis.z
+	var fwd: Vector3 = -cam.global_basis.z
 	fwd.y = 0
 	fwd = fwd.normalized()
 
-	var right: Vector3 = global_basis.x
+	var right: Vector3 = cam.global_basis.x
 	right.y = 0
 	right = right.normalized()
 
