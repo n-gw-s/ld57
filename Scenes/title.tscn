@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://brhiu7rqipjv1"]
+[gd_scene load_steps=8 format=3 uid="uid://brhiu7rqipjv1"]
 
 [ext_resource type="Texture2D" uid="uid://blca5ad56iepj" path="res://Textures/white.png" id="1_ekrfg"]
 [ext_resource type="Script" uid="uid://c4emp4vhygn5m" path="res://Scripts/title.gd" id="1_fp2oq"]
 [ext_resource type="FontFile" uid="uid://8u4wm6p055no" path="res://Fonts/alagard.ttf" id="2_fp2oq"]
+[ext_resource type="AudioStream" uid="uid://ctb6m11rqtl7e" path="res://Audio/intro_stinger.wav" id="4_q2qps"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q2qps"]
 font = ExtResource("2_fp2oq")
@@ -82,3 +83,6 @@ text = "You filthy little creature...
 Stay where you belong!"
 label_settings = SubResource("LabelSettings_fp2oq")
 horizontal_alignment = 1
+
+[node name="Stinger" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_q2qps")

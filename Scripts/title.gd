@@ -11,6 +11,7 @@ func intro() -> void:
 	t = 0.0
 	get_node("Background/Title").visible = false
 	get_node("Background/Confirm").visible = false
+	get_node("Stinger").play()
 
 func start() -> void:
 	get_tree().paused = false
