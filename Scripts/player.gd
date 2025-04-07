@@ -266,7 +266,6 @@ func process_audio(delta: float) -> void:
 
 	if closest_dist > MaxMusicDistance:
 		music.volume_db = move_toward(music.volume_db, -80.0, delta * MaxMusicDistanceSpeed)
-		print(music.volume_db)
 	else:
 		music.volume_db = MaxMusicDb * (1.0 / clamp(closest_dist, 1.0, INF))
 
@@ -311,7 +310,6 @@ func attack() -> void:
 				cam.look_at(obj.global_position)
 				cam.rotation.z = 0
 				cam.scale = Vector3.ONE
-				print("dunk")
 			obj.knockback += v
 			Utils.gen_sound(PushSound, obj, Vector2(0.8, 1.2))
 
