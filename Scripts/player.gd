@@ -99,6 +99,7 @@ var last_counter: Control
 @onready var wall_kick_cast: ShapeCast3D = $WallKick
 @onready var cam_shake_timer: Timer = $CameraShakeTimer
 @onready var wall_kick_reset_timer: Timer = $WallKickResetTimer
+@onready var viewport_container: SubViewportContainer = $Camera3D/SubViewportContainer
 
 func take_input() -> void:
 	look_speed = get_node("/root/Main/PauseMenu").look.value
@@ -392,6 +393,8 @@ func _ready() -> void:
 
 	left_hand_spr.play("default")
 	right_hand_spr.play("default")
+
+	viewport_container.visible = false
 
 func _on_attack_timeout() -> void:
 	attacking = false
