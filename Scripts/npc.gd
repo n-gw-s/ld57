@@ -4,6 +4,7 @@ extends CharacterBody3D
 const VEL_LENGTH_MIN: float = 1.0
 
 enum MoveBehavior {
+	NONE,
 	STRAFE,
 	BOUNCE,
 	CHASE,
@@ -65,7 +66,7 @@ func notice_player() -> void:
 
 func process_behavior() -> void:
 	var dist_to_player: float = player.global_position.distance_to(global_position)
-	if dist_to_player > CombatRadius && dist_to_player < SightRadius:
+	if dist_to_player > CombatRadius && dist_to_player < SightRadius && Behavior != MoveBehavior.NONE:
 		nav.target_position = player.global_position
 		var next: Vector3 = nav.get_next_path_position()
 		move = (next - global_position).normalized() * Speed

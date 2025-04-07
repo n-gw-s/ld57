@@ -13,10 +13,10 @@ radius = 1.0
 
 [node name="NPC_Bat" type="CharacterBody3D"]
 collision_layer = 2
+floor_constant_speed = true
 script = ExtResource("1_n337f")
 Speed = 6.0
 KnockbackFrictionHorizontal = 2.0
-Behavior = 1
 CombatRadius = 999.0
 SightRadius = 9999.0
 WeaponSpriteName = ""
@@ -41,7 +41,7 @@ shape = SubResource("SphereShape3D_1xr8c")
 target_position = Vector3(0, 0, 0)
 collision_mask = 4
 script = ExtResource("2_kfui6")
-Force = 16.0
+Force = 8.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 

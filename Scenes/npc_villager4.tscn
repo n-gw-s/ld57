@@ -13,6 +13,7 @@ radius = 1.0
 
 [node name="NPC_Villager" type="CharacterBody3D"]
 collision_layer = 2
+floor_constant_speed = true
 script = ExtResource("1_l53lf")
 Speed = 7.0
 Behavior = 3

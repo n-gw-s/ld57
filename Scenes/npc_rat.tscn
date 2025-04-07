@@ -12,6 +12,7 @@ radius = 1.0
 
 [node name="NPC_Rat" type="CharacterBody3D"]
 collision_layer = 2
+floor_constant_speed = true
 script = ExtResource("1_8sfyt")
 Speed = 4.0
 KnockbackFrictionHorizontal = 2.0
@@ -34,7 +35,7 @@ shape = SubResource("SphereShape3D_1xr8c")
 target_position = Vector3(0, 0, 0)
 collision_mask = 4
 script = ExtResource("3_jm2cj")
-Force = 4.0
+Force = 3.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
