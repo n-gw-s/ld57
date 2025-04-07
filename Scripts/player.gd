@@ -292,7 +292,7 @@ func attack() -> void:
 				cam.scale = Vector3.ONE
 				print("dunk")
 			obj.knockback += v
-			Utils.gen_sound(PushSound, obj)
+			Utils.gen_sound(PushSound, obj, Vector2(0.8, 1.2))
 
 func jump() -> void:
 	if jumping:
@@ -308,7 +308,7 @@ func jump() -> void:
 
 	next_cam_fov = FovKick
 
-	Utils.gen_sound(JumpSound, self)
+	Utils.gen_sound(JumpSound, self, Vector2(0.8, 1.2))
 
 func wall_kick(wn: Vector3) -> void:
 	if last_wall_kick_dir.is_equal_approx(wn) || wn.is_equal_approx(Vector3.ZERO):
@@ -330,7 +330,7 @@ func wall_kick(wn: Vector3) -> void:
 	p.look_at(p.global_position + wall_kick_dir * 0.1)
 	p.restart()
 	
-	Utils.gen_sound(WallKickSound, self)
+	Utils.gen_sound(WallKickSound, self, Vector2(0.8, 1.2))
 
 func shake_cam(amount: float) -> void:
 	cam.position = o_cam_position
@@ -350,7 +350,7 @@ func inc_coins() -> void:
 	counter.label.text = str(coins)
 	last_counter = counter
 
-	Utils.gen_sound(CoinSound, self)
+	Utils.gen_sound(CoinSound, self, Vector2(0.8, 1.2))
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
