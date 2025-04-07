@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dmbe0rm85nmwj"]
+[gd_scene load_steps=18 format=3 uid="uid://dmbe0rm85nmwj"]
 
 [ext_resource type="Script" uid="uid://7jonov4nvurj" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
@@ -8,7 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://ot8kyroxg3kl" path="res://Audio/push.wav" id="4_3smsa"]
 [ext_resource type="AudioStream" uid="uid://dmmkdx6cpc4j" path="res://Audio/wallkick.wav" id="4_8erm5"]
 [ext_resource type="AudioStream" uid="uid://stwcbwvk21xe" path="res://Audio/jump.wav" id="4_f1ek2"]
+[ext_resource type="AudioStream" uid="uid://uhdlpts1oth5" path="res://Audio/push_success.wav" id="6_ukyrk"]
 [ext_resource type="SpriteFrames" uid="uid://cfluff6ajrbf" path="res://SpriteFrames/hand.tres" id="6_x3wgy"]
+[ext_resource type="AudioStream" uid="uid://lcojocqvmqfg" path="res://Audio/get_pushed.wav" id="7_gymyn"]
+[ext_resource type="AudioStream" uid="uid://fcym50vhk0ep" path="res://Audio/coin_get.wav" id="7_pu2lt"]
 [ext_resource type="AudioStream" uid="uid://30f44f8wp2lq" path="res://Audio/proximity_music.mp3" id="10_tx1dd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
@@ -19,7 +22,7 @@ radius = 2.0
 [sub_resource type="Environment" id="Environment_vgqql"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tx1dd"]
-radius = 1.8
+radius = 1.7
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 4
@@ -41,8 +44,11 @@ PushVelocity = 12.0
 DunkVelocity = 20.0
 JumpSound = ExtResource("4_f1ek2")
 WallKickSound = ExtResource("4_8erm5")
-PushSound = ExtResource("4_3smsa")
+PushSound = ExtResource("6_ukyrk")
+CoinSound = ExtResource("7_pu2lt")
+SelfPushSound = ExtResource("7_gymyn")
 FogHeight = 120.0
+PushFailSound = ExtResource("4_3smsa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_vgqql")
