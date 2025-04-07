@@ -19,4 +19,5 @@ func _physics_process(_delta: float) -> void:
 			var v: Vector3 = -get_collision_normal(i) * Force
 			obj.knockback.x += v.x
 			obj.knockback.z += v.z
+			Utils.gen_sound(obj.SelfPushSound, obj, Vector2(0.8, 1.2))
 			#obj.shake_cam(v.length())

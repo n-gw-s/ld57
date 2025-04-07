@@ -37,6 +37,7 @@ extends CharacterBody3D
 @export var WallKickSound: AudioStream
 @export var PushSound: AudioStream
 @export var CoinSound: AudioStream
+@export var SelfPushSound: AudioStream
 
 var input_move: Vector2
 
