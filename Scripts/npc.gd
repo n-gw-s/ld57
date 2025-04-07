@@ -37,6 +37,7 @@ enum FlipType {
 @export var IdleTexture: Texture
 @export var FlipSpeed: float = 1.0
 @export var FlipMode: FlipType = FlipType.HORIZONTAL
+@export var NoticeAudio: AudioStream
 
 var move: Vector3
 var knockback: Vector3
@@ -71,6 +72,7 @@ func notice_player() -> void:
 		seen_player = true
 		typewriter.Say = SeenSay.pick_random()
 		typewriter.reset()
+		Utils.gen_sound(NoticeAudio, Vector3.ZERO, self)
 
 func process_behavior() -> void:
 	var dist_to_player: float = player.global_position.distance_to(global_position)

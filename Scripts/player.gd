@@ -32,6 +32,11 @@ extends CharacterBody3D
 @export var DunkVelocity: float = 6.0
 @export var ProjectileFxSpeed: float = 4.0
 @export var PushSelfVelocity: float = 4.0
+@export_subgroup("FX")
+@export var JumpSound: AudioStream
+@export var WallKickSound: AudioStream
+@export var PushSound: AudioStream
+@export var CoinSound: AudioStream
 
 var input_move: Vector2
 
@@ -287,6 +292,7 @@ func attack() -> void:
 				cam.scale = Vector3.ONE
 				print("dunk")
 			obj.knockback += v
+			Utils.gen_sound(PushSound, Vector3.ZERO, obj)
 
 func jump() -> void:
 	if jumping:
@@ -301,6 +307,8 @@ func jump() -> void:
 		lines_right.play()
 
 	next_cam_fov = FovKick
+
+	Utils.gen_sound(JumpSound, Vector3.ZERO, self)
 
 func wall_kick(wn: Vector3) -> void:
 	if last_wall_kick_dir.is_equal_approx(wn) || wn.is_equal_approx(Vector3.ZERO):
@@ -321,6 +329,8 @@ func wall_kick(wn: Vector3) -> void:
 	p.global_position = global_position
 	p.look_at(p.global_position + wall_kick_dir * 0.1)
 	p.restart()
+	
+	Utils.gen_sound(WallKickSound, Vector3.ZERO, self)
 
 func shake_cam(amount: float) -> void:
 	cam.position = o_cam_position
@@ -339,6 +349,8 @@ func inc_coins() -> void:
 	get_parent().add_child(counter)
 	counter.label.text = str(coins)
 	last_counter = counter
+
+	Utils.gen_sound(CoinSound, Vector3.ZERO, self)
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

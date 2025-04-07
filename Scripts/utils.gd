@@ -1,6 +1,9 @@
 extends Node
 
 func gen_sound(stream: AudioStream, p: Vector3, parent: Node3D = null) -> void:
+    if stream == null:
+        return
+    
     if parent == null:
         parent = get_node("/root/Main/Sandbox")
     
