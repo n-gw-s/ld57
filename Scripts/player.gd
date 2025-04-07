@@ -90,6 +90,8 @@ var last_counter: Control
 @onready var cam_shake_timer: Timer = $CameraShakeTimer
 
 func take_input() -> void:
+	look_speed = get_node("/root/Main/PauseMenu").look.value
+	
 	input_move = Input.get_vector("MoveLeft", "MoveRight", "MoveBackward", "MoveForward")
 
 	input_just_jump = Input.is_action_just_pressed("Jump")
@@ -363,12 +365,6 @@ func _input(event: InputEvent) -> void:
 		global_rotation_degrees.y = global_rotation_degrees.y - event.relative.x * look_speed
 
 func _process(delta: float) -> void:
-	# Mouse handling
-	if Input.is_key_pressed(KEY_ESCAPE):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	if Input.is_action_just_pressed("Fire"):
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
 	process_cam_lean(delta)
 	process_view_bob(delta)
 	process_fov_kick(delta)
