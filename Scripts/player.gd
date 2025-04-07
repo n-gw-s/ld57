@@ -39,6 +39,8 @@ extends CharacterBody3D
 @export var CoinSound: AudioStream
 @export var SelfPushSound: AudioStream
 @export var MaxMusicDb: float = 8.0
+@export var MaxMusicDistance: float = 5.0
+@export var MaxMusicDistanceSpeed: float = 16.0
 
 var input_move: Vector2
 
@@ -253,7 +255,7 @@ func process_fov_kick(delta: float) -> void:
 	if !jumping:
 		next_cam_fov = o_cam_fov
 
-func process_audio() -> void:
+func process_audio(delta: float) -> void:
 	var npcs: Array = get_tree().get_nodes_in_group("NPC")
 	var closest_dist: float = INF
 	for n in npcs:
@@ -261,8 +263,12 @@ func process_audio() -> void:
 		if dist < closest_dist:
 			closest_dist = dist
 	var music: AudioStreamPlayer = get_node("Music")
-	music.volume_db = MaxMusicDb * (1.0 / clamp(closest_dist, 1.0, INF))
 
+	if closest_dist > MaxMusicDistance:
+		music.volume_db = move_toward(music.volume_db, -80.0, delta * MaxMusicDistanceSpeed)
+		print(music.volume_db)
+	else:
+		music.volume_db = MaxMusicDb * (1.0 / clamp(closest_dist, 1.0, INF))
 
 	AudioServer.set_bus_volume_db(0, get_node("/root/Main/PauseMenu").volume.value)
 
@@ -395,7 +401,7 @@ func _process(delta: float) -> void:
 	process_cam_lean(delta)
 	process_view_bob(delta)
 	process_fov_kick(delta)
-	process_audio()
+	process_audio(delta)
 
 func _physics_process(delta: float) -> void:
 	take_input()
