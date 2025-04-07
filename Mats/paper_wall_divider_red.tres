@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dbj0khsy64x7m"]
+
+[ext_resource type="Shader" uid="uid://dchwwv587g7vb" path="res://Shaders/standard.gdshader" id="1_4gdxb"]
+[ext_resource type="Texture2D" uid="uid://doplt4s3geler" path="res://Textures/paper_wall_divider_red.png" id="2_4gdxb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4gdxb")
+shader_parameter/albedo_texture = ExtResource("2_4gdxb")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/jitter = 0.8
+shader_parameter/emission_amount = 0.0
+shader_parameter/uv_scale = Vector2(2, 1)
+shader_parameter/backlight_color = Color(1, 1, 1, 1)
+shader_parameter/backlight_amount = 1.0

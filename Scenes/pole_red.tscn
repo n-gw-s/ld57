@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkcqf5tn08l4k"]
+
+[ext_resource type="Material" uid="uid://dbj0khsy64x7m" path="res://Mats/paper_wall_divider_red.tres" id="1_wlqi2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yvmo3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3j86u"]
+size = Vector3(1.5, 1, 1.5)
+
+[node name="Node3D" type="StaticBody3D"]
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_yvmo3")
+surface_material_override/0 = ExtResource("1_wlqi2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_3j86u")
