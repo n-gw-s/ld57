@@ -98,7 +98,7 @@ func process_behavior() -> void:
 			move = (next - global_position).normalized() * Speed
 
 			if is_on_wall() || !nav.is_target_reachable() || nav.is_target_reached():
-				randomize_dir()
+				reflect_dir()
 		elif Behavior == MoveBehavior.CHASE:
 			nav.target_position = player.global_position
 			var next: Vector3 = nav.get_next_path_position()
