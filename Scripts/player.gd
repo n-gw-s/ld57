@@ -38,7 +38,7 @@ extends CharacterBody3D
 @export var PushSound: AudioStream
 @export var CoinSound: AudioStream
 @export var SelfPushSound: AudioStream
-@export var MaxMusicDb: float = 3.0
+@export var MaxMusicDb: float = 8.0
 
 var input_move: Vector2
 
