@@ -18,6 +18,7 @@ func start() -> void:
 	visible = false
 	get_node("/root/Main/Sandbox/Player").viewport_container.visible = true
 	get_node("/root/Main/Sandbox/Player").cam.make_current()
+	queue_free()
 
 func _ready() -> void:
 	get_tree().paused = true
