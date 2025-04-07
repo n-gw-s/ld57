@@ -359,7 +359,7 @@ func inc_coins() -> void:
 	var counter_scn: PackedScene = preload("res://Scenes/coin_counter.tscn")
 	var counter: Control = counter_scn.instantiate()
 	get_parent().add_child(counter)
-	counter.label.text = str(coins)
+	counter.label.text = "¥" + str(coins)
 	last_counter = counter
 
 	Utils.gen_sound(CoinSound, self, Vector2(0.8, 1.2))
