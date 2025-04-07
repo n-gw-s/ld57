@@ -14,8 +14,8 @@ dest_files=["res://.godot/imported/villager.wav-e9693fe11b4e0103c9fe003a10c2b530
 
 force/8_bit=false
 force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
+force/max_rate=true
+force/max_rate_hz=11025.0
 edit/trim=false
 edit/normalize=false
 edit/loop_mode=0

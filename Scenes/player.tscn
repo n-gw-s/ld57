@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfgqlkrr7eks3"]
+[gd_scene load_steps=15 format=3 uid="uid://cfgqlkrr7eks3"]
 
 [ext_resource type="Script" uid="uid://7jonov4nvurj" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Environment" uid="uid://bmtprq0lojrbr" path="res://Environments/env.tres" id="2_6t5aa"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dmmkdx6cpc4j" path="res://Audio/wallkick.wav" id="4_8erm5"]
 [ext_resource type="AudioStream" uid="uid://stwcbwvk21xe" path="res://Audio/jump.wav" id="4_f1ek2"]
 [ext_resource type="SpriteFrames" uid="uid://cfluff6ajrbf" path="res://SpriteFrames/hand.tres" id="6_x3wgy"]
+[ext_resource type="AudioStream" uid="uid://30f44f8wp2lq" path="res://Audio/proximity_music.mp3" id="10_tx1dd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
 
@@ -135,4 +136,5 @@ light_color = Color(1, 0.74902, 0, 1)
 current = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_tx1dd")
 autoplay = true

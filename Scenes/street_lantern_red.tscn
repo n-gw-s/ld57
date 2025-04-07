@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://df7hyool3g6f" path="res://Textures/roof_topper.png" id="5_hnp4w"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_yvmo3"]
-size = Vector3(0.1, 1, 0.1)
+size = Vector3(0.1, 0.85, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_q430m"]
 size = Vector3(0.25, 0.333, 0.25)
@@ -40,7 +40,7 @@ size = Vector3(0.5, 1.2, 0.5)
 [node name="Node3D" type="StaticBody3D"]
 
 [node name="MeshInstance3D27" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.425, 0)
 mesh = SubResource("BoxMesh_yvmo3")
 surface_material_override/0 = ExtResource("1_rfvmu")
 

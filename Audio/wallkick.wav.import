@@ -14,8 +14,8 @@ dest_files=["res://.godot/imported/wallkick.wav-f0da8931d395b9f4c263a0f46ca66d1b
 
 force/8_bit=false
 force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
+force/max_rate=true
+force/max_rate_hz=11025.0
 edit/trim=false
 edit/normalize=false
 edit/loop_mode=0
