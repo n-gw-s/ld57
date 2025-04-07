@@ -6,9 +6,10 @@ const VEL_LENGTH_MIN: float = 1.0
 enum MoveBehavior {
 	NONE,
 	STRAFE,
-	BOUNCE,
+	BOUNCE_NAVIGATE,
 	CHASE,
 	FLEE,
+	BOUNCE,
 }
 
 enum FlipType {
@@ -20,6 +21,7 @@ enum FlipType {
 @export var Speed: float = 3.0
 @export var KnockbackFrictionHorizontal: float = 4.0
 @export var KnockbackFrictionVertical: float = 0.0
+@export var GravityScale: float = 1.0
 @export_subgroup("Behavior")
 @export var Behavior: MoveBehavior = MoveBehavior.STRAFE
 @export var CombatRadius: float = 3.0
@@ -30,6 +32,7 @@ enum FlipType {
 @export var BounceRadius: float = 8.0
 @export var SeenSay: Array[String] = []
 @export var RepeatSeenSay: bool = false
+@export var Dunkable: bool = true
 @export_subgroup("FX")
 @export var IdleTexture: Texture
 @export var FlipSpeed: float = 1.0
@@ -58,6 +61,11 @@ var dust_scn: PackedScene = preload("res://Scenes/wall_kick_particles.tscn")
 func randomize_dir() -> void:
 	rand_dir = Vector2(-randf() + randf(), -randf() + randf()).normalized()
 
+func reflect_dir() -> void:
+	var d: Vector2 = rand_dir
+	rand_dir.x = -d.y
+	rand_dir.y = d.x
+
 func notice_player() -> void:
 	if !seen_player && SeenSay.size() > 0:
 		seen_player = true
@@ -66,7 +74,7 @@ func notice_player() -> void:
 
 func process_behavior() -> void:
 	var dist_to_player: float = player.global_position.distance_to(global_position)
-	if dist_to_player > CombatRadius && dist_to_player < SightRadius && Behavior != MoveBehavior.NONE:
+	if dist_to_player > CombatRadius && dist_to_player < SightRadius && Behavior != MoveBehavior.NONE && Behavior != MoveBehavior.BOUNCE:
 		nav.target_position = player.global_position
 		var next: Vector3 = nav.get_next_path_position()
 		move = (next - global_position).normalized() * Speed
@@ -81,14 +89,14 @@ func process_behavior() -> void:
 			var v: Vector3 = global_basis.x * sin(Time.get_ticks_msec() * StrafeFreq) * StrafeAmp
 			move.x = v.x
 			move.z = v.z
-		elif Behavior == MoveBehavior.BOUNCE:
+		elif Behavior == MoveBehavior.BOUNCE_NAVIGATE:
 			var v: Vector3 = Vector3(rand_dir.x, 0, rand_dir.y).normalized() * BounceRadius
 			nav.target_position = global_position + v
 			var next: Vector3 = nav.get_next_path_position()
 			move = (next - global_position).normalized() * Speed
 
 			if is_on_wall() || !nav.is_target_reachable() || nav.is_target_reached():
-				randomize_dir()
+				reflect_dir()
 		elif Behavior == MoveBehavior.CHASE:
 			nav.target_position = player.global_position
 			var next: Vector3 = nav.get_next_path_position()
@@ -96,6 +104,11 @@ func process_behavior() -> void:
 		elif Behavior == MoveBehavior.FLEE:
 			var v: Vector3 = (global_position - player.global_position).normalized() * Speed
 			move = v
+		elif Behavior == MoveBehavior.BOUNCE:
+			var v: Vector3 = Vector3(rand_dir.x, 0, rand_dir.y).normalized() * BounceRadius
+			move = v
+			if is_on_wall():
+				reflect_dir()
 	elif dist_to_player > SightRadius:
 		if RepeatSeenSay:
 			seen_player = false
@@ -176,7 +189,7 @@ func _physics_process(delta: float) -> void:
 	velocity.z = move.z + knockback.z
 
 	if !is_on_floor():
-		velocity += get_gravity()
+		velocity += get_gravity() * GravityScale
 
 	move_and_slide()
 

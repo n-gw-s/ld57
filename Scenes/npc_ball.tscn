@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4ituwshopkr5"]
+
+[ext_resource type="Script" uid="uid://wupi60ffwe3n" path="res://Scripts/npc.gd" id="1_7sywr"]
+[ext_resource type="Texture2D" uid="uid://dxdky3vikb4hh" path="res://Textures/villagers/jenny5.png" id="2_cirgh"]
+[ext_resource type="Script" uid="uid://c2rxoxht70x34" path="res://Scripts/player_push_cast.gd" id="3_ryq1q"]
+[ext_resource type="PackedScene" uid="uid://c5g0anmmosets" path="res://Scenes/say.tscn" id="4_xclqi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_evdjq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_psvr0"]
+
+[node name="NPC_Ball" type="CharacterBody3D"]
+collision_layer = 3
+script = ExtResource("1_7sywr")
+GravityScale = 0.0
+Behavior = 5
+CombatRadius = 1e+09
+SightRadius = 1e+09
+WeaponSpriteName = ""
+Dunkable = false
+metadata/_custom_type_script = "uid://wupi60ffwe3n"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_evdjq")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.03
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_cirgh")
+
+[node name="PushCast" type="ShapeCast3D" parent="."]
+shape = SubResource("SphereShape3D_psvr0")
+target_position = Vector3(0, 0, 0)
+collision_mask = 4
+script = ExtResource("3_ryq1q")
+Force = 2.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Say" parent="." instance=ExtResource("4_xclqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)

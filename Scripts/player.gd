@@ -91,7 +91,7 @@ var last_counter: Control
 
 func take_input() -> void:
 	look_speed = get_node("/root/Main/PauseMenu").look.value
-	
+
 	input_move = Input.get_vector("MoveLeft", "MoveRight", "MoveBackward", "MoveForward")
 
 	input_just_jump = Input.is_action_just_pressed("Jump")
@@ -280,7 +280,7 @@ func attack() -> void:
 
 		if obj is NPC:
 			var v: Vector3 = -interact_cast.get_collision_normal(i) * PushVelocity
-			if !obj.is_on_floor():
+			if !obj.is_on_floor() && obj.Dunkable:
 				v = Vector3.DOWN * DunkVelocity
 				cam.look_at(obj.global_position)
 				cam.rotation.z = 0
