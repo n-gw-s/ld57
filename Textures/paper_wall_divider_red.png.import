@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://doplt4s3geler"
 path.s3tc="res://.godot/imported/paper_wall_divider_red.png-e5eaefdd5d554b394c1313a2af827330.s3tc.ctex"
+path.etc2="res://.godot/imported/paper_wall_divider_red.png-e5eaefdd5d554b394c1313a2af827330.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/paper_wall_divider_red.png"
-dest_files=["res://.godot/imported/paper_wall_divider_red.png-e5eaefdd5d554b394c1313a2af827330.s3tc.ctex"]
+dest_files=["res://.godot/imported/paper_wall_divider_red.png-e5eaefdd5d554b394c1313a2af827330.s3tc.ctex", "res://.godot/imported/paper_wall_divider_red.png-e5eaefdd5d554b394c1313a2af827330.etc2.ctex"]
 
 [params]
 
